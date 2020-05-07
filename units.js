@@ -61,7 +61,7 @@
 	}
 
 	for(const key in Category) {
-		categoryImages[Category[key]].src = "images/class/class_" + (Category[key] + 1) + ".png";
+		categoryImages[Category[key]].src = "images-mini/class/class_" + (Category[key] + 1) + ".jpg";
 		//unitnum += CategoryNUM[key];
 	}
 
@@ -71,7 +71,7 @@
 	for (i = 0; i < CategoryLen; i++) {
 		units[i] = [];
 		for (j = 0; j < CategoryNUM[i]; j++) {
-			units[i][j] = new Unit("images/" + CategoryName[i] + "/" + (j + 1) + ".png");
+			units[i][j] = new Unit("images-mini/" + CategoryName[i] + "/" + (j + 1) + ".jpg");
 		}
 	}
 
