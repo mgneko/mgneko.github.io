@@ -18,18 +18,18 @@
 	};
 
 	var CategoryName = [
-		'SABER',			// 劍
-		'ARCHER',			// 弓
-		'LANCER',			// 槍
-		'RIDER',			// 騎
-		'CASTER',			// 術
-		'ASSASSIN',			// 殺
-		'BERSERKER',		// 狂
-		'RULER',			// 秤
-		'AVENGER',			// 仇
-		'ALTEREGO',			// 丑
-		'FOREIGNER',		// 外
-		'MOONCANCER'		// 月
+		'saber',			// 劍
+		'archer',			// 弓
+		'lancer',			// 槍
+		'rider',			// 騎
+		'caster',			// 術
+		'assassin',			// 殺
+		'berserker',		// 狂
+		'ruler',			// 秤
+		'averger',			// 仇
+		'alterego',			// 丑
+		'foreigner',		// 外
+		'mooncancer'		// 月
 	];
 
 	var CategoryNUM = [9, 8, 7, 8, 9, 7, 7, 3, 2, 3, 2, 0];
