@@ -26,7 +26,7 @@
 		'assassin',			// 殺
 		'berserker',		// 狂
 		'ruler',			// 秤
-		'averger',			// 仇
+		'avenger',			// 仇
 		'alterego',			// 丑
 		'foreigner',		// 外
 		'mooncancer'		// 月
