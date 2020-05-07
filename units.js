@@ -61,7 +61,7 @@
 	}
 
 	for(const key in Category) {
-		categoryImages[Category[key]].src = "images-mini/class/class_" + (Category[key] + 1) + ".jpg";
+		categoryImages[Category[key]].src = "images-mini/class/class_" + (Category[key] + 1) + ".png";
 		//unitnum += CategoryNUM[key];
 	}
 
