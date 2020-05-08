@@ -2,6 +2,8 @@
 	var CELL_SIZE = 50;
 	var row_padding = 30;
 	var col_padding = 20;
+	var marginTop = 10;
+	var marginLeft = 10;
 	var bgcolor = "rgb(176, 176, 176)";
 	var mask = "rgb(0, 0, 0, 0.6)";
 	var font_color = "rgb(0, 0, 0)";
@@ -86,7 +88,7 @@
 		context.font = "20px Microsoft JhengHei";
 		canvas.onclick = onCanvasClick;
 		context.fillStyle = 'rgb(176, 176, 176)';
-		context.fillRect (0, 0, 700, 880);
+		context.fillRect (0, 0, 700, 890);
 
 		for(var category = 0; category < CategoryLen; category++){
 			drawImage(0, category, categoryImages[category])
@@ -105,15 +107,15 @@
 		if(image.complete){
 			try{
 				context.drawImage(image,
-					x * (CELL_SIZE + col_padding),
-					y * (CELL_SIZE + row_padding),
+					x * (CELL_SIZE + col_padding) + marginLeft,
+					y * (CELL_SIZE + row_padding) + marginTop,
 					CELL_SIZE,
 					CELL_SIZE);
 			}catch(e){
 				image.src = unitMissing;
 				context.drawImage(image,
-					x * (CELL_SIZE + col_padding),
-					y * (CELL_SIZE + row_padding),
+					x * (CELL_SIZE + col_padding) + marginLeft,
+					y * (CELL_SIZE + row_padding) + marginTop,
 					CELL_SIZE,
 					CELL_SIZE);
 			}
@@ -131,15 +133,18 @@
 
 	function fillRect(x, y, color){
 		context.fillStyle = color;
-		context.fillRect ((x + 1) * (CELL_SIZE + col_padding),
-			y * (CELL_SIZE + row_padding),
+		context.fillRect ((x + 1) * (CELL_SIZE + col_padding) + marginLeft,
+			y * (CELL_SIZE + row_padding) + marginTop,
 			CELL_SIZE,
 			CELL_SIZE);
 	}
 
 	function fillText(x, y, msg, color){
 		context.fillStyle = color;
-		context.fillText(msg, (x + 1) * (CELL_SIZE + col_padding) + 8, (y + 1) * (CELL_SIZE + row_padding) - 10, CELL_SIZE);
+		context.fillText(msg,
+			(x + 1) * (CELL_SIZE + col_padding) + 8 + marginLeft,
+			(y + 1) * (CELL_SIZE + row_padding) - 10 + marginTop,
+			CELL_SIZE);
 	}
 
 	function rightClick(event){
@@ -158,8 +163,8 @@
 				units[category][attribute - 1].npLv -= 1;
 
 				context.fillStyle = bgcolor;
-				context.fillRect(attribute * (CELL_SIZE + col_padding),
-					(category + 1) * (CELL_SIZE + row_padding) - row_padding,
+				context.fillRect(attribute * (CELL_SIZE + col_padding)  + marginLeft,
+					(category + 1) * (CELL_SIZE + row_padding) - row_padding  + marginLeft,
 					CELL_SIZE,
 					row_padding);
 				
@@ -172,8 +177,8 @@
 				units[category][attribute - 1].npLv = 5;
 				drawImage(attribute , category, units[category][attribute - 1].image);
 				context.fillStyle = bgcolor;
-				context.fillRect(attribute * (CELL_SIZE + col_padding),
-					(category + 1) * (CELL_SIZE + row_padding) - row_padding,
+				context.fillRect(attribute * (CELL_SIZE + col_padding)  + marginLeft,
+					(category + 1) * (CELL_SIZE + row_padding) - row_padding  + marginLeft,
 					CELL_SIZE,
 					row_padding);
 				fillText(attribute - 1, category, "寶" + units[category][attribute - 1].npLv, font_color);
@@ -200,8 +205,8 @@
 			if(units[category][attribute - 1].npLv < 5){
 				units[category][attribute - 1].npLv += 1;
 				context.fillStyle = bgcolor;
-				context.fillRect(attribute * (CELL_SIZE + col_padding),
-					(category + 1) * (CELL_SIZE + row_padding) - row_padding,
+				context.fillRect(attribute * (CELL_SIZE + col_padding)  + marginLeft,
+					(category + 1) * (CELL_SIZE + row_padding) - row_padding  + marginLeft,
 					CELL_SIZE,
 					row_padding);
 				fillText(attribute - 1, category, "寶" + units[category][attribute - 1].npLv, font_color);
@@ -210,8 +215,8 @@
 				units[category][attribute - 1].npLv = 0;
 				fillRect(attribute - 1, category, mask);
 				context.fillStyle = bgcolor;
-				context.fillRect(attribute * (CELL_SIZE + col_padding),
-					(category + 1) * (CELL_SIZE + row_padding) - row_padding,
+				context.fillRect(attribute * (CELL_SIZE + col_padding) + marginLeft,
+					(category + 1) * (CELL_SIZE + row_padding) - row_padding  + marginLeft,
 					CELL_SIZE,
 					row_padding);
 				fillText(attribute - 1, category, "寶" + units[category][attribute - 1].npLv, font_color);
