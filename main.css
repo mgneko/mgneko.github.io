@@ -32,6 +32,7 @@ body{
 #nav li {
 	float: left;
 	list-style-type: none;
+	margin-right: 20px
 }
 
 .btn {
@@ -44,17 +45,27 @@ body{
 }
 
 .btn--primary {
-	background: #2874a6 ;
+	background: #000000 ;
 	transition: all .3s;
 }
 
 .btn--primary:hover {
-  background: #2980b9;
+  background: #2b3033;
 }
 
 .btn--round {
 	border-radius: 20px;
 }
+
+.btn--checked {
+	background: #b03a2e ;
+	transition: all .3s;
+}
+
+.btn--checked:hover {
+  background: #C93E2F;
+}
+
 
 canvas {
     padding-left: 0;
