@@ -291,7 +291,7 @@
 		var totalNP = 0;
 		var total = 0;
 		context.fillStyle = bgcolor;
-		context.fillRect(canvas.width - 200, canvas.height - 100, 200, 100)
+		context.fillRect(canvas.width - 200, canvas.height - 110, 200, 110)
 
 		for (i = 0; i < CategoryLen; i++) {
 			for (j = 0; j < CategoryNUM[i]; j++) {
@@ -309,13 +309,13 @@
 		context.fillStyle = font_color;
 		context.fillText("英靈持有數:"+ totalHave + "/" + total,
 			canvas.width - 200,
-			canvas.height - 60);
+			canvas.height - 70);
 		context.fillText("英靈持有率:" + percent.toFixed(2) + "%",
 			canvas.width - 200,
-			canvas.height - 40);
+			canvas.height - 50);
 		context.fillText("總寶數:" + totalNP,
 			canvas.width - 200,
-			canvas.height - 20);
+			canvas.height - 30);
 	}
 
 	function getCoordinates (event){
