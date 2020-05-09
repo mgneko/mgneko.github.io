@@ -5,6 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
+	var country = "tw";
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -33,9 +34,10 @@
 		'heart'
 	];
 
-	var CategoryNUM = [9, 8, 7, 8, 9, 7, 7, 3, 2, 3, 2, 0];
-
-	var CategoryNUM_TW = [9, 8, 7, 8, 9, 7, 7, 3, 2, 3, 2, 0];
+	var AllCategoryNUM = {
+		"tw": [9, 8, 7, 8, 9, 7, 7, 3, 2, 3, 2, 0],
+		"jp": [12, 11, 9, 12, 11, 9, 10, 5, 4, 5, 3, 2]
+	};
 
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
@@ -68,26 +70,59 @@
 		categoryImages[i].src = "images-mini/class/class_" + (i + 1) + ".png";
 	}
 
-	//設定英靈圖
-
 	var units = [];
+
+	//設定英靈圖
 	for (i = 0; i < CategoryLen; i++) {
 		units[i] = [];
-		for (j = 0; j < CategoryNUM[i]; j++) {
+		for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
 			units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
-		}
+			}
 	}
 
 	function init(state = 0){
-		CategoryNUM = CategoryNUM_TW;
+		CategoryNUM = AllCategoryNUM[country];
+		
+		//設定英靈圖
+		if(state != 2){
+			for (i = 0; i < CategoryLen; i++) {
+				units[i] = [];
+				for (j = 0; j < CategoryNUM[i]; j++) {
+					units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+			}
+		}
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
 
+		twButton = document.getElementById('tw-button');
+		jpButton = document.getElementById('jp-button');
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
 
+		twButton.onclick = function(){
+			if (country != "tw"){
+				country = "tw";
+				twButton.classList.remove("btn--primary");
+				twButton.classList.add('btn--checked');
+				jpButton.classList.remove("btn--checked");
+				jpButton.classList.add('btn--primary');
+				init(1);
+			}
+			
+		};
+		jpButton.onclick = function(){
+			if (country != "jp"){
+				country = "jp";
+				jpButton.classList.remove("btn--primary");
+				jpButton.classList.add('btn--checked');
+				twButton.classList.remove("btn--checked");
+				twButton.classList.add('btn--primary');
+				init(1);
+			}
+		};
 		setButton.onclick = function(){
 			mode = 0;
 			setButton.classList.remove("btn--primary");
@@ -118,7 +153,7 @@
 				luckyBagButton.classList.add('btn--primary');
 				marginLeft -= caculateField;
 			}
-			init(1);
+			init(2);
 		};
 
 		if(!state){
@@ -130,7 +165,7 @@
 		}
 		
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
-		canvas.height = CategoryLen * (CELL_SIZE + row_padding) - marginTop;
+		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
@@ -173,6 +208,7 @@
 					y * (CELL_SIZE + row_padding) + marginTop,
 					CELL_SIZE,
 					CELL_SIZE);
+				draw_done = 1;
 			}catch(e){
 				image.src = unitMissing;
 				context.drawImage(image,
@@ -182,11 +218,6 @@
 					CELL_SIZE);
 			}
 		}else{
-			context.fillStyle = 'rgb(0, 0, 0, 0.6)';
-			context.fillRect(x * (CELL_SIZE + col_padding) + marginLeft,
-				y * (CELL_SIZE + row_padding) + marginTop,
-				CELL_SIZE,
-				CELL_SIZE);
 			setTimeout(function(){
 				drawImage(x, y, image);
 			},1000);
