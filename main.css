@@ -39,6 +39,15 @@ body{
 	margin-right: 20px
 }
 
+#footer {
+	margin: 0 auto;
+}
+
+#footer h2 {
+	font-size: 15px;
+	text-align: center;
+}
+
 .btn {
 	text-transform: uppercase;
 	padding: 10px 40px;
