@@ -81,8 +81,8 @@
 	}
 
 	function init(state = 0){
-		CategoryNUM = AllCategoryNUM[country];
-		
+		CategoryNUM = Array.from(AllCategoryNUM[country]);
+
 		//設定英靈圖
 		if(state != 2){
 			for (i = 0; i < CategoryLen; i++) {
@@ -91,6 +91,10 @@
 					units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 			}
+		}
+
+		if(state == 2 && country == "tw"){
+			luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
 		}
 
 		canvas = document.getElementById('canvas');
@@ -143,11 +147,6 @@
 				luckyBagButton.classList.remove("btn--primary");
 				luckyBagButton.classList.add('btn--checked');
 				marginLeft += caculateField;
-				canvas.removeEventListener('mousedown', function rightClickHandler(e) {
-					if(e.button === 2) {
-						rightClick(e);
-					}
-		});
 			}else{
 				luckyBagButton.classList.remove("btn--checked");
 				luckyBagButton.classList.add('btn--primary');
@@ -198,6 +197,10 @@
 		if(luckyBag){
 			fillCaculate();
 		}
+
+		context.font = "20px Microsoft JhengHei";
+		context.fillStyle = mask;
+		context.fillText("This image was made by mgneko.github.io", 190 + marginLeft, canvas.height - 25);
 	}
 
 	function drawImage(x, y, image){
@@ -256,7 +259,7 @@
 
 			if (category <= 6){
 
-				percent = ((1 - (have / units[category].length)) * 100);
+				percent = ((1 - (have / attribute)) * 100);
 				context.fillText("新:" + percent.toFixed(2) + "%",
 				marginLeft - caculateField,
 				marginTop + category * (CELL_SIZE + row_padding));
@@ -322,7 +325,7 @@
 		var totalNP = 0;
 		var total = 0;
 		context.fillStyle = bgcolor;
-		context.fillRect(canvas.width - 200, canvas.height - 110, 200, 110)
+		context.fillRect(canvas.width - 200, canvas.height - 110, 200, 80)
 
 		for (i = 0; i < CategoryLen; i++) {
 			for (j = 0; j < CategoryNUM[i]; j++) {
@@ -340,13 +343,13 @@
 		context.fillStyle = font_color;
 		context.fillText("英靈持有數:"+ totalHave + "/" + total,
 			canvas.width - 200,
-			canvas.height - 70);
+			canvas.height - 90);
 		context.fillText("英靈持有率:" + percent.toFixed(2) + "%",
 			canvas.width - 200,
-			canvas.height - 50);
+			canvas.height - 70);
 		context.fillText("總寶數:" + totalNP,
 			canvas.width - 200,
-			canvas.height - 30);
+			canvas.height - 50);
 	}
 
 	function getCoordinates (event){
