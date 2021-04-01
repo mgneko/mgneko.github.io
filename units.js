@@ -35,8 +35,9 @@
 	];
 
 	var AllCategoryNUM = {
-		"tw": [9, 9, 7, 8, 10, 7, 7, 3, 2, 3, 2, 1],
-		"jp": [12, 11, 9, 12, 11, 9, 10, 5, 4, 5, 3, 2]
+		// Saber,Archer,Lancer,Rider,Caster,Assassin,Berserker,Ruler,Avenger,Alterego,Foreigner,Mooncancer
+		"tw": [10,  9, 8,  9, 11, 9,  9, 4, 2, 5, 2, 2],
+		"jp": [14, 11, 10, 13, 12, 9, 11, 7, 5, 6, 6, 3]
 	};
 
 	//右鍵選單取消,綁定功能
@@ -77,7 +78,7 @@
 		units[i] = [];
 		for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
 			units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
-			}
+		}
 	}
 
 	function init(state = 0){
