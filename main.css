@@ -57,6 +57,11 @@ body{
 	display: inline-block;
 }
 
+.btn--latest--up{
+	background: #000000 ;
+	transition: all .3s;
+}
+
 .btn--primary {
 	background: #000000 ;
 	transition: all .3s;
