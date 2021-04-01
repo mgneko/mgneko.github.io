@@ -35,7 +35,9 @@
 	];
 
 	var AllCategoryNUM = {
-		// Saber,Archer,Lancer,Rider,Caster,Assassin,Berserker,Ruler,Avenger,Alterego,Foreigner,Mooncancer
+		// Saber,Archer,Lancer,Rider,Caster,
+		// Assassin,Berserker,Ruler,Avenger,Alterego,
+		// Foreigner,Mooncancer
 		"tw": [10,  9, 8,  9, 11, 9,  9, 4, 3, 5, 2, 2],
 		"jp": [14, 11, 10, 13, 12, 9, 11, 7, 5, 6, 6, 3]
 	};
