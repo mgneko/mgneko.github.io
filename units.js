@@ -148,9 +148,9 @@
 		// 	}
 		// }
 
-		if(state == 2 && country == "tw"){
-			luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
-		}
+		// if(state == 2 && country == "tw"){
+		// 	luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
+		// }
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
