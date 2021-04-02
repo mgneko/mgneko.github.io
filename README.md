@@ -1,5 +1,6 @@
 # mgneko.github.io
 可製作FGO台/日服所持5星英靈一覽表並產生為圖片
+
 This project can produce a list of your 5 star deck in Taiwan/Japan version of FGO, and also create a image to download.
 
 * 功能(Features):
@@ -27,4 +28,5 @@ Thanks for the original author and here is his github:
 https://github.com/mgneko/mgneko.github.io
 
 此版本新增19'台服福袋 由LeafLu@ptt維護
+
 This version added 19' lucky bag in Taiwan version, maintained by LeafLu in Taiwan ptt.
