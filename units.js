@@ -66,14 +66,14 @@
 
 	for(var i = 0 ; i < Marks.length ; ++ i){
 		markImages[i] = new Image();
-		markImages[i].src = "images-mini/mark/" + Marks[i] + ".png";
+		markImages[i].src = "images/mark/" + Marks[i] + ".png";
 	}
 
 	//設定職階圖
 
 	for(var i = 0 ; i < CategoryLen ; ++ i){
 		categoryImages[i] = new Image();
-		categoryImages[i].src = "images-mini/class/class_" + (i + 1) + ".png";
+		categoryImages[i].src = "images/class/class_" + (i + 1) + ".png";
 	}
 
 	var units = [];
@@ -82,7 +82,7 @@
 	for (i = 0; i < CategoryLen; i++) {
 		units[i] = [];
 		for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
-			units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
+			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 		}
 	}
 
@@ -94,8 +94,8 @@
 			for (i = 0; i < CategoryLen; i++) {
 				units[i] = [];
 				for (j = 0; j < CategoryNUM[i]; j++) {
-					units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
-					}
+					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+				}
 			}
 		}
 
@@ -105,9 +105,12 @@
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
-
+		// 台GO 日GO
 		twButton = document.getElementById('tw-button');
 		jpButton = document.getElementById('jp-button');
+		// 福袋(變動)
+		newButtonUp = document.getElementById('new-button-up');
+		//
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
@@ -119,6 +122,11 @@
 				twButton.classList.add('btn--checked');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
+				// 福袋
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonUp.classList.add('btn--latest--up');
+				//
 				init(1);
 			}
 			
@@ -130,9 +138,31 @@
 				jpButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
 				twButton.classList.add('btn--primary');
+				// 福袋
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonUp.classList.add('btn--latest--up');
+				//
 				init(1);
 			}
 		};
+		// 福袋上池
+		newButtonUp.onclick = function(){
+			if(country != "luck_up"){
+				country = 'luck_up';
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonUp.classList.add('btn--latest--up');
+				jpButton.classList.remove("btn--primary");
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.add('btn--checked');
+				twButton.classList.remove("btn--checked");
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.add('btn--primary');
+				init(1);
+			}
+		};
+		//
 		setButton.onclick = function(){
 			mode = 0;
 			setButton.classList.remove("btn--primary");
@@ -206,7 +236,7 @@
 
 		context.font = "20px Microsoft JhengHei";
 		context.fillStyle = mask;
-		context.fillText("This image was made by mgneko.github.io", 190 + marginLeft, canvas.height - 25);
+		context.fillText("This image was made by mgneko.github.io, maintained by LeafLu", 190 + marginLeft, canvas.height - 25);
 	}
 
 	function drawImage(x, y, image){
