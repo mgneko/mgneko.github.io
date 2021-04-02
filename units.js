@@ -86,26 +86,65 @@
 		}
 	}
 
-	function init(state = 0){
-		CategoryNUM = Array.from(AllCategoryNUM[country]);
-
-		//設定英靈圖
-		if(state != 2 && (country == "tw" || country == "jp")){
-			for (i = 0; i < CategoryLen; i++) {
-				units[i] = [];
-				for (j = 0; j < CategoryNUM[i]; j++) {
+	function luckyInit(country){
+		for (i = 0; i < CategoryLen; i++) {
+			units[i] = [];
+			if(country == 'lucky_up' || country == 'lucky_down'){
+				if(country == 'lucky_up'){
+					for (j = 0; j < AllCategoryNUM["lucky_up"][i]; j++) {
+						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+				if(country == 'lucky_down'){
+					for (j = 0; j < AllCategoryNUM["lucky_down"][i]; j++) {
+						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+				for(i = 0; i < CategoryLen; i++) {
+					for (j = 0; j < CategoryNUM[i]; j++) {
+						units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+			}
+			else if(country == 'jp' || country == 'tw'){
+				for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
 					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
 			}
 		}
-		else if(state !=2 && (country == "luck_up" || country == "luck_down")){
-			for (i = 0; i < CategoryLen; i++) {
-				units[i] = [];
-				for (j = 0; j < CategoryNUM[i]; j++) {
-					units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
-				}
+		return units;
+	}
+
+	function printUnit(a){
+		for(var i = 0; i < a[i].length; i++) {
+			for(var j = 0; j < a.length; j++) {
+			  	console.log(a[j][i]);
 			}
 		}
+	}
+
+	function init(state = 0){
+		printUnit(units);
+		CategoryNUM = Array.from(AllCategoryNUM[country]);
+		units = luckyInit(country);
+
+		//設定英靈圖
+		// if(state != 2 && (country == "tw" || country == "jp")){
+		// 	for (i = 0; i < CategoryLen; i++) {
+		// 		units[i] = [];
+		// 		for (j = 0; j < CategoryNUM[i]; j++) {
+		// 			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+		// 		}
+		// 	}
+		// }
+		// else if(state !=2 && (country == "luck_up" || country == "luck_down")){
+		// 	for (i = 0; i < CategoryLen; i++) {
+		// 		units[i] = [];
+		// 		for (j = 0; j < CategoryNUM[i]; j++) {
+		// 			units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
+		// 		}
+		// 	}
+		// }
 
 		if(state == 2 && country == "tw"){
 			luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
@@ -148,7 +187,6 @@
 				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
-			
 		};
 		jpButton.onclick = function(){
 			if (country != "jp"){
@@ -257,14 +295,14 @@
 				}
 			});
 		}
-		
+
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
 		context.textBaseline = 'top';
-		
+
 		context.fillStyle = bgcolor;
 		luckyBag ? context.fillRect (0, 0, canvas.width + caculateField, canvas.height) : context.fillRect (0, 0, canvas.width, canvas.height);
 		//context.fillRect (0, 0, canvas.width, canvas.height);
