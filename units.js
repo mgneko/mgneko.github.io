@@ -90,11 +90,19 @@
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 
 		//設定英靈圖
-		if(state != 2){
+		if(state != 2 && (country == "tw" || country == "jp")){
 			for (i = 0; i < CategoryLen; i++) {
 				units[i] = [];
 				for (j = 0; j < CategoryNUM[i]; j++) {
 					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+				}
+			}
+		}
+		else if(state !=2 && (country == "luck_up" || country == "luck_down")){
+			for (i = 0; i < CategoryLen; i++) {
+				units[i] = [];
+				for (j = 0; j < CategoryNUM[i]; j++) {
+					units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
 			}
 		}
@@ -110,6 +118,7 @@
 		jpButton = document.getElementById('jp-button');
 		// 福袋(變動)
 		newButtonUp = document.getElementById('new-button-up');
+		newButtonDown = document.getElementById('new-button-down');
 		//
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -122,11 +131,21 @@
 				twButton.classList.add('btn--checked');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
-				// 福袋
+				// 變動
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.remove('btn--latest--down');
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				// 福袋(上)
 				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--latest--up');
-				//
+				//福袋(下)
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 			
@@ -138,11 +157,21 @@
 				jpButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
 				twButton.classList.add('btn--primary');
-				// 福袋
+				// 變動
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.remove('btn--latest--down');
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				// 福袋(上)
 				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--checked');
+				newButtonUp.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--latest--up');
-				//
+				//福袋(下)
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 		};
@@ -151,14 +180,44 @@
 			if(country != "luck_up"){
 				country = 'luck_up';
 				newButtonUp.classList.remove('btn--primary');
-				newButtonUp.classList.remove('btn--checked');
-				newButtonUp.classList.add('btn--latest--up');
-				jpButton.classList.remove("btn--primary");
+				newButtonUp.classList.remove('btn--latest--up');
+				newButtonUp.classList.remove('btn--latest--down');
+				newButtonUp.classList.add('btn--checked');
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.add('btn--latest--down');
+				jpButton.classList.remove("btn--checked");
 				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.add('btn--checked');
-				twButton.classList.remove("btn--checked");
+				jpButton.classList.remove('btn--latest--down');
+				jpButton.classList.add('btn--primary');
+				twButton.classList.remove("btn--primary");
+				twButton.classList.remove('btn--checked');
+				twButton.classList.remove('btn--latest--down');
+				twButton.classList.add('btn--latest--up');
+				init(1);
+			}
+		};
+		// 福袋下池
+		newButtonDown.onclick = function(){
+			if(country != "luck_down"){
+				country = 'luck_down';
+				newButtonUp.classList.add('btn--latest--up');
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--latest--down');
+				newButtonUp.classList.remove('btn--checked');
+				jpButton.classList.add('btn--primary');
+				jpButton.classList.remove("btn--checked");
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				twButton.classList.add('btn--latest--down');
+				twButton.classList.remove("btn--primary");
+				twButton.classList.remove('btn--checked');
 				twButton.classList.remove('btn--latest--up');
-				twButton.classList.add('btn--primary');
+				newButtonDown.classList.add('btn--checked');
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.remove('btn--latest--down');
 				init(1);
 			}
 		};
