@@ -1,4 +1,4 @@
-# Site: ![ClickMe!](https://leaflu0315.github.io/fgo/)
+# Site: https://leaflu0315.github.io/fgo/
 
 可製作FGO台/日服所持5星英靈一覽表並產生為圖片
 
