@@ -2,6 +2,9 @@
 可製作FGO台/日服所持5星英靈一覽表並產生為圖片
 This project can produce a list of your 5 star deck in Taiwan/Japan version of FGO, and also create a image to download.
 
+功能:
+Features:
+
 設定數量: 左鍵增加，右鍵減少寶具等級，選擇完成後可點選產出圖片於新視窗產生
 In "設定數量" tag, use the left button to increase the NP level, the right button to decrease the NP level (first hit will be NP 5).
 
