@@ -89,20 +89,15 @@
 	function luckyInit(country){
 		for (i = 0; i < CategoryLen; i++) {
 			units[i] = [];
-			if(country == 'lucky_up' || country == 'lucky_down'){
-				if(country == 'lucky_up'){
-					for (j = 0; j < AllCategoryNUM["lucky_up"][i]; j++) {
+			if(country == 'luck_up' || country == 'luck_down'){
+				if(country == 'luck_up'){
+					for (j = 0; j < AllCategoryNUM["luck_up"][i]; j++) {
 						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
-				if(country == 'lucky_down'){
-					for (j = 0; j < AllCategoryNUM["lucky_down"][i]; j++) {
+				if(country == 'luck_down'){
+					for (j = 0; j < AllCategoryNUM["luck_down"][i]; j++) {
 						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
-					}
-				}
-				for(i = 0; i < CategoryLen; i++) {
-					for (j = 0; j < CategoryNUM[i]; j++) {
-						units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
 			}
@@ -124,7 +119,7 @@
 	}
 
 	function init(state = 0){
-		printUnit(units);
+		// printUnit(units);
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = luckyInit(country);
 
@@ -141,7 +136,7 @@
 		// 	for (i = 0; i < CategoryLen; i++) {
 		// 		units[i] = [];
 		// 		for (j = 0; j < CategoryNUM[i]; j++) {
-		// 			units[i][j] = new Unit("images/luck25/" + Category[i] + "/" + (j + 1) + ".jpg");
+		// 			units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
 		// 		}
 		// 	}
 		// }
