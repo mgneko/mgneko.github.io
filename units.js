@@ -38,8 +38,15 @@
 		// Saber,Archer,Lancer,Rider,Caster,
 		// Assassin,Berserker,Ruler,Avenger,Alterego,
 		// Foreigner,Mooncancer
-		"tw": [10,  9, 8,  9, 11, 9,  9, 4, 3, 5, 2, 2],
-		"jp": [14, 11, 10, 13, 12, 9, 11, 7, 5, 6, 6, 3],
+		"tw": [10, 9, 8, 9, 11,
+			    9, 9, 4, 3,  5,
+				2, 2],
+		"jp": [14, 11, 10, 13, 12,
+			    9, 11, 7, 5, 6,
+				6, 3],
+		"en":[10, 9, 8, 8, 11,
+		       9, 8, 4, 2, 5,
+			   2, 1],
 		// 19' 福袋
 		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
 		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0]
@@ -101,7 +108,7 @@
 					}
 				}
 			}
-			else if(country == 'jp' || country == 'tw'){
+			else if(country == 'jp' || country == 'tw' || country == 'en'){
 				for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
 					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
@@ -147,9 +154,10 @@
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
-		// 台GO 日GO
+		// 台GO 日GO 美GO
 		twButton = document.getElementById('tw-button');
 		jpButton = document.getElementById('jp-button');
+		enButton = document.getElementById('en-button');
 		// 福袋(變動)
 		newButtonUp = document.getElementById('new-button-up');
 		newButtonDown = document.getElementById('new-button-down');
@@ -157,10 +165,12 @@
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
-
+		// Taiwan GO
 		twButton.onclick = function(){
 			if (country != "tw"){
 				country = "tw";
+				enButton.classList.remove('btn--checked');
+				enButton.classList.add('btn--us')
 				twButton.classList.remove("btn--primary");
 				twButton.classList.add('btn--checked');
 				jpButton.classList.remove("btn--checked");
@@ -183,9 +193,12 @@
 				init(1);
 			}
 		};
+		// JP GO
 		jpButton.onclick = function(){
 			if (country != "jp"){
 				country = "jp";
+				enButton.classList.remove('btn--checked');
+				enButton.classList.add('btn--us')
 				jpButton.classList.remove("btn--primary");
 				jpButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
@@ -208,10 +221,41 @@
 				init(1);
 			}
 		};
+		// English GO
+			enButton.onclick = function(){
+			if (country != "en"){
+				country = "en";
+				enButton.classList.remove("btn--primary");
+				enButton.classList.remove("btn--us");
+				enButton.classList.add('btn--checked');
+				twButton.classList.remove("btn--checked");
+				twButton.classList.add('btn--primary');
+				jpButton.classList.remove("btn--checked");
+				jpButton.classList.add('btn--primary');
+				// 變動
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.remove('btn--latest--down');
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				// 福袋(上)
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--down');
+				newButtonUp.classList.add('btn--latest--up');
+				//福袋(下)
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--latest--down');
+				init(1);
+			}
+		};
 		// 福袋上池
 		newButtonUp.onclick = function(){
 			if(country != "luck_up"){
 				country = 'luck_up';
+				enButton.classList.remove('btn--checked');
+				enButton.classList.add('btn--us')
 				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--latest--up');
 				newButtonUp.classList.remove('btn--latest--down');
@@ -235,6 +279,8 @@
 		newButtonDown.onclick = function(){
 			if(country != "luck_down"){
 				country = 'luck_down';
+				enButton.classList.remove('btn--checked');
+				enButton.classList.add('btn--us')
 				newButtonUp.classList.add('btn--latest--up');
 				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--latest--down');
