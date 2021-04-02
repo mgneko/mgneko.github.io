@@ -35,9 +35,14 @@
 	];
 
 	var AllCategoryNUM = {
-		// Saber,Archer,Lancer,Rider,Caster,Assassin,Berserker,Ruler,Avenger,Alterego,Foreigner,Mooncancer
+		// Saber,Archer,Lancer,Rider,Caster,
+		// Assassin,Berserker,Ruler,Avenger,Alterego,
+		// Foreigner,Mooncancer
 		"tw": [10,  9, 8,  9, 11, 9,  9, 4, 3, 5, 2, 2],
-		"jp": [14, 11, 10, 13, 12, 9, 11, 7, 5, 6, 6, 3]
+		"jp": [14, 11, 10, 13, 12, 9, 11, 7, 5, 6, 6, 3],
+		// 19' 福袋
+		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
+		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0]
 	};
 
 	//右鍵選單取消,綁定功能
@@ -61,14 +66,14 @@
 
 	for(var i = 0 ; i < Marks.length ; ++ i){
 		markImages[i] = new Image();
-		markImages[i].src = "images-mini/mark/" + Marks[i] + ".png";
+		markImages[i].src = "images/mark/" + Marks[i] + ".png";
 	}
 
 	//設定職階圖
 
 	for(var i = 0 ; i < CategoryLen ; ++ i){
 		categoryImages[i] = new Image();
-		categoryImages[i].src = "images-mini/class/class_" + (i + 1) + ".png";
+		categoryImages[i].src = "images/class/class_" + (i + 1) + ".png";
 	}
 
 	var units = [];
@@ -77,22 +82,64 @@
 	for (i = 0; i < CategoryLen; i++) {
 		units[i] = [];
 		for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
-			units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
+			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+		}
+	}
+
+	function luckyInit(country){
+		for (i = 0; i < CategoryLen; i++) {
+			units[i] = [];
+			if(country == 'luck_up' || country == 'luck_down'){
+				if(country == 'luck_up'){
+					for (j = 0; j < AllCategoryNUM["luck_up"][i]; j++) {
+						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+				if(country == 'luck_down'){
+					for (j = 0; j < AllCategoryNUM["luck_down"][i]; j++) {
+						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+			}
+			else if(country == 'jp' || country == 'tw'){
+				for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
+					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+				}
+			}
+		}
+		return units;
+	}
+
+	function printUnit(a){
+		for(var i = 0; i < a[i].length; i++) {
+			for(var j = 0; j < a.length; j++) {
+			  	console.log(a[j][i]);
+			}
 		}
 	}
 
 	function init(state = 0){
+		// printUnit(units);
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
+		units = luckyInit(country);
 
 		//設定英靈圖
-		if(state != 2){
-			for (i = 0; i < CategoryLen; i++) {
-				units[i] = [];
-				for (j = 0; j < CategoryNUM[i]; j++) {
-					units[i][j] = new Unit("images-mini/" + Category[i] + "/" + (j + 1) + ".jpg");
-					}
-			}
-		}
+		// if(state != 2 && (country == "tw" || country == "jp")){
+		// 	for (i = 0; i < CategoryLen; i++) {
+		// 		units[i] = [];
+		// 		for (j = 0; j < CategoryNUM[i]; j++) {
+		// 			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
+		// 		}
+		// 	}
+		// }
+		// else if(state !=2 && (country == "luck_up" || country == "luck_down")){
+		// 	for (i = 0; i < CategoryLen; i++) {
+		// 		units[i] = [];
+		// 		for (j = 0; j < CategoryNUM[i]; j++) {
+		// 			units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+		// 		}
+		// 	}
+		// }
 
 		if(state == 2 && country == "tw"){
 			luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
@@ -100,9 +147,13 @@
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
-
+		// 台GO 日GO
 		twButton = document.getElementById('tw-button');
 		jpButton = document.getElementById('jp-button');
+		// 福袋(變動)
+		newButtonUp = document.getElementById('new-button-up');
+		newButtonDown = document.getElementById('new-button-down');
+		//
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
@@ -114,9 +165,23 @@
 				twButton.classList.add('btn--checked');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
+				// 變動
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.remove('btn--latest--down');
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				// 福袋(上)
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--down');
+				newButtonUp.classList.add('btn--latest--up');
+				//福袋(下)
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
-			
 		};
 		jpButton.onclick = function(){
 			if (country != "jp"){
@@ -125,9 +190,71 @@
 				jpButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
 				twButton.classList.add('btn--primary');
+				// 變動
+				twButton.classList.remove('btn--latest--up');
+				twButton.classList.remove('btn--latest--down');
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				// 福袋(上)
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--checked');
+				newButtonUp.classList.remove('btn--latest--down');
+				newButtonUp.classList.add('btn--latest--up');
+				//福袋(下)
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 		};
+		// 福袋上池
+		newButtonUp.onclick = function(){
+			if(country != "luck_up"){
+				country = 'luck_up';
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--latest--up');
+				newButtonUp.classList.remove('btn--latest--down');
+				newButtonUp.classList.add('btn--checked');
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.remove('btn--checked');
+				newButtonDown.classList.add('btn--latest--down');
+				jpButton.classList.remove("btn--checked");
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				jpButton.classList.add('btn--primary');
+				twButton.classList.remove("btn--primary");
+				twButton.classList.remove('btn--checked');
+				twButton.classList.remove('btn--latest--down');
+				twButton.classList.add('btn--latest--up');
+				init(1);
+			}
+		};
+		// 福袋下池
+		newButtonDown.onclick = function(){
+			if(country != "luck_down"){
+				country = 'luck_down';
+				newButtonUp.classList.add('btn--latest--up');
+				newButtonUp.classList.remove('btn--primary');
+				newButtonUp.classList.remove('btn--latest--down');
+				newButtonUp.classList.remove('btn--checked');
+				jpButton.classList.add('btn--primary');
+				jpButton.classList.remove("btn--checked");
+				jpButton.classList.remove('btn--latest--up');
+				jpButton.classList.remove('btn--latest--down');
+				twButton.classList.add('btn--latest--down');
+				twButton.classList.remove("btn--primary");
+				twButton.classList.remove('btn--checked');
+				twButton.classList.remove('btn--latest--up');
+				newButtonDown.classList.add('btn--checked');
+				newButtonDown.classList.remove('btn--primary');
+				newButtonDown.classList.remove('btn--latest--up');
+				newButtonDown.classList.remove('btn--latest--down');
+				init(1);
+			}
+		};
+		//
 		setButton.onclick = function(){
 			mode = 0;
 			setButton.classList.remove("btn--primary");
@@ -163,14 +290,14 @@
 				}
 			});
 		}
-		
+
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
 		context.textBaseline = 'top';
-		
+
 		context.fillStyle = bgcolor;
 		luckyBag ? context.fillRect (0, 0, canvas.width + caculateField, canvas.height) : context.fillRect (0, 0, canvas.width, canvas.height);
 		//context.fillRect (0, 0, canvas.width, canvas.height);
@@ -201,7 +328,7 @@
 
 		context.font = "20px Microsoft JhengHei";
 		context.fillStyle = mask;
-		context.fillText("This image was made by mgneko.github.io", 190 + marginLeft, canvas.height - 25);
+		context.fillText("This image was made by mgneko, maintained by LeafLu", marginLeft, canvas.height - 25);
 	}
 
 	function drawImage(x, y, image){
