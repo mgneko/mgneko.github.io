@@ -179,7 +179,7 @@
 			}
 		};
 		// English GO
-			enButton.onclick = function(){
+		enButton.onclick = function(){
 			if (country != "en"){
 				country = "en";
 				enButton.classList.remove("btn--us");
@@ -284,12 +284,12 @@
 
 		fillTotalText();
 
-		for(var category = 0; category < CategoryLen; category++){
-			drawImage(0, category, categoryImages[category])
+		for(var category = 0; category < CategoryLen; category++, y++){
+			drawImage(0, category, categoryImages[category]);
 		}
 
 		for (i = 0; i < CategoryLen; i++) {
-			for (j = 0; j < CategoryNUM[i]; j++) {
+			for (j = 0 ; j < CategoryNUM[i]; j++) {
 				drawImage(j + 1, i, units[i][j].image);
 				if(!units[i][j].npLv){
 					fillRect(j, i, mask);
