@@ -93,6 +93,7 @@
 		}
 	}
 
+	// 將圖用進units陣列
 	function luckyInit(country){
 		for (i = 0; i < CategoryLen; i++) {
 			units[i] = [];
@@ -117,40 +118,14 @@
 		return units;
 	}
 
-	function printUnit(a){
-		for(var i = 0; i < a[i].length; i++) {
-			for(var j = 0; j < a.length; j++) {
-			  	console.log(a[j][i]);
-			}
-		}
-	}
+	// 先跑初始化 圖才不會亮
+	luckyInit("jp");
+	luckyInit("luck_up");
+	luckyInit("luck_down");
 
 	function init(state = 0){
-		// printUnit(units);
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = luckyInit(country);
-
-		//設定英靈圖
-		// if(state != 2 && (country == "tw" || country == "jp")){
-		// 	for (i = 0; i < CategoryLen; i++) {
-		// 		units[i] = [];
-		// 		for (j = 0; j < CategoryNUM[i]; j++) {
-		// 			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
-		// 		}
-		// 	}
-		// }
-		// else if(state !=2 && (country == "luck_up" || country == "luck_down")){
-		// 	for (i = 0; i < CategoryLen; i++) {
-		// 		units[i] = [];
-		// 		for (j = 0; j < CategoryNUM[i]; j++) {
-		// 			units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
-		// 		}
-		// 	}
-		// }
-
-		// if(state == 2 && country == "tw"){
-		// 	luckyBag ? CategoryNUM[4] = 9 : CategoryNUM[4] = 10;
-		// }
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
@@ -175,20 +150,11 @@
 				twButton.classList.add('btn--checked');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
-				// 變動
-				twButton.classList.remove('btn--latest--up');
-				twButton.classList.remove('btn--latest--down');
-				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.remove('btn--latest--down');
 				// 福袋(上)
-				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--checked');
-				newButtonDown.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--latest--up');
 				//福袋(下)
-				newButtonDown.classList.remove('btn--primary');
 				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.remove('btn--latest--up');
 				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
@@ -203,20 +169,11 @@
 				jpButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
 				twButton.classList.add('btn--primary');
-				// 變動
-				twButton.classList.remove('btn--latest--up');
-				twButton.classList.remove('btn--latest--down');
-				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.remove('btn--latest--down');
 				// 福袋(上)
-				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--checked');
-				newButtonUp.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--latest--up');
 				//福袋(下)
-				newButtonDown.classList.remove('btn--primary');
 				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.remove('btn--latest--up');
 				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
@@ -225,27 +182,17 @@
 			enButton.onclick = function(){
 			if (country != "en"){
 				country = "en";
-				enButton.classList.remove("btn--primary");
 				enButton.classList.remove("btn--us");
 				enButton.classList.add('btn--checked');
 				twButton.classList.remove("btn--checked");
 				twButton.classList.add('btn--primary');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
-				// 變動
-				twButton.classList.remove('btn--latest--up');
-				twButton.classList.remove('btn--latest--down');
-				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.remove('btn--latest--down');
 				// 福袋(上)
-				newButtonUp.classList.remove('btn--primary');
 				newButtonUp.classList.remove('btn--checked');
-				newButtonDown.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--latest--up');
 				//福袋(下)
-				newButtonDown.classList.remove('btn--primary');
 				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.remove('btn--latest--up');
 				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
@@ -255,23 +202,15 @@
 			if(country != "luck_up"){
 				country = 'luck_up';
 				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us')
-				newButtonUp.classList.remove('btn--primary');
+				enButton.classList.add('btn--us');
 				newButtonUp.classList.remove('btn--latest--up');
-				newButtonUp.classList.remove('btn--latest--down');
 				newButtonUp.classList.add('btn--checked');
-				newButtonDown.classList.remove('btn--primary');
-				newButtonDown.classList.remove('btn--latest--up');
 				newButtonDown.classList.remove('btn--checked');
 				newButtonDown.classList.add('btn--latest--down');
 				jpButton.classList.remove("btn--checked");
-				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.remove('btn--latest--down');
 				jpButton.classList.add('btn--primary');
-				twButton.classList.remove("btn--primary");
 				twButton.classList.remove('btn--checked');
-				twButton.classList.remove('btn--latest--down');
-				twButton.classList.add('btn--latest--up');
+				twButton.classList.add('btn--primary');
 				init(1);
 			}
 		};
@@ -280,26 +219,19 @@
 			if(country != "luck_down"){
 				country = 'luck_down';
 				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us')
+				enButton.classList.add('btn--us');
 				newButtonUp.classList.add('btn--latest--up');
-				newButtonUp.classList.remove('btn--primary');
-				newButtonUp.classList.remove('btn--latest--down');
 				newButtonUp.classList.remove('btn--checked');
 				jpButton.classList.add('btn--primary');
 				jpButton.classList.remove("btn--checked");
-				jpButton.classList.remove('btn--latest--up');
-				jpButton.classList.remove('btn--latest--down');
-				twButton.classList.add('btn--latest--down');
-				twButton.classList.remove("btn--primary");
+				twButton.classList.add('btn--primary');
 				twButton.classList.remove('btn--checked');
-				twButton.classList.remove('btn--latest--up');
 				newButtonDown.classList.add('btn--checked');
-				newButtonDown.classList.remove('btn--primary');
-				newButtonDown.classList.remove('btn--latest--up');
 				newButtonDown.classList.remove('btn--latest--down');
 				init(1);
 			}
 		};
+
 		//
 		setButton.onclick = function(){
 			mode = 0;
@@ -338,6 +270,8 @@
 		}
 
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
+		// add width
+		if(canvas.width < 600) canvas.width = 600;
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 
 		context = canvas.getContext('2d');
@@ -408,6 +342,7 @@
 		var like = 0;
 		var percent = 0;
 		var ex = 0;
+		var ban = 0;
 
 		context.fillStyle = bgcolor;
 		context.fillRect(0, 0, caculateField + 10, canvas.height)
@@ -418,6 +353,7 @@
 				have = 0;
 				haveFull = 0;
 				like = 0;
+				ban = 0;
 			}
 			for(var attribute = 0; attribute < CategoryNUM[category]; attribute++){
 				if (units[category][attribute].npLv){
@@ -428,6 +364,9 @@
 				}
 				if (units[category][attribute].mark == 2){
 					like += 1;
+				}
+				if (units[category][attribute].mark == 1){
+					ban += 1;
 				}
 			}
 
@@ -447,6 +386,11 @@
 				context.fillText("婆:" + percent.toFixed(2) + "%",
 				marginLeft - caculateField,
 				marginTop + category * (CELL_SIZE + row_padding) + 40);
+				// 新增雷
+				// percent = (ban / units[category].length * 100);
+				// context.fillText("雷:" + percent.toFixed(2) + "%",
+				// marginLeft - caculateField,
+				// marginTop + category * (CELL_SIZE + row_padding) + 60);
 			}else {
 				ex += units[category].length;
 			}
@@ -466,6 +410,11 @@
 		context.fillText("婆:" + percent.toFixed(2) + "%",
 		marginLeft - caculateField,
 		marginTop + 7 * (CELL_SIZE + row_padding) + 40);
+		// 新增 雷
+		// percent = (ban / ex * 100);
+		// msContentScript.fillText("雷:" + percent.toFixed(2) + "%",
+		// marginLeft - caculateField,
+		// marginTop + 7 * (CELL_SIZE + row_padding) + 60);
 
 		context.font = "20px Microsoft JhengHei";
 	}
