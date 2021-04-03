@@ -30,7 +30,7 @@
 	];
 
 	var Marks = [
-		'hiclipart',
+		'kizuna',
 		'heart'
 	];
 
