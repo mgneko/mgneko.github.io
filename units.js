@@ -274,7 +274,7 @@
 		if(canvas.width < 600) canvas.width = 600;
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 		// 補正值
-		canvas.height += 20;
+		canvas.height += 25;
 
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
