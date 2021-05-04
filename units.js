@@ -35,9 +35,9 @@
 	];
 
 	var AllCategoryNUM = {
-		// Saber,Archer,Lancer,Rider,Caster,
-		// Assassin,Berserker,Ruler,Avenger,Alterego,
-		// Foreigner,Mooncancer
+		/* Saber,Archer,Lancer,Rider,Caster,
+		   Assassin,Berserker,Ruler,Avenger,Alterego,
+		   Foreigner,Mooncancer */
 		"tw": [10, 9, 8, 9, 11,
 			    9, 9, 4, 3,  5,
 				2, 2],
@@ -114,16 +114,23 @@
 					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
 			}
+			else{
+				console.log("Error");
+			}
 		}
 		return units;
 	}
 
 	// 先跑初始化 圖才不會亮
-	luckyInit("jp");
-	luckyInit("luck_up");
-	luckyInit("luck_down");
+	function allInit(){
+		luckyInit("jp");
+		luckyInit("luck_up");
+		luckyInit("luck_down");
+	}
+	allInit();
 
 	function init(state = 0){
+		allInit();
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = luckyInit(country);
 
