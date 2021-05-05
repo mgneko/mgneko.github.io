@@ -278,7 +278,8 @@
 
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
 		// add width
-		if(canvas.width < 600) canvas.width = 600;
+		var wid = 700
+		if(canvas.width < wid) canvas.width = wid;
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 		// 補正值
 		canvas.height += 25;
