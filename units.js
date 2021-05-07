@@ -51,7 +51,19 @@
 		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
 		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0]
 	};
-
+	// 福袋代號
+	var luck_up = {saber:[8,6,9,2,10,4,7],
+				   archer:[7,5,1,9,6],
+				   lancer:[7,4,6,3],
+				   ruler:[2,4,3],
+				   avenger:[1,2,3],
+				   foreigner:[1,2],
+				   mooncancer:[1]};
+	var luck_down = {rider:[6,7,1,9],
+	  				caster:[6,10,8,2,11,3],
+					assassin:[9,2,4,7,3,5],
+					berserker:[9,1,6,7,5],
+					alterego:[3,5,2,1]};
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
 
@@ -100,12 +112,12 @@
 			if(country == 'luck_up' || country == 'luck_down'){
 				if(country == 'luck_up'){
 					for (j = 0; j < AllCategoryNUM["luck_up"][i]; j++) {
-						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+						units[i][j] = new Unit("images/" + Category[i] + "/" + luck_up[Category[i]][j] + ".jpg");
 					}
 				}
 				if(country == 'luck_down'){
 					for (j = 0; j < AllCategoryNUM["luck_down"][i]; j++) {
-						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
+						units[i][j] = new Unit("images/" + Category[i] + "/" + luck_down[Category[i]][j] + ".jpg");
 					}
 				}
 			}
@@ -124,13 +136,12 @@
 	// 先跑初始化 圖才不會亮
 	function allInit(){
 		luckyInit("jp");
-		luckyInit("luck_up");
-		luckyInit("luck_down");
+		// luckyInit("luck_up");
+		// luckyInit("luck_down");
 	}
 	allInit();
 
 	function init(state = 0){
-		allInit();
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = luckyInit(country);
 
