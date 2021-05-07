@@ -233,6 +233,7 @@
 
 
 	function init(state = 0){
+		luckyInit("jp");
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = luckyInit(country);
 
