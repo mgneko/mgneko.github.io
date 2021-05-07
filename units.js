@@ -35,23 +35,37 @@
 	];
 
 	var AllCategoryNUM = {
-		// Saber,Archer,Lancer,Rider,Caster,
-		// Assassin,Berserker,Ruler,Avenger,Alterego,
-		// Foreigner,Mooncancer
+		/* Saber,Archer,Lancer,Rider,Caster,
+		   Assassin,Berserker,Ruler,Avenger,Alterego,
+		   Foreigner,Mooncancer */
 		"tw": [10, 9, 8, 9, 11,
 			    9, 9, 4, 3,  5,
 				2, 2],
-		"jp": [14, 11, 10, 13, 12,
+		"jp": [14, 11, 10, 13, 13,
 			    9, 11, 7, 5, 6,
 				6, 3],
-		"en":[10, 9, 8, 8, 11,
+		"en":[10, 9, 8, 9, 11,
 		       9, 8, 4, 2, 5,
 			   2, 1],
 		// 19' 福袋
 		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
-		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0]
+		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0],
+		"luckybag":[8,6,4,5,6,6,6,4,4,4,2,1]
 	};
 
+	//20'福袋角色序號
+	var lucky = {saber:[8,11,6,9,2,10,4,7],
+				 archer:[7,5,1,9,6,10],
+				 lancer:[7,4,6,3],
+				 rider:[6,7,1,9,10],
+				 caster:[6,10,8,2,11,3],
+				 assassin:[9,2,4,7,3,5],
+				 berserker:[9,1,6,7,5,10],
+				 ruler:[2,5,4,3],
+				 avenger:[1,2,4,3],
+				 alterego:[3,5,2,1],
+				 mooncancer:[1],
+				 foreigner:[1,2]};
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
 
@@ -97,16 +111,9 @@
 	function luckyInit(country){
 		for (i = 0; i < CategoryLen; i++) {
 			units[i] = [];
-			if(country == 'luck_up' || country == 'luck_down'){
-				if(country == 'luck_up'){
-					for (j = 0; j < AllCategoryNUM["luck_up"][i]; j++) {
-						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
-					}
-				}
-				if(country == 'luck_down'){
-					for (j = 0; j < AllCategoryNUM["luck_down"][i]; j++) {
-						units[i][j] = new Unit("images/lucky25/" + Category[i] + "/" + (j + 1) + ".jpg");
-					}
+			if(country == 'luckybag'){
+				for (j = 0; j < AllCategoryNUM["luckybag"][i]; j++) {
+					units[i][j] = new Unit("images/" + Category[i] + "/" + lucky[Category[i]][j] + ".jpg");
 				}
 			}
 			else if(country == 'jp' || country == 'tw' || country == 'en'){
@@ -114,14 +121,19 @@
 					units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
 			}
+			else{
+				console.log("Error");
+			}
 		}
 		return units;
 	}
 
 	// 先跑初始化 圖才不會亮
-	luckyInit("jp");
-	luckyInit("luck_up");
-	luckyInit("luck_down");
+	function allInit(){
+		luckyInit("jp");
+		// luckyInit("luckybag");
+	}
+	allInit();
 
 	function init(state = 0){
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
@@ -135,7 +147,6 @@
 		enButton = document.getElementById('en-button');
 		// 福袋(變動)
 		newButtonUp = document.getElementById('new-button-up');
-		newButtonDown = document.getElementById('new-button-down');
 		//
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -153,9 +164,6 @@
 				// 福袋(上)
 				newButtonUp.classList.remove('btn--checked');
 				newButtonUp.classList.add('btn--latest--up');
-				//福袋(下)
-				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 		};
@@ -172,14 +180,11 @@
 				// 福袋(上)
 				newButtonUp.classList.remove('btn--checked');
 				newButtonUp.classList.add('btn--latest--up');
-				//福袋(下)
-				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 		};
 		// English GO
-		enButton.onclick = function(){
+			enButton.onclick = function(){
 			if (country != "en"){
 				country = "en";
 				enButton.classList.remove("btn--us");
@@ -191,43 +196,21 @@
 				// 福袋(上)
 				newButtonUp.classList.remove('btn--checked');
 				newButtonUp.classList.add('btn--latest--up');
-				//福袋(下)
-				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.add('btn--latest--down');
 				init(1);
 			}
 		};
 		// 福袋上池
 		newButtonUp.onclick = function(){
-			if(country != "luck_up"){
-				country = 'luck_up';
+			if(country != "luckybag"){
+				country = 'luckybag';
 				enButton.classList.remove('btn--checked');
 				enButton.classList.add('btn--us');
 				newButtonUp.classList.remove('btn--latest--up');
 				newButtonUp.classList.add('btn--checked');
-				newButtonDown.classList.remove('btn--checked');
-				newButtonDown.classList.add('btn--latest--down');
 				jpButton.classList.remove("btn--checked");
 				jpButton.classList.add('btn--primary');
 				twButton.classList.remove('btn--checked');
 				twButton.classList.add('btn--primary');
-				init(1);
-			}
-		};
-		// 福袋下池
-		newButtonDown.onclick = function(){
-			if(country != "luck_down"){
-				country = 'luck_down';
-				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us');
-				newButtonUp.classList.add('btn--latest--up');
-				newButtonUp.classList.remove('btn--checked');
-				jpButton.classList.add('btn--primary');
-				jpButton.classList.remove("btn--checked");
-				twButton.classList.add('btn--primary');
-				twButton.classList.remove('btn--checked');
-				newButtonDown.classList.add('btn--checked');
-				newButtonDown.classList.remove('btn--latest--down');
 				init(1);
 			}
 		};
@@ -271,8 +254,11 @@
 
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
 		// add width
-		if(canvas.width < 600) canvas.width = 600;
+		var wid = 700
+		if(canvas.width < wid) canvas.width = wid;
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
+		// 補正值
+		canvas.height += 25;
 
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
@@ -284,12 +270,12 @@
 
 		fillTotalText();
 
-		for(var category = 0; category < CategoryLen; category++, y++){
-			drawImage(0, category, categoryImages[category]);
+		for(var category = 0; category < CategoryLen; category++){
+			drawImage(0, category, categoryImages[category])
 		}
 
 		for (i = 0; i < CategoryLen; i++) {
-			for (j = 0 ; j < CategoryNUM[i]; j++) {
+			for (j = 0; j < CategoryNUM[i]; j++) {
 				drawImage(j + 1, i, units[i][j].image);
 				if(!units[i][j].npLv){
 					fillRect(j, i, mask);
@@ -308,7 +294,7 @@
 
 		context.font = "20px Microsoft JhengHei";
 		context.fillStyle = mask;
-		context.fillText("This image was made by mgneko, maintained by LeafLu", marginLeft, canvas.height - 25);
+		context.fillText("This image was made by mgneko, maintained by LeafLu @ ptt", marginLeft, canvas.height - 25);
 	}
 
 	function drawImage(x, y, image){
