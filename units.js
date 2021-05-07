@@ -50,7 +50,12 @@
 		// 19' 福袋
 		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
 		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0],
-		"luckybag":[8,6,4,5,6,6,6,4,4,4,2,1]
+		"luckybag":[8,6,4,5,6,6,6,4,4,4,2,1],
+		"luckybag15":[3,1,2,1,0,2,2,1,2,0,0,0],
+		"luckybag16":[2,3,1,0,3,2,2,0,0,2,0,0],
+		"luckybag17":[1,0,1,2,2,1,0,1,0,1,2,0],
+		"luckybag18":[1,1,0,1,1,1,1,1,1,1,0,1],
+		"luckybag19":[1,2,1,1,0,0,1,1,1,0,2,0]
 	};
 
 	//20'福袋角色序號
@@ -177,18 +182,55 @@
 				}
 			}
 			else{
-				console.log("Error");
+				if(country == 'luckybag15'){
+					for (j = 0; j < AllCategoryNUM["luckybag15"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2015[Category[i]][j] + ".jpg");
+					}
+				}
+				else if(country == 'luckybag16'){
+					for (j = 0; j < AllCategoryNUM["luckybag16"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2016[Category[i]][j] + ".jpg");
+					}
+				}
+				else if(country == 'luckybag17'){
+					for (j = 0; j < AllCategoryNUM["luckybag17"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2017[Category[i]][j] + ".jpg");
+					}
+				}
+				else if(country == 'luckybag18'){
+					for (j = 0; j < AllCategoryNUM["luckybag18"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2018[Category[i]][j] + ".jpg");
+					}
+				}
+				else if(country == 'luckybag19'){
+					for (j = 0; j < AllCategoryNUM["luckybag19"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2019[Category[i]][j] + ".jpg");
+					}
+				}
+				else{
+					console.log("ERR");
+				}
 			}
 		}
 		return units;
 	}
 
-	// 先跑初始化 圖才不會亮
-	function allInit(){
-		luckyInit("jp");
-		// luckyInit("luckybag");
+	function Checked(btns,ckbtn){
+		for(var i = 0; i < btns.length; i++){
+			if(i == btns.indexOf(ckbtn)){
+				btns[i].classList.remove('btn--primary');
+				btns[i].classList.add('btn--checked');
+			}
+			else{
+				btns[i].classList.remove('btn--checked');
+				btns[i].classList.add('btn--primary');
+			}
+		}
 	}
-	allInit();
+
+	// 先跑初始化 圖才不會亮
+	luckyInit("jp");
+
 
 	function init(state = 0){
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
@@ -202,7 +244,14 @@
 		enButton = document.getElementById('en-button');
 		// 福袋(變動)
 		newButtonUp = document.getElementById('new-button-up');
+		luckyButton15 = document.getElementById('lucky-button-2015');
+		luckyButton16 = document.getElementById('lucky-button-2016');
+		luckyButton17 = document.getElementById('lucky-button-2017');
+		luckyButton18 = document.getElementById('lucky-button-2018');
+		luckyButton19 = document.getElementById('lucky-button-2019');
 		//
+		btns = [twButton,jpButton,enButton,newButtonUp,luckyButton15,luckyButton16,luckyButton17,luckyButton18,luckyButton19];
+
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
@@ -210,15 +259,7 @@
 		twButton.onclick = function(){
 			if (country != "tw"){
 				country = "tw";
-				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us')
-				twButton.classList.remove("btn--primary");
-				twButton.classList.add('btn--checked');
-				jpButton.classList.remove("btn--checked");
-				jpButton.classList.add('btn--primary');
-				// 福袋(上)
-				newButtonUp.classList.remove('btn--checked');
-				newButtonUp.classList.add('btn--latest--up');
+				Checked(btns,twButton);
 				init(1);
 			}
 		};
@@ -226,31 +267,15 @@
 		jpButton.onclick = function(){
 			if (country != "jp"){
 				country = "jp";
-				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us')
-				jpButton.classList.remove("btn--primary");
-				jpButton.classList.add('btn--checked');
-				twButton.classList.remove("btn--checked");
-				twButton.classList.add('btn--primary');
-				// 福袋(上)
-				newButtonUp.classList.remove('btn--checked');
-				newButtonUp.classList.add('btn--latest--up');
+				Checked(btns,jpButton);
 				init(1);
 			}
 		};
 		// English GO
-			enButton.onclick = function(){
+		enButton.onclick = function(){
 			if (country != "en"){
 				country = "en";
-				enButton.classList.remove("btn--us");
-				enButton.classList.add('btn--checked');
-				twButton.classList.remove("btn--checked");
-				twButton.classList.add('btn--primary');
-				jpButton.classList.remove("btn--checked");
-				jpButton.classList.add('btn--primary');
-				// 福袋(上)
-				newButtonUp.classList.remove('btn--checked');
-				newButtonUp.classList.add('btn--latest--up');
+				Checked(btns,enButton);
 				init(1);
 			}
 		};
@@ -258,18 +283,45 @@
 		newButtonUp.onclick = function(){
 			if(country != "luckybag"){
 				country = 'luckybag';
-				enButton.classList.remove('btn--checked');
-				enButton.classList.add('btn--us');
-				newButtonUp.classList.remove('btn--latest--up');
-				newButtonUp.classList.add('btn--checked');
-				jpButton.classList.remove("btn--checked");
-				jpButton.classList.add('btn--primary');
-				twButton.classList.remove('btn--checked');
-				twButton.classList.add('btn--primary');
+				Checked(btns,newButtonUp);
 				init(1);
 			}
 		};
-
+		luckyButton15.onclick = function(){
+			if(country != "luckybag15"){
+				country = "luckybag15";
+				Checked(btns,luckyButton15);
+				init(1);
+			}
+		}
+		luckyButton16.onclick = function(){
+			if(country != "luckybag16"){
+				country = "luckybag16";
+				Checked(btns,luckyButton16);
+				init(1);
+			}
+		}
+		luckyButton17.onclick = function(){
+			if(country != "luckybag17"){
+				country = "luckybag17";
+				Checked(btns,luckyButton17);
+				init(1);
+			}
+		}
+		luckyButton18.onclick = function(){
+			if(country != "luckybag18"){
+				country = "luckybag18";
+				Checked(btns,luckyButton18);
+				init(1);
+			}
+		}
+		luckyButton19.onclick = function(){
+			if(country != "luckybag19"){
+				country = "luckybag19";
+				Checked(btns,luckyButton19);
+				init(1);
+			}
+		}
 		//
 		setButton.onclick = function(){
 			mode = 0;
