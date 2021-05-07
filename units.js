@@ -54,6 +54,20 @@
 	};
 
 	//20'福袋角色序號
+	/*模板:
+	var lucky= {saber:[],
+				archer:[],
+				lancer:[],
+				rider:[],
+				caster:[],
+				assassin:[],
+				berserker:[],
+				ruler:[],
+				avenger:[],
+				alterego:[],
+				mooncancer:[],
+				foreigner:[]};
+	*/
 	var lucky = {saber:[8,11,6,9,2,10,4,7],
 				 archer:[7,5,1,9,6,10],
 				 lancer:[7,4,6,3],
@@ -66,6 +80,47 @@
 				 alterego:[3,5,2,1],
 				 mooncancer:[1],
 				 foreigner:[1,2]};
+	var lucky_2015 = {saber:[6,2,7],
+					archer:[1],
+					lancer:[4,3],
+					rider:[1],
+					assassin:[4,3],
+					berserker:[1,5],
+					ruler:[2],
+					avenger:[1,2]};
+	var lucky_2016 = {saber:[8,4],
+					archer:[7,5,6],
+					lancer:[6],
+					caster:[6,2,3],
+					assassin:[2,5],
+					berserker:[6,7],
+					alterego:[2,1]};
+	var lucky_2017 = {saber:[9],
+					lancer:[7],
+					rider:[6,7],
+					caster:[10,8],
+					assassin:[7],
+					ruler:[3],
+					alterego:[3],
+					foreigner:[1,2]};
+	var lucky_2018 = {saber:[10],
+					archer:[9],
+					rider:[9],
+					caster:[11],
+					assassin:[9],
+					berserker:[9],
+					ruler:[4],
+					avenger:[3],
+					alterego:[5],
+					mooncancer:[1]};
+	var lucky_2019 = {saber:[11],
+					archer:[11,10],
+					lancer:[9],
+					rider:[10],
+					berserker:[10],
+					ruler:[5],
+					avenger:[4],
+					foreigner:[4,3]};
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
 
