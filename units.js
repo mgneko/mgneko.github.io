@@ -39,7 +39,7 @@
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
 		   Foreigner,Mooncancer */
 		"tw": [10, 9, 8, 9, 11,
-			    9, 9, 4, 3,  5,
+			    9, 10, 5, 3,  5,
 				2, 2],
 		"jp": [14, 11, 10, 13, 13,
 			    9, 11, 7, 5, 6,
