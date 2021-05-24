@@ -38,7 +38,7 @@
 		/* Saber,Archer,Lancer,Rider,Caster,
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
 		   Foreigner,Mooncancer */
-		"tw": [10, 9, 8, 9, 11,
+		"tw": [10, 9, 8, 10, 11,
 			    9, 10, 5, 3,  5,
 				2, 2],
 		"jp": [14, 11, 10, 13, 13,
