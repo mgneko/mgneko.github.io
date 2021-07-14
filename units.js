@@ -47,6 +47,8 @@
 		"en":[10, 9, 8, 10, 11,
 			   9, 10, 5, 3,  5,
 			   2, 2],
+		// 五星自選
+		"z":[3,3,3,4,5,2,3,1,0,0,0,1],
 		// 19' 福袋
 		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
 		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0],
@@ -72,6 +74,19 @@
 				mooncancer:[],
 				foreigner:[]};
 	*/
+	var Z= {saber:[5,1,3],
+		archer:[4,2,8],
+		lancer:[2,1,8],
+		rider:[8,11,3,2],
+		caster:[9,5,7,4,1],
+		assassin:[6,1],
+		berserker:[2,8,3],
+		ruler:[1],
+		avenger:[],
+		alterego:[],
+		mooncancer:[2],
+		foreigner:[]};
+
 	var luck_up = {saber:[8,6,9,2,10,4,7],
 				   archer:[7,5,1,9,6],
 				   lancer:[7,4,6,3],
@@ -230,6 +245,11 @@
 						units[i][j] = new Unit("images/" + Category[i] + "/" + luck_down[Category[i]][j] + ".jpg");
 					}
 				}
+				else if(country == 'z'){
+					for (j = 0; j < AllCategoryNUM["z"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + Z[Category[i]][j] + ".jpg");
+					}
+				}
 				else{
 					console.log("ERR");
 				}
@@ -270,6 +290,8 @@
 		// 福袋(變動)
 		newButtonUp = document.getElementById('new-button-up');
 		btns.push(newButtonUp);
+		zButton = document.getElementById('z-button');
+		btns.push(zButton);
 		// luckyBtnUp = document.getElementById('luckybag-up');
 		// luckyBtnDown = document.getElementById('luckybag-down');
 		// luckyButton15 = document.getElementById('lucky-button-2015');
@@ -303,6 +325,14 @@
 			if (country != "en"){
 				country = "en";
 				Checked(btns,enButton);
+				init(1);
+			}
+		};
+		// 自選
+		zButton.onclick = function(){
+			if(country != "z"){
+				country = 'z';
+				Checked(btns,zButton);
 				init(1);
 			}
 		};
