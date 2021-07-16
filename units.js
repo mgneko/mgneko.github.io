@@ -38,6 +38,10 @@
 		/* Saber,Archer,Lancer,Rider,Caster,
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
 		   Foreigner,Mooncancer */
+		// max
+		"max":[20,20,20,20,20,
+			   20,20,20,20,20,
+			   20,20],
 		"tw": [10, 9, 8, 10, 11,
 			    9, 10, 5, 3,  5,
 				2, 2],
@@ -108,9 +112,9 @@
 				 caster:[6,10,8,2,11,3],
 				 assassin:[9,2,4,7,3,5],
 				 berserker:[9,1,6,7,5,10],
-				 ruler:[2,5,4,3,991,992,993,994],
+				 ruler:[2,5,4,3,8,9,10,11],
 				 avenger:[],
-				 alterego:[3,5,2,1,991,992,993],
+				 alterego:[3,5,2,1,7,8,9],
 				 mooncancer:[],
 				 foreigner:[]};
 	var lucky_2015 = {saber:[6,2,7],
@@ -190,7 +194,8 @@
 	//設定英靈圖
 	for (i = 0; i < CategoryLen; i++) {
 		units[i] = [];
-		for (j = 0; j < AllCategoryNUM["jp"][i]; j++) {
+		// max
+		for (j = 0; j < AllCategoryNUM["max"][i]; j++) {
 			units[i][j] = new Unit("images/" + Category[i] + "/" + (j + 1) + ".jpg");
 		}
 	}
@@ -270,10 +275,6 @@
 			}
 		}
 	}
-
-	// 先跑初始化 圖才不會亮
-	luckyInit("jp");
-
 
 	function init(state = 0){
 		luckyInit("jp");
@@ -450,22 +451,28 @@
 
 		fillTotalText();
 
-		for(var category = 0; category < CategoryLen; category++){
-			drawImage(0, category, categoryImages[category])
-		}
-
+		// for(var category = 0; category < CategoryLen; category++){
+		// 	drawImage(0, category, categoryImages[category])
+		// }
+		var pass = 0;
 		for (i = 0; i < CategoryLen; i++) {
+			// needs to maintain the click event if empty class occurs
+			// pass = 0;
+			if(CategoryNUM[i]>0){
+				drawImage(0, i-pass, categoryImages[i]);
+			}
 			for (j = 0; j < CategoryNUM[i]; j++) {
-				drawImage(j + 1, i, units[i][j].image);
+				drawImage(j + 1, i-pass, units[i][j].image);
 				if(!units[i][j].npLv){
-					fillRect(j, i, mask);
+					fillRect(j, i-pass, mask);
 				}else{
-					fillNPText(j, i, "寶" + units[i][j].npLv, font_color);
+					fillNPText(j, i-pass, "寶" + units[i][j].npLv, font_color);
 				}
 				if(units[i][j].mark){
-					drawImage(j + 1, i, markImages[units[i][j].mark - 1]);
+					drawImage(j + 1, i-pass, markImages[units[i][j].mark - 1]);
 				}
 			}
+			// pass = CategoryNUM[i]>0 ? 0:1;
 		}
 
 		if(luckyBag){
@@ -509,13 +516,17 @@
 		var percent = 0;
 		var ex = 0;
 		var ban = 0;
-
+		// 福袋
+		var lucky_bag = (country != 'jp' && country != 'tw' && country != 'en') ? true : false;
+		var default_cat1 = lucky_bag ? 11:7;
+		var default_cat2 = lucky_bag ? 11:6;
+		//
 		context.fillStyle = bgcolor;
 		context.fillRect(0, 0, caculateField + 10, canvas.height)
 		context.fillStyle = font_color;
 
 		for(var category = 0; category < CategoryLen; category++){
-			if (category <= 7){
+			if (category <= default_cat1){
 				have = 0;
 				haveFull = 0;
 				like = 0;
@@ -536,7 +547,7 @@
 				}
 			}
 
-			if (category <= 6){
+			if (category <= default_cat2){
 
 				percent = ((1 - (have / attribute)) * 100);
 				context.fillText("新:" + percent.toFixed(2) + "%",
@@ -561,21 +572,22 @@
 				ex += units[category].length;
 			}
 		}
+		if(lucky_bag == false){
+			percent = ((1 - (have / ex)) * 100);
+			context.fillText("新:" + percent.toFixed(2) + "%",
+			marginLeft - caculateField,
+			marginTop + 7 * (CELL_SIZE + row_padding));
 
-		percent = ((1 - (have / ex)) * 100);
-		context.fillText("新:" + percent.toFixed(2) + "%",
-		marginLeft - caculateField,
-		marginTop + 7 * (CELL_SIZE + row_padding));
+			percent = (haveFull / ex * 100);
+			context.fillText("盤:" + percent.toFixed(2) + "%",
+			marginLeft - caculateField,
+			marginTop + 7 * (CELL_SIZE + row_padding) + 20);
 
-		percent = (haveFull / ex * 100);
-		context.fillText("盤:" + percent.toFixed(2) + "%",
-		marginLeft - caculateField,
-		marginTop + 7 * (CELL_SIZE + row_padding) + 20);
-
-		percent = (like / ex * 100);
-		context.fillText("婆:" + percent.toFixed(2) + "%",
-		marginLeft - caculateField,
-		marginTop + 7 * (CELL_SIZE + row_padding) + 40);
+			percent = (like / ex * 100);
+			context.fillText("婆:" + percent.toFixed(2) + "%",
+			marginLeft - caculateField,
+			marginTop + 7 * (CELL_SIZE + row_padding) + 40);
+		}
 		// 新增 雷
 		// percent = (ban / ex * 100);
 		// msContentScript.fillText("雷:" + percent.toFixed(2) + "%",
