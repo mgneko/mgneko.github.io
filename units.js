@@ -5,7 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
-	var country = "tw";
+	var country = "six";
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -61,7 +61,9 @@
 		"luckybag16":[2,3,1,0,3,2,2,0,0,2,0,0],
 		"luckybag17":[1,0,1,2,2,1,0,1,0,1,2,0],
 		"luckybag18":[1,1,0,1,1,1,1,1,1,1,0,1],
-		"luckybag19":[1,2,1,1,0,0,1,1,1,0,2,0]
+		"luckybag19":[1,2,1,1,0,0,1,1,1,0,2,0],
+		//六周年
+		"six":[6,8,6,9,6,5,6,4,4,6,8,5]
 	};
 	// 福袋代號
 	/*模板:
@@ -158,6 +160,18 @@
 					ruler:[5],
 					avenger:[4],
 					foreigner:[4,3]};
+	var six = {saber:[6,2,7,66,67,68],
+				archer:[66,67,68,69,70,71,72,73],
+				lancer:[66,67,68,69,70,71],
+				rider:[66,67,68,69,70,71,72,73,74],
+				caster:[66,67,68,69,70,71],
+				assassin:[66,67,68,69,7],
+				berserker:[66,67,68,69,70,71],
+				ruler:[66,67,68,69],
+				avenger:[66,67,68,69],
+				alterego:[66,67,68,69,70,71],
+				mooncancer:[66,67,68,69,70],
+				foreigner:[66,67,68,69,70,71,72,73]};
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
 
@@ -255,6 +269,11 @@
 						units[i][j] = new Unit("images/" + Category[i] + "/" + Z[Category[i]][j] + ".jpg");
 					}
 				}
+				else if(country == 'six'){
+					for (j = 0; j < AllCategoryNUM["six"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + six[Category[i]][j] + ".jpg");
+					}
+				}
 				else{
 					console.log("ERR");
 				}
@@ -293,6 +312,8 @@
 		btns.push(newButtonUp);
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
+		sixButton = document.getElementById('six-button');
+		btns.push(sixButton);
 		// luckyBtnUp = document.getElementById('luckybag-up');
 		// luckyBtnDown = document.getElementById('luckybag-down');
 		// luckyButton15 = document.getElementById('lucky-button-2015');
@@ -345,7 +366,14 @@
 				init(1);
 			}
 		};
-
+		//六周年
+		sixButton.onclick =  function(){
+			if(country != "six"){
+				country = 'six';
+				Checked(btns,sixButton);
+				init(1);
+			}
+		};
 		// luckyBtnUp.onclick = function(){
 		// 	if(country != "luck_up"){
 		// 		country = 'luck_up';
