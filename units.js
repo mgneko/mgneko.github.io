@@ -39,9 +39,9 @@
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
 		   Foreigner,Mooncancer, Pretender */
 		// max
-		"max":[20,20,20,20,20,
-			   20,20,20,20,20,
-			   20,20,20],
+		"max":[30,30,30,30,30,
+			   30,30,30,30,30,
+			   30,30,30],
 		"tw": [10, 9, 8, 10, 11,
 			    9, 10, 5, 4,  5,
 				2, 2, 0],
