@@ -37,33 +37,28 @@
 	var AllCategoryNUM = {
 		/* Saber,Archer,Lancer,Rider,Caster,
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
-		   Foreigner,Mooncancer */
+		   Foreigner,Mooncancer, Pretender */
 		// max
 		"max":[20,20,20,20,20,
 			   20,20,20,20,20,
-			   20,20],
+			   20,20,20],
 		"tw": [10, 9, 8, 10, 11,
 			    9, 10, 5, 4,  5,
-				2, 2],
+				2, 2, 0],
 		"jp": [14, 11, 11, 13, 13,
 			    10, 12, 7, 5, 6,
-				6, 3],
+				6, 3, 0],
 		"en":[10, 9, 8, 10, 11,
 			   9, 10, 5, 3,  5,
-			   2, 2],
+			   2, 2, 0],
 		// 五星自選
-		"z":[3,4,4,6,5,3,4,1,0,1,0,1],
+		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
 		// 19' 福袋
-		"luck_up":[7,5,4,0,0,0,0,3,3,0,2,1],
-		"luck_down":[0,0,0,4,6,6,5,0,0,4,0,0],
-		"luckybag":[8,6,4,5,6,6,6,8,0,7,0,0],
-		"luckybag15":[3,1,2,1,0,2,2,1,2,0,0,0],
-		"luckybag16":[2,3,1,0,3,2,2,0,0,2,0,0],
-		"luckybag17":[1,0,1,2,2,1,0,1,0,1,2,0],
-		"luckybag18":[1,1,0,1,1,1,1,1,1,1,0,1],
-		"luckybag19":[1,2,1,1,0,0,1,1,1,0,2,0],
+		"luckybag":[8,6,4,5,6,6,6,8,0,7,0,0,0],
+		//五周年
+		"fifth":[14,0,15,0,11,0,10,0,10,0,0,0,0],
 		//六周年
-		"six":[6,8,6,9,5,5,6,4,4,6,8,5]
+		"six":[6,8,6,9,5,5,6,4,4,6,8,5,0]
 	};
 	// 福袋代號
 	/*模板:
@@ -81,31 +76,17 @@
 				foreigner:[]};
 	*/
 	var Z= {saber:[5,1,3],
-		archer:[4,2,8,3],
-		lancer:[2,1,8,5],
-		rider:[8,11,3,2,5,4],
-		caster:[9,5,7,4,1],
-		assassin:[6,1,8],
-		berserker:[2,8,3,4],
-		ruler:[1],
-		avenger:[],
-		alterego:[4],
-		mooncancer:[2],
-		foreigner:[]};
-
-	var luck_up = {saber:[8,6,9,2,10,4,7],
-				   archer:[7,5,1,9,6],
-				   lancer:[7,4,6,3],
-				   ruler:[2,4,3],
-				   avenger:[1,2,3],
-   				   foreigner:[1,2],
-				   mooncancer:[1]};
-
-	var luck_down = {rider:[6,7,1,9],
-		   			 caster:[6,10,8,2,11,3],
-		 			 assassin:[9,2,4,7,3,5],
-		 			 berserker:[9,1,6,7,5],
-		 			 alterego:[3,5,2,1]};
+			archer:[4,2,8,3],
+			lancer:[2,1,8,5],
+			rider:[8,11,3,2,5,4],
+			caster:[9,5,7,4,1],
+			assassin:[6,1,8],
+			berserker:[2,8,3,4],
+			ruler:[1],
+			avenger:[],
+			alterego:[4],
+			mooncancer:[2],
+			foreigner:[]};
 
 	var lucky = {saber:[8,11,6,9,2,10,4,7],
 				 archer:[7,5,1,9,6,10],
@@ -114,64 +95,12 @@
 				 caster:[6,10,8,2,11,3],
 				 assassin:[9,2,4,7,3,5],
 				 berserker:[9,1,6,7,5,10],
-				 ruler:[2,5,4,3,8,9,10,11],
+				 ruler:[2,5,4,3,20,21,22,23],
 				 avenger:[],
 				 alterego:[3,5,2,1,7,8,9],
 				 mooncancer:[],
 				 foreigner:[]};
-	var lucky_2015 = {saber:[6,2,7],
-					archer:[1],
-					lancer:[4,3],
-					rider:[1],
-					assassin:[4,3],
-					berserker:[1,5],
-					ruler:[2],
-					avenger:[1,2]};
-	var lucky_2016 = {saber:[8,4],
-					archer:[7,5,6],
-					lancer:[6],
-					caster:[6,2,3],
-					assassin:[2,5],
-					berserker:[6,7],
-					alterego:[2,1]};
-	var lucky_2017 = {saber:[9],
-					lancer:[7],
-					rider:[6,7],
-					caster:[10,8],
-					assassin:[7],
-					ruler:[3],
-					alterego:[3],
-					foreigner:[1,2]};
-	var lucky_2018 = {saber:[10],
-					archer:[9],
-					rider:[9],
-					caster:[11],
-					assassin:[9],
-					berserker:[9],
-					ruler:[4],
-					avenger:[3],
-					alterego:[5],
-					mooncancer:[1]};
-	var lucky_2019 = {saber:[11],
-					archer:[11,10],
-					lancer:[9],
-					rider:[10],
-					berserker:[10],
-					ruler:[5],
-					avenger:[4],
-					foreigner:[4,3]};
-	var six = {saber:[6,2,7,66,67,68],
-				archer:[66,67,68,69,70,71,72,73],
-				lancer:[66,67,68,69,70,71],
-				rider:[66,67,68,69,70,71,72,73,74],
-				caster:[66,67,68,69,70,71],
-				assassin:[66,67,68,69,7],
-				berserker:[66,67,68,69,70,71],
-				ruler:[66,67,68,69],
-				avenger:[66,67,68,69],
-				alterego:[66,67,68,69,70,71],
-				mooncancer:[66,67,68,69,70],
-				foreigner:[66,67,68,69,70,71,72,73]};
+
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
 
@@ -197,12 +126,10 @@
 	}
 
 	//設定職階圖
-
 	for(var i = 0 ; i < CategoryLen ; ++ i){
 		categoryImages[i] = new Image();
 		categoryImages[i].src = "images/class/class_" + (i + 1) + ".png";
 	}
-
 	var units = [];
 
 	//設定英靈圖
@@ -229,29 +156,9 @@
 				}
 			}
 			else{
-				if(country == 'luckybag15'){
-					for (j = 0; j < AllCategoryNUM["luckybag15"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2015[Category[i]][j] + ".jpg");
-					}
-				}
-				else if(country == 'luckybag16'){
-					for (j = 0; j < AllCategoryNUM["luckybag16"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2016[Category[i]][j] + ".jpg");
-					}
-				}
-				else if(country == 'luckybag17'){
-					for (j = 0; j < AllCategoryNUM["luckybag17"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2017[Category[i]][j] + ".jpg");
-					}
-				}
-				else if(country == 'luckybag18'){
-					for (j = 0; j < AllCategoryNUM["luckybag18"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2018[Category[i]][j] + ".jpg");
-					}
-				}
-				else if(country == 'luckybag19'){
-					for (j = 0; j < AllCategoryNUM["luckybag19"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky_2019[Category[i]][j] + ".jpg");
+				if(country == 'fifth'){
+					for (j = 0; j < AllCategoryNUM["fifth"][i]; j++) {
+						units[i][j] = new Unit("images/5th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
 				else if(country == 'luck_up'){
@@ -271,7 +178,7 @@
 				}
 				else if(country == 'six'){
 					for (j = 0; j < AllCategoryNUM["six"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + six[Category[i]][j] + ".jpg");
+						units[i][j] = new Unit("images/6th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
 				else{
@@ -314,15 +221,10 @@
 		btns.push(zButton);
 		sixButton = document.getElementById('six-button');
 		btns.push(sixButton);
-		// luckyBtnUp = document.getElementById('luckybag-up');
-		// luckyBtnDown = document.getElementById('luckybag-down');
-		// luckyButton15 = document.getElementById('lucky-button-2015');
-		// luckyButton16 = document.getElementById('lucky-button-2016');
-		// luckyButton17 = document.getElementById('lucky-button-2017');
-		// luckyButton18 = document.getElementById('lucky-button-2018');
-		// luckyButton19 = document.getElementById('lucky-button-2019');
-		//
-		// btns = [twButton,jpButton,enButton,newButtonUp,luckyButton15,luckyButton16,luckyButton17,luckyButton18,luckyButton19];
+		// 五週年
+		// fifthButton = document.getElementById('fifth-button');
+		// btns.push(fifthButton);
+		// btns = [];
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
@@ -366,6 +268,14 @@
 				init(1);
 			}
 		};
+		//五週年
+		// fifthButton.onclick = function(){
+		// 	if(country != "fifth"){
+		// 		country = 'fifth';
+		// 		Checked(btns,fifthButton);
+		// 		init(1);
+		// 	}
+		// }
 		//六周年
 		sixButton.onclick =  function(){
 			if(country != "six"){
@@ -374,57 +284,7 @@
 				init(1);
 			}
 		};
-		// luckyBtnUp.onclick = function(){
-		// 	if(country != "luck_up"){
-		// 		country = 'luck_up';
-		// 		Checked(btns,luckyBtnUp);
-		// 		init(1);
-		// 	}
-		// }
 
-		// luckyBtnDown.onclick = function(){
-		// 	if(country != "luck_down"){
-		// 		country = 'luck_down';
-		// 		Checked(btns,luckyBtnDown);
-		// 		init(1);
-		// 	}
-		// }
-		// luckyButton15.onclick = function(){
-		// 	if(country != "luckybag15"){
-		// 		country = "luckybag15";
-		// 		Checked(btns,luckyButton15);
-		// 		init(1);
-		// 	}
-		// }
-		// luckyButton16.onclick = function(){
-		// 	if(country != "luckybag16"){
-		// 		country = "luckybag16";
-		// 		Checked(btns,luckyButton16);
-		// 		init(1);
-		// 	}
-		// }
-		// luckyButton17.onclick = function(){
-		// 	if(country != "luckybag17"){
-		// 		country = "luckybag17";
-		// 		Checked(btns,luckyButton17);
-		// 		init(1);
-		// 	}
-		// }
-		// luckyButton18.onclick = function(){
-		// 	if(country != "luckybag18"){
-		// 		country = "luckybag18";
-		// 		Checked(btns,luckyButton18);
-		// 		init(1);
-		// 	}
-		// }
-		// luckyButton19.onclick = function(){
-		// 	if(country != "luckybag19"){
-		// 		country = "luckybag19";
-		// 		Checked(btns,luckyButton19);
-		// 		init(1);
-		// 	}
-		// }
-		//
 		setButton.onclick = function(){
 			mode = 0;
 			setButton.classList.remove("btn--primary");
