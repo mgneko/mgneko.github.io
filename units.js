@@ -202,6 +202,25 @@
 		}
 	}
 
+	function addLoadEvent(fun) {
+		// 把已經載入完成的函式賦值給oldnload變數
+		var oldonload = window.onload;
+		if (typeof window.onload != 'function') {
+			window.onload = fun;
+		}
+		else {
+			window.onload = function() {
+					// 這裡執行了剛才賦值變數的函式
+					oldonload();
+					// 這裡是執行了傳進來的func引數
+					fun();
+				}
+		}
+	}
+
+	addLoadEvent(luckyInit('six'));
+	addLoadEvent(luckyInit('jp'));
+
 	function init(state = 0){
 		luckyInit("jp");
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
