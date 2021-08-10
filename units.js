@@ -219,6 +219,7 @@
 	}
 
 	addLoadEvent(luckyInit('six'));
+	addLoadEvent(luckyInit('fifth'));
 	addLoadEvent(luckyInit('jp'));
 
 	function init(state = 0){
@@ -241,8 +242,8 @@
 		sixButton = document.getElementById('six-button');
 		btns.push(sixButton);
 		// 五週年
-		// fifthButton = document.getElementById('fifth-button');
-		// btns.push(fifthButton);
+		fifthButton = document.getElementById('fifth-button');
+		btns.push(fifthButton);
 		// btns = [];
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -287,14 +288,14 @@
 				init(1);
 			}
 		};
-		//五週年
-		// fifthButton.onclick = function(){
-		// 	if(country != "fifth"){
-		// 		country = 'fifth';
-		// 		Checked(btns,fifthButton);
-		// 		init(1);
-		// 	}
-		// }
+		// 五週年
+		fifthButton.onclick = function(){
+			if(country != "fifth"){
+				country = 'fifth';
+				Checked(btns,fifthButton);
+				init(1);
+			}
+		}
 		//六周年
 		sixButton.onclick =  function(){
 			if(country != "six"){
