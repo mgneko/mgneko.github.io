@@ -358,12 +358,18 @@
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 		// 補正值
 		canvas.height += 25;
-		if(country != 'jp'){
-			canvas.height -= CELL_SIZE;
+		switch(country){
+			case 'jp':
+				break;
+			case 'tw':
+			case 'en':
+				canvas.height -= CELL_SIZE;
+				break;
+			default:
+				canvas.height -= CELL_SIZE * 1.5;
+				break;
 		}
-		else if(counter >= 2){
-			canvas.height -= CELL_SIZE * counter;
-		}
+
 		context = canvas.getContext('2d');
 		context.font = "20px Microsoft JhengHei";
 		context.textBaseline = 'top';
