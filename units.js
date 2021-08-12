@@ -480,21 +480,22 @@
 			}
 
 			if (category <= default_cat2){
+				if(attribute>0){
+					percent = ((1 - (have / attribute)) * 100);
+					context.fillText("新:" + percent.toFixed(2) + "%",
+					marginLeft - caculateField,
+					marginTop + category * (CELL_SIZE + row_padding));
 
-				percent = ((1 - (have / attribute)) * 100);
-				context.fillText("新:" + percent.toFixed(2) + "%",
-				marginLeft - caculateField,
-				marginTop + category * (CELL_SIZE + row_padding));
+					percent = (haveFull / units[category].length * 100);
+					context.fillText("盤:" + percent.toFixed(2) + "%",
+					marginLeft - caculateField,
+					marginTop + category * (CELL_SIZE + row_padding) + 20);
 
-				percent = (haveFull / units[category].length * 100);
-				context.fillText("盤:" + percent.toFixed(2) + "%",
-				marginLeft - caculateField,
-				marginTop + category * (CELL_SIZE + row_padding) + 20);
-
-				percent = (like / units[category].length * 100);
-				context.fillText("婆:" + percent.toFixed(2) + "%",
-				marginLeft - caculateField,
-				marginTop + category * (CELL_SIZE + row_padding) + 40);
+					percent = (like / units[category].length * 100);
+					context.fillText("婆:" + percent.toFixed(2) + "%",
+					marginLeft - caculateField,
+					marginTop + category * (CELL_SIZE + row_padding) + 40);
+				}
 				// 新增雷
 				// percent = (ban / units[category].length * 100);
 				// context.fillText("雷:" + percent.toFixed(2) + "%",
