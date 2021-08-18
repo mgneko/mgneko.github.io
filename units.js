@@ -5,7 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
-	var country = "six";
+	var country = "tw";
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -250,8 +250,8 @@
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
 		// 六週年
-		sixButton = document.getElementById('six-button');
-		btns.push(sixButton);
+		// sixButton = document.getElementById('six-button');
+		// btns.push(sixButton);
 		// 五週年
 		// fifthButton = document.getElementById('fifth-button');
 		// btns.push(fifthButton);
@@ -306,14 +306,14 @@
 		// 		init(1);
 		// 	}
 		// }
-		//六周年
-		sixButton.onclick =  function(){
-			if(country != "six"){
-				country = 'six';
-				Checked(btns,sixButton);
-				init(1);
-			}
-		};
+		// 六周年
+		// sixButton.onclick =  function(){
+		// 	if(country != "six"){
+		// 		country = 'six';
+		// 		Checked(btns,sixButton);
+		// 		init(1);
+		// 	}
+		// };
 
 		setButton.onclick = function(){
 			mode = 0;
