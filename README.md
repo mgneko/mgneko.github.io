@@ -28,6 +28,6 @@ Thanks for the original author and here is his github:
 
 https://github.com/mgneko/mgneko.github.io
 
-此版本新增19'台服福袋 由LeafLu@ptt維護
+此版本陸續更新進度 由LeafLu@ptt維護
 
-This version added 19' lucky bag in Taiwan version, maintained by LeafLu in Taiwan ptt.
+This version will be maintained by LeafLu in Taiwan ptt.
