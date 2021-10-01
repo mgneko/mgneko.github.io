@@ -58,7 +58,7 @@
 		// 19' 福袋
 		"luckybag":[8,6,4,5,6,6,6,8,0,7,0,0,0],
 		//五周年
-		"fifth":[14,0,15,0,11,0,10,0,10,0,0,0,0],
+		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
 		"six":[6,8,6,9,5,5,6,4,4,6,8,5,0]
 	};
@@ -226,7 +226,7 @@
 		addLoadEvent(luckyInit(name));
 	}
 
-	init_arr = ['six','jp'];
+	init_arr = ['fifth','jp'];
 
 	for(var i = 0; i<init_arr.length;i++){
 		pageInit(init_arr[i]);
@@ -253,8 +253,8 @@
 		// sixButton = document.getElementById('six-button');
 		// btns.push(sixButton);
 		// 五週年
-		// fifthButton = document.getElementById('fifth-button');
-		// btns.push(fifthButton);
+		fifthButton = document.getElementById('fifth-button');
+		btns.push(fifthButton);
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
@@ -299,13 +299,13 @@
 			}
 		};
 		// 五週年
-		// fifthButton.onclick = function(){
-		// 	if(country != "fifth"){
-		// 		country = 'fifth';
-		// 		Checked(btns,fifthButton);
-		// 		init(1);
-		// 	}
-		// }
+		fifthButton.onclick = function(){
+			if(country != "fifth"){
+				country = 'fifth';
+				Checked(btns,fifthButton);
+				init(1);
+			}
+		}
 		// 六周年
 		// sixButton.onclick =  function(){
 		// 	if(country != "six"){
@@ -365,6 +365,8 @@
 			case 'en':
 				canvas.height -= CELL_SIZE;
 				break;
+			case 'fifth':
+				canvas.height -= CELL_SIZE * 11;
 			default:
 				canvas.height -= CELL_SIZE * 1.5;
 				break;
