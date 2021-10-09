@@ -213,9 +213,7 @@
 		}
 		else {
 			window.onload = function() {
-					// 這裡執行了剛才賦值變數的函式
 					oldonload();
-					// 這裡是執行了傳進來的func引數
 					fun();
 				}
 		}
@@ -244,8 +242,8 @@
 		enButton = document.getElementById('en-button');
 		btns = [twButton,jpButton,enButton];
 		// 福袋(變動)
-		newButtonUp = document.getElementById('new-button-up');
-		btns.push(newButtonUp);
+		// newButtonUp = document.getElementById('new-button-up');
+		// btns.push(newButtonUp);
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
@@ -291,13 +289,13 @@
 			}
 		};
 		// 福袋
-		newButtonUp.onclick = function(){
-			if(country != "luckybag"){
-				country = 'luckybag';
-				Checked(btns,newButtonUp);
-				init(1);
-			}
-		};
+		// newButtonUp.onclick = function(){
+		// 	if(country != "luckybag"){
+		// 		country = 'luckybag';
+		// 		Checked(btns,newButtonUp);
+		// 		init(1);
+		// 	}
+		// };
 		// 五週年
 		fifthButton.onclick = function(){
 			if(country != "fifth"){
