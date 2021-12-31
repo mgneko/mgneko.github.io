@@ -5,7 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
-	var country = "tw";
+	var country = "luckybag";
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -55,8 +55,8 @@
 			   2, 2, 0],
 		// 五星自選
 		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
-		// 19' 福袋
-		"luckybag":[8,6,4,5,6,6,6,8,0,7,0,0,0],
+		// 日本福袋
+		"luckybag":[5,5,7,8,5,6,6,7,5,5,6,5,5],
 		//五周年
 		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
@@ -90,7 +90,7 @@
 			alterego:[4],
 			mooncancer:[2],
 			foreigner:[]};
-
+	// 日本福袋
 	var lucky = {saber:[8,11,6,9,2,10,4,7],
 				 archer:[7,5,1,9,6,10],
 				 lancer:[7,4,6,3],
@@ -100,9 +100,9 @@
 				 berserker:[9,1,6,7,5,10],
 				 ruler:[2,5,4,3,20,21,22,23],
 				 avenger:[],
-				 alterego:[3,5,2,1,7,8,9],
 				 mooncancer:[],
 				 foreigner:[]};
+				 alterego:[3,5,2,1,7,8,9],
 
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
@@ -150,7 +150,7 @@
 			units[i] = [];
 			if(country == 'luckybag'){
 				for (j = 0; j < AllCategoryNUM["luckybag"][i]; j++) {
-					units[i][j] = new Unit("images/" + Category[i] + "/" + lucky[Category[i]][j] + ".jpg");
+					units[i][j] = new Unit("images/newYear_2022/" + Category[i] + "/" + (j + 1) + ".jpg");
 				}
 			}
 			else if(country == 'jp' || country == 'tw' || country == 'en'){
@@ -224,7 +224,7 @@
 		addLoadEvent(luckyInit(name));
 	}
 
-	init_arr = ['fifth','jp'];
+	init_arr = ['fifth','jp','luckybag'];
 
 	for(var i = 0; i<init_arr.length;i++){
 		pageInit(init_arr[i]);
@@ -242,8 +242,8 @@
 		enButton = document.getElementById('en-button');
 		btns = [twButton,jpButton,enButton];
 		// 福袋(變動)
-		// newButtonUp = document.getElementById('new-button-up');
-		// btns.push(newButtonUp);
+		jp_luckybag = document.getElementById('jp-luckybag');
+		btns.push(jp_luckybag);
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
@@ -289,13 +289,13 @@
 			}
 		};
 		// 福袋
-		// newButtonUp.onclick = function(){
-		// 	if(country != "luckybag"){
-		// 		country = 'luckybag';
-		// 		Checked(btns,newButtonUp);
-		// 		init(1);
-		// 	}
-		// };
+		jp_luckybag.onclick = function(){
+			if(country != "luckybag"){
+				country = 'luckybag';
+				Checked(btns,jp_luckybag);
+				init(1);
+			}
+		};
 		// 五週年
 		fifthButton.onclick = function(){
 			if(country != "fifth"){
@@ -358,6 +358,7 @@
 		canvas.height += 25;
 		switch(country){
 			case 'jp':
+			case 'luckybag':
 				break;
 			case 'tw':
 			case 'en':
