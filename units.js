@@ -303,7 +303,7 @@
 		us_luckybag.onclick = function(){
 			if(country != "usLuckybag"){
 				country = 'usLuckybag';
-				Checked(btns,jp_luckybag);
+				Checked(btns,us_luckybag);
 				init(1);
 			}
 		};
