@@ -58,6 +58,7 @@
 		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
 		// 日本福袋
 		"luckybag":[5,5,7,8,5,6,6,7,5,5,6,5,5,5],
+		"usLuckybag":[8,6,4,5,6,6,6,8,0,7,0,0],
 		//五周年
 		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
@@ -165,9 +166,9 @@
 						units[i][j] = new Unit("images/5th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
-				else if(country == 'luck_up'){
-					for (j = 0; j < AllCategoryNUM["luck_up"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + luck_up[Category[i]][j] + ".jpg");
+				else if(country == 'usLuckybag'){
+					for (j = 0; j < AllCategoryNUM["usLuckybag"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky[Category[i]][j] + ".jpg");
 					}
 				}
 				else if(country == 'luck_down'){
@@ -245,6 +246,8 @@
 		// 福袋(變動)
 		jp_luckybag = document.getElementById('jp-luckybag');
 		btns.push(jp_luckybag);
+		us_luckybag = document.getElementById('us-luckybag');
+		btns.push(us_luckybag);
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
@@ -293,6 +296,13 @@
 		jp_luckybag.onclick = function(){
 			if(country != "luckybag"){
 				country = 'luckybag';
+				Checked(btns,jp_luckybag);
+				init(1);
+			}
+		};
+		us_luckybag.onclick = function(){
+			if(country != "usLuckybag"){
+				country = 'usLuckybag';
 				Checked(btns,jp_luckybag);
 				init(1);
 			}
