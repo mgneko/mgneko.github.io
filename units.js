@@ -455,8 +455,8 @@
 		var ban = 0;
 		// 福袋
 		var lucky_bag = (country != 'jp' && country != 'tw' && country != 'en') ? true : false;
-		var default_cat1 = lucky_bag ? 11:7;
-		var default_cat2 = lucky_bag ? 11:6;
+		var default_cat1 = lucky_bag ? 14:7;
+		var default_cat2 = lucky_bag ? 14:6;
 		//
 		context.fillStyle = bgcolor;
 		context.fillRect(0, 0, caculateField + 10, canvas.height)
