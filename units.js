@@ -28,7 +28,8 @@
 		'alterego',			// 丑
 		'foreigner',		// 外
 		'mooncancer',		// 月
-		'pretender'			// 隱
+		'pretender',		// 隱
+		'luckybag1'			// 多的福袋
 	];
 
 	var Marks = [
@@ -39,7 +40,7 @@
 	var AllCategoryNUM = {
 		/* Saber,Archer,Lancer,Rider,Caster,
 		   Assassin,Berserker,Ruler,Avenger,Alterego,
-		   Foreigner,Mooncancer, Pretender */
+		   Foreigner,Mooncancer, Pretender, luckybag1 */
 		// max
 		"max":[30,30,30,30,30,
 			   30,30,30,30,30,
@@ -56,7 +57,7 @@
 		// 五星自選
 		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
 		// 日本福袋
-		"luckybag":[5,5,7,8,5,6,6,7,5,5,6,5,5],
+		"luckybag":[5,5,7,8,5,6,6,7,5,5,6,5,5,5],
 		//五周年
 		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
@@ -101,8 +102,8 @@
 				 ruler:[2,5,4,3,20,21,22,23],
 				 avenger:[],
 				 mooncancer:[],
-				 foreigner:[]};
-				 alterego:[3,5,2,1,7,8,9],
+				 foreigner:[],
+				 alterego:[3,5,2,1,7,8,9]};
 
 	//右鍵選單取消,綁定功能
 	document.oncontextmenu = function(){return false};
@@ -356,18 +357,21 @@
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 		// 補正值
 		canvas.height += 25;
+		base = 1;
 		switch(country){
 			case 'jp':
+				canvas.height -= CELL_SIZE * base;
+				break;
 			case 'luckybag':
 				break;
 			case 'tw':
 			case 'en':
-				canvas.height -= CELL_SIZE;
+				canvas.height -= CELL_SIZE * (base * 3);
 				break;
 			case 'fifth':
-				canvas.height -= CELL_SIZE * 11;
+				canvas.height -= CELL_SIZE * (base * 12);
 			default:
-				canvas.height -= CELL_SIZE * 1.5;
+				canvas.height -= CELL_SIZE * (base * 2);
 				break;
 		}
 
