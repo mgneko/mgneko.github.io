@@ -53,7 +53,7 @@
 				8, 3, 1],
 		"en":[11, 10, 8, 11, 11,
 			   9, 10, 5, 4,  5,
-			   2, 2, 0],
+			   3, 2, 0],
 		// 五星自選
 		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
 		// 日本福袋
@@ -370,7 +370,7 @@
 		base = 1;
 		switch(country){
 			case 'jp':
-				canvas.height -= CELL_SIZE * base;
+				canvas.height -= CELL_SIZE * (base * 1.5);
 				break;
 			case 'luckybag':
 				break;
