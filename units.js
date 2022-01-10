@@ -5,7 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
-	var country = "luckybag";
+	var country = "tw";
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -244,8 +244,8 @@
 		enButton = document.getElementById('en-button');
 		btns = [twButton,jpButton,enButton];
 		// 福袋(變動)
-		jp_luckybag = document.getElementById('jp-luckybag');
-		btns.push(jp_luckybag);
+		// jp_luckybag = document.getElementById('jp-luckybag');
+		// btns.push(jp_luckybag);
 		us_luckybag = document.getElementById('us-luckybag');
 		btns.push(us_luckybag);
 		// 自選
@@ -293,13 +293,13 @@
 			}
 		};
 		// 福袋
-		jp_luckybag.onclick = function(){
-			if(country != "luckybag"){
-				country = 'luckybag';
-				Checked(btns,jp_luckybag);
-				init(1);
-			}
-		};
+		// jp_luckybag.onclick = function(){
+		// 	if(country != "luckybag"){
+		// 		country = 'luckybag';
+		// 		Checked(btns,jp_luckybag);
+		// 		init(1);
+		// 	}
+		// };
 		us_luckybag.onclick = function(){
 			if(country != "usLuckybag"){
 				country = 'usLuckybag';
@@ -379,9 +379,9 @@
 				canvas.height -= CELL_SIZE * (base * 3);
 				break;
 			case 'fifth':
-				canvas.height -= CELL_SIZE * (base * 12);
+				canvas.height -= CELL_SIZE * (base * 11);
 			default:
-				canvas.height -= CELL_SIZE * (base * 2);
+				canvas.height -= CELL_SIZE * (base * 3);
 				break;
 		}
 
