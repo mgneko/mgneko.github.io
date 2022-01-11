@@ -246,8 +246,8 @@
 		// 福袋(變動)
 		// jp_luckybag = document.getElementById('jp-luckybag');
 		// btns.push(jp_luckybag);
-		us_luckybag = document.getElementById('us-luckybag');
-		btns.push(us_luckybag);
+		// us_luckybag = document.getElementById('us-luckybag');
+		// btns.push(us_luckybag);
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
@@ -300,13 +300,13 @@
 		// 		init(1);
 		// 	}
 		// };
-		us_luckybag.onclick = function(){
-			if(country != "usLuckybag"){
-				country = 'usLuckybag';
-				Checked(btns,us_luckybag);
-				init(1);
-			}
-		};
+		// us_luckybag.onclick = function(){
+		// 	if(country != "usLuckybag"){
+		// 		country = 'usLuckybag';
+		// 		Checked(btns,us_luckybag);
+		// 		init(1);
+		// 	}
+		// };
 		// 五週年
 		fifthButton.onclick = function(){
 			if(country != "fifth"){
