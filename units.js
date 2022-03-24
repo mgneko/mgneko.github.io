@@ -56,7 +56,8 @@
 			   9, 10, 5, 4,  5,
 			   3, 2, 0],
 		// 五星自選
-		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0],
+		"z":[3,4,4,6,5,3,4,1,0,1,0,1,0,0],
+		"z1":[3,3,3,4,5,2,3,1,0,0,0,1,0,0],
 		// 日本福袋
 		"luckybag":[5,5,7,8,5,6,6,7,5,5,6,5,5,5],
 		"usLuckybag":[8,6,4,5,6,6,6,8,0,7,0,0],
@@ -91,6 +92,18 @@
 			ruler:[1],
 			avenger:[],
 			alterego:[4],
+			mooncancer:[2],
+			foreigner:[]};
+	var Z1 ={saber:[5,1,3],
+			archer:[4,2,8],
+			lancer:[2,1,8],
+			rider:[8,11,3,2],
+			caster:[9,5,7,4,1],
+			assassin:[6,1],
+			berserker:[2,8,3],
+			ruler:[1],
+			avenger:[],
+			alterego:[],
 			mooncancer:[2],
 			foreigner:[]};
 	// 日本福袋
@@ -182,6 +195,11 @@
 						units[i][j] = new Unit("images/" + Category[i] + "/" + Z[Category[i]][j] + ".jpg");
 					}
 				}
+				else if(country == 'z1'){
+					for (j = 0; j < AllCategoryNUM["z1"][i]; j++) {
+						units[i][j] = new Unit("images/" + Category[i] + "/" + Z1[Category[i]][j] + ".jpg");
+					}
+				}
 				else if(country == 'six'){
 					for (j = 0; j < AllCategoryNUM["six"][i]; j++) {
 						units[i][j] = new Unit("images/6th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
@@ -252,6 +270,8 @@
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
+		z1Button = document.getElementById('z1-button');
+		btns.push(z1Button);
 		// 六週年
 		// sixButton = document.getElementById('six-button');
 		// btns.push(sixButton);
@@ -305,6 +325,13 @@
 			if(country != "z"){
 				country = 'z';
 				Checked(btns,zButton);
+				init(1);
+			}
+		};
+		z1Button.onclick = function(){
+			if(country != "z1"){
+				country = 'z1';
+				Checked(btns,z1Button);
 				init(1);
 			}
 		};
