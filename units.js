@@ -64,7 +64,9 @@
 		//五周年
 		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
-		"six":[6,8,6,9,5,5,6,4,4,6,8,5,0]
+		"six":[6,8,6,9,5,5,6,4,4,6,8,5,0],
+		// 21'新年
+		"newyear_21":[7,7,8,9,8,8,7,7,6]
 	};
 	// 福袋代號
 	/*模板:
@@ -185,9 +187,9 @@
 						units[i][j] = new Unit("images/" + Category[i] + "/" + lucky[Category[i]][j] + ".jpg");
 					}
 				}
-				else if(country == 'luck_down'){
-					for (j = 0; j < AllCategoryNUM["luck_down"][i]; j++) {
-						units[i][j] = new Unit("images/" + Category[i] + "/" + luck_down[Category[i]][j] + ".jpg");
+				else if(country == 'newyear_21'){
+					for (j = 0; j < AllCategoryNUM["newyear_21"][i]; j++) {
+						units[i][j] = new Unit("images/newYear_2021/" + Category[i] + "/" + (j+1) + ".jpg");
 					}
 				}
 				else if(country == 'z'){
@@ -278,6 +280,9 @@
 		// 五週年
 		fifthButton = document.getElementById('fifth-button');
 		btns.push(fifthButton);
+		// 新年
+		newyearBtn = document.getElementById('newyear');
+		btns.push(newyearBtn);
 		// 中間欄
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -335,14 +340,14 @@
 				init(1);
 			}
 		};
-		// 福袋
-		// jp_luckybag.onclick = function(){
-		// 	if(country != "luckybag"){
-		// 		country = 'luckybag';
-		// 		Checked(btns,jp_luckybag);
-		// 		init(1);
-		// 	}
-		// };
+		// 新年
+		newyearBtn.onclick = function(){
+			if(country != "newyear_21"){
+				country = 'newyear_21';
+				Checked(btns,newyearBtn);
+				init(1);
+			}
+		};
 		// us_luckybag.onclick = function(){
 		// 	if(country != "usLuckybag"){
 		// 		country = 'usLuckybag';
@@ -415,7 +420,8 @@
 			case 'jp':
 				canvas.height -= CELL_SIZE * (base * 1.5);
 				break;
-			case 'luckybag':
+			case 'newyear_21':
+				canvas.height -= CELL_SIZE * (base * 6);
 				break;
 			case 'tw':
 			case 'en':
