@@ -247,7 +247,7 @@
 		addLoadEvent(luckyInit(name));
 	}
 
-	init_arr = ['fifth','jp','luckybag'];
+	init_arr = ['newyear_21','jp'];
 
 	for(var i = 0; i<init_arr.length;i++){
 		pageInit(init_arr[i]);
@@ -272,14 +272,14 @@
 		// 自選
 		zButton = document.getElementById('z-button');
 		btns.push(zButton);
-		z1Button = document.getElementById('z1-button');
-		btns.push(z1Button);
+		// z1Button = document.getElementById('z1-button');
+		// btns.push(z1Button);
 		// 六週年
 		// sixButton = document.getElementById('six-button');
 		// btns.push(sixButton);
 		// 五週年
-		fifthButton = document.getElementById('fifth-button');
-		btns.push(fifthButton);
+		// fifthButton = document.getElementById('fifth-button');
+		// btns.push(fifthButton);
 		// 新年
 		newyearBtn = document.getElementById('newyear');
 		btns.push(newyearBtn);
@@ -333,13 +333,13 @@
 				init(1);
 			}
 		};
-		z1Button.onclick = function(){
-			if(country != "z1"){
-				country = 'z1';
-				Checked(btns,z1Button);
-				init(1);
-			}
-		};
+		// z1Button.onclick = function(){
+		// 	if(country != "z1"){
+		// 		country = 'z1';
+		// 		Checked(btns,z1Button);
+		// 		init(1);
+		// 	}
+		// };
 		// 新年
 		newyearBtn.onclick = function(){
 			if(country != "newyear_21"){
@@ -356,13 +356,13 @@
 		// 	}
 		// };
 		// 五週年
-		fifthButton.onclick = function(){
-			if(country != "fifth"){
-				country = 'fifth';
-				Checked(btns,fifthButton);
-				init(1);
-			}
-		}
+		// fifthButton.onclick = function(){
+		// 	if(country != "fifth"){
+		// 		country = 'fifth';
+		// 		Checked(btns,fifthButton);
+		// 		init(1);
+		// 	}
+		// }
 		// 六周年
 		// sixButton.onclick =  function(){
 		// 	if(country != "six"){
