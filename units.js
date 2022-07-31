@@ -65,6 +65,9 @@
 		"fifth":[14,15,11,10,10,0,0,0,0,0,0,0,0],
 		//六周年
 		"six":[6,8,6,9,5,5,6,4,4,6,8,5,0],
+		//七周年
+		"seven_1":[6,7,4,3,4,3,3,4,5,4],
+		"seven_2":[4,3,4,3,4,5,6,5,5,6],
 		// 21'新年
 		"newyear_21":[7,7,8,9,8,8,7,7,6]
 	};
@@ -177,9 +180,14 @@
 				}
 			}
 			else{
-				if(country == 'fifth'){
-					for (j = 0; j < AllCategoryNUM["fifth"][i]; j++) {
-						units[i][j] = new Unit("images/5th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
+				if(country == 'seven_1'){
+					for (j = 0; j < AllCategoryNUM["seven_1"][i]; j++) {
+						units[i][j] = new Unit("images/7th_anniversary_1/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+				else if(country == 'seven_2'){
+					for (j = 0; j < AllCategoryNUM["seven_2"][i]; j++) {
+						units[i][j] = new Unit("images/7th_anniversary_2/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
 				else if(country == 'usLuckybag'){
@@ -277,9 +285,11 @@
 		// 六週年
 		// sixButton = document.getElementById('six-button');
 		// btns.push(sixButton);
-		// 五週年
-		// fifthButton = document.getElementById('fifth-button');
-		// btns.push(fifthButton);
+		// 七週年
+		sevenButton_1 = document.getElementById('seventh-button-1');
+		btns.push(sevenButton_1);
+		sevenButton_2 = document.getElementById('seventh-button-2');
+		btns.push(sevenButton_2);
 		// 新年
 		newyearBtn = document.getElementById('newyear');
 		btns.push(newyearBtn);
@@ -355,14 +365,21 @@
 		// 		init(1);
 		// 	}
 		// };
-		// 五週年
-		// fifthButton.onclick = function(){
-		// 	if(country != "fifth"){
-		// 		country = 'fifth';
-		// 		Checked(btns,fifthButton);
-		// 		init(1);
-		// 	}
-		// }
+		// 七週年
+		sevenButton_1.onclick = function(){
+			if(country != "seven_1"){
+				country = 'seven_1';
+				Checked(btns,sevenButton_1);
+				init(1);
+			}
+		}
+		sevenButton_2.onclick = function(){
+			if(country != "seven_2"){
+				country = 'seven_2';
+				Checked(btns,sevenButton_2);
+				init(1);
+			}
+		}
 		// 六周年
 		// sixButton.onclick =  function(){
 		// 	if(country != "six"){
