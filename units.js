@@ -51,7 +51,7 @@
 			   5, 3, 0],
 		"jp": [17, 12, 12, 16, 14,
 			    10, 12, 8, 6, 8,
-				8, 4, 1],
+				8, 4, 2],
 		"en": [12, 11, 9, 12, 12,
 				9, 10, 5, 4,  5,
 				5, 3, 0],
@@ -286,10 +286,10 @@
 		// sixButton = document.getElementById('six-button');
 		// btns.push(sixButton);
 		// 七週年
-		sevenButton_1 = document.getElementById('seventh-button-1');
-		btns.push(sevenButton_1);
-		sevenButton_2 = document.getElementById('seventh-button-2');
-		btns.push(sevenButton_2);
+		// sevenButton_1 = document.getElementById('seventh-button-1');
+		// btns.push(sevenButton_1);
+		// sevenButton_2 = document.getElementById('seventh-button-2');
+		// btns.push(sevenButton_2);
 		// 新年
 		newyearBtn = document.getElementById('newyear');
 		btns.push(newyearBtn);
@@ -366,20 +366,20 @@
 		// 	}
 		// };
 		// 七週年
-		sevenButton_1.onclick = function(){
-			if(country != "seven_1"){
-				country = 'seven_1';
-				Checked(btns,sevenButton_1);
-				init(1);
-			}
-		}
-		sevenButton_2.onclick = function(){
-			if(country != "seven_2"){
-				country = 'seven_2';
-				Checked(btns,sevenButton_2);
-				init(1);
-			}
-		}
+		// sevenButton_1.onclick = function(){
+		// 	if(country != "seven_1"){
+		// 		country = 'seven_1';
+		// 		Checked(btns,sevenButton_1);
+		// 		init(1);
+		// 	}
+		// }
+		// sevenButton_2.onclick = function(){
+		// 	if(country != "seven_2"){
+		// 		country = 'seven_2';
+		// 		Checked(btns,sevenButton_2);
+		// 		init(1);
+		// 	}
+		// }
 		// 六周年
 		// sixButton.onclick =  function(){
 		// 	if(country != "six"){
