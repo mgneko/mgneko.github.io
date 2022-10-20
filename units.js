@@ -255,7 +255,7 @@
 		addLoadEvent(luckyInit(name));
 	}
 
-	init_arr = ['newyear_21','jp'];
+	init_arr = ['six','jp'];
 
 	for(var i = 0; i<init_arr.length;i++){
 		pageInit(init_arr[i]);
