@@ -283,16 +283,16 @@
 		// z1Button = document.getElementById('z1-button');
 		// btns.push(z1Button);
 		// 六週年
-		// sixButton = document.getElementById('six-button');
-		// btns.push(sixButton);
+		sixButton = document.getElementById('six-button');
+		btns.push(sixButton);
 		// 七週年
 		// sevenButton_1 = document.getElementById('seventh-button-1');
 		// btns.push(sevenButton_1);
 		// sevenButton_2 = document.getElementById('seventh-button-2');
 		// btns.push(sevenButton_2);
 		// 新年
-		newyearBtn = document.getElementById('newyear');
-		btns.push(newyearBtn);
+		// newyearBtn = document.getElementById('newyear');
+		// btns.push(newyearBtn);
 		// 中間欄
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -351,13 +351,13 @@
 		// 	}
 		// };
 		// 新年
-		newyearBtn.onclick = function(){
-			if(country != "newyear_21"){
-				country = 'newyear_21';
-				Checked(btns,newyearBtn);
-				init(1);
-			}
-		};
+		// newyearBtn.onclick = function(){
+		// 	if(country != "newyear_21"){
+		// 		country = 'newyear_21';
+		// 		Checked(btns,newyearBtn);
+		// 		init(1);
+		// 	}
+		// };
 		// us_luckybag.onclick = function(){
 		// 	if(country != "usLuckybag"){
 		// 		country = 'usLuckybag';
@@ -381,13 +381,13 @@
 		// 	}
 		// }
 		// 六周年
-		// sixButton.onclick =  function(){
-		// 	if(country != "six"){
-		// 		country = 'six';
-		// 		Checked(btns,sixButton);
-		// 		init(1);
-		// 	}
-		// };
+		sixButton.onclick =  function(){
+			if(country != "six"){
+				country = 'six';
+				Checked(btns,sixButton);
+				init(1);
+			}
+		};
 
 		setButton.onclick = function(){
 			mode = 0;
