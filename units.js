@@ -69,7 +69,10 @@
 		"seven_1":[6,7,4,3,4,3,3,4,5,4],
 		"seven_2":[4,3,4,3,4,5,6,5,5,6],
 		// 21'新年
-		"newyear_21":[7,7,8,9,8,8,7,7,6]
+		"newyear_21":[7,7,8,9,8,8,7,7,6],
+		// 23'新年
+		"newyear_23_up": [7,6,3,4,4,5,3,4,6,3],
+		"newyear_23_down": [3,5,3,6,6,6,6,6,5,5]
 	};
 	// 福袋代號
 	/*模板:
@@ -215,6 +218,16 @@
 						units[i][j] = new Unit("images/6th_anniversary/" + Category[i] + "/" + (j + 1) + ".jpg");
 					}
 				}
+				else if(country == 'newyear_23_up'){
+					for (j = 0; j < AllCategoryNUM["newyear_23_up"][i]; j++) {
+						units[i][j] = new Unit("images/newYear_2023/up/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
+				else if(country == 'newyear_23_down'){
+					for (j = 0; j < AllCategoryNUM["newyear_23_down"][i]; j++) {
+						units[i][j] = new Unit("images/newYear_2023/down/" + Category[i] + "/" + (j + 1) + ".jpg");
+					}
+				}
 				else{
 					console.log("ERR");
 				}
@@ -255,7 +268,7 @@
 		addLoadEvent(luckyInit(name));
 	}
 
-	init_arr = ['six','jp'];
+	init_arr = ['six','jp','newyear_23_up','newyear_23_down'];
 
 	for(var i = 0; i<init_arr.length;i++){
 		pageInit(init_arr[i]);
@@ -270,8 +283,8 @@
 		// 台GO 日GO 美GO
 		twButton = document.getElementById('tw-button');
 		jpButton = document.getElementById('jp-button');
-		enButton = document.getElementById('en-button');
-		btns = [twButton,jpButton,enButton];
+		// enButton = document.getElementById('en-button');
+		btns = [twButton,jpButton];
 		// 福袋(變動)
 		// jp_luckybag = document.getElementById('jp-luckybag');
 		// btns.push(jp_luckybag);
@@ -291,8 +304,10 @@
 		// sevenButton_2 = document.getElementById('seventh-button-2');
 		// btns.push(sevenButton_2);
 		// 新年
-		// newyearBtn = document.getElementById('newyear');
-		// btns.push(newyearBtn);
+		newyearBtn_1 = document.getElementById('newyear-1');
+		newyearBtn_2 = document.getElementById('newyear-2');
+		btns.push(newyearBtn_1);
+		btns.push(newyearBtn_2);
 		// 中間欄
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
@@ -328,13 +343,13 @@
 			}
 		};
 		// English GO
-		enButton.onclick = function(){
-			if (country != "en"){
-				country = "en";
-				Checked(btns,enButton);
-				init(1);
-			}
-		};
+		// enButton.onclick = function(){
+		// 	if (country != "en"){
+		// 		country = "en";
+		// 		Checked(btns,enButton);
+		// 		init(1);
+		// 	}
+		// };
 		// 自選
 		zButton.onclick = function(){
 			if(country != "z"){
@@ -388,6 +403,21 @@
 				init(1);
 			}
 		};
+		// 23'新年
+		newyearBtn_1.onclick = function(){
+			if(country != "newyear_23_up"){
+				country = 'newyear_23_up';
+				Checked(btns,newyearBtn_1);
+				init(1);
+			}
+		};
+		newyearBtn_2.onclick = function(){
+			if(country != "newyear_23_down"){
+				country = 'newyear_23_down';
+				Checked(btns,newyearBtn_2);
+				init(1);
+			}
+		};
 
 		setButton.onclick = function(){
 			mode = 0;
@@ -438,6 +468,8 @@
 				canvas.height -= CELL_SIZE * (base * 1.5);
 				break;
 			case 'newyear_21':
+			case 'newyear_23_up':
+			case 'newyear_23_down':
 				canvas.height -= CELL_SIZE * (base * 6);
 				break;
 			case 'tw':
