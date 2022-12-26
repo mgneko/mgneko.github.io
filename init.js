@@ -51,7 +51,7 @@
 	];
 	// 設定數量
     var AllCategoryNUM = {
-        'jp': [servents['saber'].length, servents['archer'].length, servents['lancer'].length,
+        'jp': [servents['saber'].length, servents['archer'].length, servents['lancer'].length-1, //-1妖蘭
         servents['rider'].length, servents['caster'].length, servents['assassin'].length, servents['berserker'].length,
         servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length],
 		// 台服
