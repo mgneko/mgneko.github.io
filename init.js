@@ -217,7 +217,7 @@
 	for (i = 0; i < CategoryLen; i++) {
 		for (j = 0; j < servents[Category[i]].length; j++) {
 			no = servents[Category[i]][j];
-			svt[no] = new Unit("servents/" + no + ".png");
+			svt[no] = new Unit("images/servents/" + no + ".png");
 		}
 	}
 
