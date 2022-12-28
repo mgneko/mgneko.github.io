@@ -499,10 +499,19 @@
 		// }
 		var pass = 0;
 		counter = 0;
+		// 福袋
+		lucky_icon = new Image();
+		lucky_icon.src = "images/class/class_" + "16" + ".png";
+
 		for (i = 0; i < CategoryLen; i++) {
 			// needs to maintain the click event if empty class occurs
 			if(CategoryNUM[i]>0){
-				drawImage(0, i-pass, categoryImages[i]);
+				if(country == 'jp' || country == 'tw' || country == 'z'){
+					drawImage(0, i-pass, categoryImages[i]);
+				}
+				else{
+					drawImage(0, i-pass, lucky_icon);
+				}
 			}
 			else{
 				counter++;
