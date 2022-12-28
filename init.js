@@ -503,11 +503,53 @@
 		lucky_icon = new Image();
 		lucky_icon.src = "images/class/class_" + "16" + ".png";
 
+		function getImg(country, size){
+			var img = new Array(size);
+			img_path = "images/class/class_";
+			path = [];
+			switch(country){
+				case "newyear_23_up":
+					path[0] = img_path + "1.png";
+					path[1] = img_path + "1.png";
+					path[2] = img_path + "2.png";
+					path[3] = img_path + "2.png";
+					path[4] = img_path + "3.png";
+					path[5] = img_path + "3.png";
+					path[6] = img_path + "4.png";
+					path[7] = img_path + "4.png";
+					path[8] = img_path + "5.png";
+					path[9] = img_path + "5.png";
+					break;
+				case "newyear_23_down":
+					path[0] = img_path + "6.png";
+					path[1] = img_path + "6.png";
+					path[2] = img_path + "7.png";
+					path[3] = img_path + "7.png";
+					path[4] = img_path + "99.png";
+					path[5] = img_path + "99.png";
+					path[6] = img_path + "99.png";
+					path[7] = img_path + "99.png";
+					path[8] = img_path + "99.png";
+					path[9] = img_path + "99.png";
+					break;
+			}
+			for (i=0 ; i<size; i++){
+				img[i] = new Image();
+				img[i].src = path[i];
+				console.log("OK");
+			}
+			return img;
+		}
+
+		icon = getImg(country, CategoryLen);
 		for (i = 0; i < CategoryLen; i++) {
 			// needs to maintain the click event if empty class occurs
 			if(CategoryNUM[i]>0){
 				if(country == 'jp' || country == 'tw' || country == 'z'){
 					drawImage(0, i-pass, categoryImages[i]);
+				}
+				else if(country == 'newyear_23_up' || country == 'newyear_23_down'){
+					drawImage(0, i-pass, icon[i]);
 				}
 				else{
 					drawImage(0, i-pass, lucky_icon);
