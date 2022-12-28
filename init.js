@@ -501,7 +501,7 @@
 		counter = 0;
 		// 福袋
 		lucky_icon = new Image();
-		lucky_icon.src = "images/class/class_" + "16" + ".png";
+		lucky_icon.src = "images/class/lucky.png";
 
 		function getImg(country, size){
 			var img = new Array(size);
