@@ -507,30 +507,19 @@
 			var img = new Array(size);
 			img_path = "images/class/class_";
 			path = [];
+			arr = [];
 			switch(country){
 				case "newyear_23_up":
-					path[0] = img_path + "1.png";
-					path[1] = img_path + "1.png";
-					path[2] = img_path + "2.png";
-					path[3] = img_path + "2.png";
-					path[4] = img_path + "3.png";
-					path[5] = img_path + "3.png";
-					path[6] = img_path + "4.png";
-					path[7] = img_path + "4.png";
-					path[8] = img_path + "5.png";
-					path[9] = img_path + "5.png";
+					arr = [1,1,2,2,3,3,4,4,5,5];
+					for(i = 0; i<size; i++){
+						path[i] = img_path + arr[i] + ".png";
+					}
 					break;
 				case "newyear_23_down":
-					path[0] = img_path + "6.png";
-					path[1] = img_path + "6.png";
-					path[2] = img_path + "7.png";
-					path[3] = img_path + "7.png";
-					path[4] = img_path + "99.png";
-					path[5] = img_path + "99.png";
-					path[6] = img_path + "99.png";
-					path[7] = img_path + "99.png";
-					path[8] = img_path + "99.png";
-					path[9] = img_path + "99.png";
+					arr = [6,6,7,7,99,99,99,99,99,99];
+					for(i = 0; i<size; i++){
+						path[i] = img_path + arr[i] + ".png";
+					}
 					break;
 			}
 			for (i=0 ; i<size; i++){
