@@ -206,7 +206,7 @@
 	}
 
 	//設定職階圖
-	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,98,99];
+	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,666,98,99];
 	for(var i = 0 ; i < classes.length ; i++){
 		categoryImages[i] = new Image();
 		categoryImages[i].src = "images/class/class_" + classes[i] + ".png";
@@ -535,7 +535,7 @@
 					arr = [6,6,7,7,99,99,99,99,99,99];
 					return arr;
 				case "sixth":
-					return 98;
+					return 666;
 			}
 			return arr;
 		}
