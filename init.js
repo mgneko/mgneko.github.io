@@ -206,9 +206,10 @@
 	}
 
 	//設定職階圖
-	for(var i = 0 ; i < CategoryLen ; ++ i){
+	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,99];
+	for(var i = 0 ; i < classes.length ; i++){
 		categoryImages[i] = new Image();
-		categoryImages[i].src = "images/class/class_" + (i + 1) + ".png";
+		categoryImages[i].src = "images/class/class_" + classes[i] + ".png";
 	}
 	var units = [];
 	var svt = [];
@@ -503,34 +504,28 @@
 		lucky_icon = new Image();
 		lucky_icon.src = "images/class/lucky.png";
 
-		function getImg(country, size){
-			var img = new Array(size);
-			img_path = "images/class/class_";
-			path = [];
+		function getImgNo(images, target){
+			for (var i = 0; i < images.length; i++){
+				if(target == images[i])
+					return i;
+			}
+			return 0;
+		}
+
+		function getImg(country){
 			arr = [];
 			switch(country){
 				case "newyear_23_up":
 					arr = [1,1,2,2,3,3,4,4,5,5];
-					for(i = 0; i<size; i++){
-						path[i] = img_path + arr[i] + ".png";
-					}
-					break;
+					return arr;
 				case "newyear_23_down":
 					arr = [6,6,7,7,99,99,99,99,99,99];
-					for(i = 0; i<size; i++){
-						path[i] = img_path + arr[i] + ".png";
-					}
-					break;
+					return arr;
 			}
-			for (i=0 ; i<size; i++){
-				img[i] = new Image();
-				img[i].src = path[i];
-				console.log("OK");
-			}
-			return img;
+			return arr;
 		}
 
-		icon = getImg(country, CategoryLen);
+		arr = getImg(country);
 		for (i = 0; i < CategoryLen; i++) {
 			// needs to maintain the click event if empty class occurs
 			if(CategoryNUM[i]>0){
@@ -538,7 +533,8 @@
 					drawImage(0, i-pass, categoryImages[i]);
 				}
 				else if(country == 'newyear_23_up' || country == 'newyear_23_down'){
-					drawImage(0, i-pass, icon[i]);
+					img = getImgNo(classes, arr[i]);
+					drawImage(0, i-pass, categoryImages[img]);
 				}
 				else{
 					drawImage(0, i-pass, lucky_icon);
@@ -601,7 +597,7 @@
 		var like = 0;
 		var percent = 0;
 		var ex = 0;
-		var ban = 0;
+
 		// 福袋
 		var lucky_bag = (country != 'jp' && country != 'tw' && country != 'en') ? true : false;
 		var default_cat1 = lucky_bag ? 14:7;
