@@ -5,7 +5,7 @@
 	var col_padding = 20;
 	var marginTop = 10;
 	var marginLeft = 10;
-	var country = "tw";
+	var country = window.sessionStorage.getItem("r_country") == null ? "tw" : window.sessionStorage.getItem("r_country");
 	var mode = 0;
 	var luckyBag = 0;
 	var CategoryNum;
@@ -285,6 +285,22 @@
         return units;
     }
 
+	function getCheckedBtn(country){
+		if(country == 'jp')
+			return jpButton;
+		if(country == 'tw')
+			return twButton;
+		if(country == 'z')
+			return zButton;
+		if(country == 'sixth')
+			return sixButton;
+		if(country == 'newyear_23_up')
+			return newyearBtn_1;
+		if(country == 'newyear_23_down')
+			return newyearBtn_2;
+		return twButton;
+	}
+
 	function Checked(btns,ckbtn){
 		for(var i = 0; i < btns.length; i++){
 			if(i == btns.indexOf(ckbtn)){
@@ -338,10 +354,12 @@
 		newyearBtn_2 = document.getElementById('newyear_23_down');
 		btns.push(newyearBtn_1);
 		btns.push(newyearBtn_2);
+		Checked(btns, getCheckedBtn(country));
 		// 中間欄
 		setButton = document.getElementById('set-button');
 		maskButton = document.getElementById('mask-button');
 		luckyBagButton = document.getElementById('luckyBag-button');
+		resetButton = document.getElementById('reset');
 		// 寶具等級上限
 		var breakthrough = false;
 		document.getElementById('breakthrough').onclick = function(){
@@ -360,7 +378,6 @@
 		twButton.onclick = function(){
 			if (country != "tw"){
 				country = "tw";
-				Checked(btns,twButton);
 				init(1);
 			}
 		};
@@ -368,7 +385,6 @@
 		jpButton.onclick = function(){
 			if (country != "jp"){
 				country = "jp";
-				Checked(btns,jpButton);
 				init(1);
 			}
 		};
@@ -376,7 +392,6 @@
 		zButton.onclick = function(){
 			if(country != "z"){
 				country = 'z';
-				Checked(btns,zButton);
 				init(1);
 			}
 		};
@@ -400,7 +415,6 @@
 		sixButton.onclick =  function(){
 			if(country != "sixth"){
 				country = 'sixth';
-				Checked(btns,sixButton);
 				init(1);
 			}
 		};
@@ -408,14 +422,12 @@
 		newyearBtn_1.onclick = function(){
 			if(country != "newyear_23_up"){
 				country = 'newyear_23_up';
-				Checked(btns,newyearBtn_1);
 				init(1);
 			}
 		};
 		newyearBtn_2.onclick = function(){
 			if(country != "newyear_23_down"){
 				country = 'newyear_23_down';
-				Checked(btns,newyearBtn_2);
 				init(1);
 			}
 		};
@@ -448,6 +460,10 @@
 			}
 			init(2);
 		};
+		resetButton.onclick = function(){
+			window.sessionStorage.setItem("r_country", country);
+			location.reload();
+		}
 
 		if(!state){
 			canvas.addEventListener('mousedown', function rightClickHandler(e) {
@@ -459,7 +475,7 @@
 
 		canvas.width  = luckyBag ? (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding) + caculateField : (Math.max.apply(null,CategoryNUM) + 1) * (CELL_SIZE + col_padding);
 		// add width
-		var wid = 700
+		var wid = 700;
 		if(canvas.width < wid) canvas.width = wid;
 		canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 		// 補正值
