@@ -206,7 +206,7 @@
 	}
 
 	//設定職階圖
-	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,99];
+	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,98,99];
 	for(var i = 0 ; i < classes.length ; i++){
 		categoryImages[i] = new Image();
 		categoryImages[i].src = "images/class/class_" + classes[i] + ".png";
@@ -516,9 +516,6 @@
 		// }
 		var pass = 0;
 		counter = 0;
-		// 福袋
-		lucky_icon = new Image();
-		lucky_icon.src = "images/class/lucky.png";
 
 		function getImgNo(images, target){
 			for (var i = 0; i < images.length; i++){
@@ -537,11 +534,14 @@
 				case "newyear_23_down":
 					arr = [6,6,7,7,99,99,99,99,99,99];
 					return arr;
+				case "sixth":
+					return 98;
 			}
 			return arr;
 		}
 
 		arr = getImg(country);
+
 		for (i = 0; i < CategoryLen; i++) {
 			// needs to maintain the click event if empty class occurs
 			if(CategoryNUM[i]>0){
@@ -553,7 +553,8 @@
 					drawImage(0, i-pass, categoryImages[img]);
 				}
 				else{
-					drawImage(0, i-pass, lucky_icon);
+					img = getImgNo(classes, arr);
+					drawImage(0, i-pass, categoryImages[img]);
 				}
 			}
 			else{
