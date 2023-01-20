@@ -715,8 +715,10 @@
 	}
 
 	function fillNPText(x, y, msg, color){
-		context.fillStyle = color;
 		let number = msg.match(/\d+/)[0];
+		if(number == 5) context.fillStyle = "rgb(255, 255, 0)";
+		else if(number >= 6) context.fillStyle = "rgb(255, 0, 0)";
+		else context.fillStyle = "rgb(0, 0, 0)";
 		if(number>9){
 			context.fillText(msg,
 				(x + 1) * (CELL_SIZE + col_padding) + 4 + marginLeft,
