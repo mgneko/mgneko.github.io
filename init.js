@@ -368,7 +368,7 @@
 				breakthrough = false;
 			}
 			else{
-				npLv = 9;
+				npLv = 20;
 				breakthrough = true;
 			}
 			alert("寶具等級上限為:" + npLv);
@@ -715,10 +715,19 @@
 
 	function fillNPText(x, y, msg, color){
 		context.fillStyle = color;
-		context.fillText(msg,
-			(x + 1) * (CELL_SIZE + col_padding) + 8 + marginLeft,
-			(y + 1) * (CELL_SIZE + row_padding) + marginTop - row_padding + 5,
-			CELL_SIZE);
+		let number = msg.match(/\d+/)[0];
+		if(number>9){
+			context.fillText(msg,
+				(x + 1) * (CELL_SIZE + col_padding) + 4 + marginLeft,
+				(y + 1) * (CELL_SIZE + row_padding) + marginTop - row_padding + 5,
+				CELL_SIZE);
+		}
+		else{
+			context.fillText(msg,
+				(x + 1) * (CELL_SIZE + col_padding) + 8 + marginLeft,
+				(y + 1) * (CELL_SIZE + row_padding) + marginTop - row_padding + 5,
+				CELL_SIZE);
+		}
 	}
 
 	function fillTotalText(){
