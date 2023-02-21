@@ -57,7 +57,7 @@
         servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length],
 		// 台服
         "tw": [14, 11, 10,
-            13, 12, 9, 11,
+            13, 13, 9, 11,
             7, 5, 6, 6, 3],
 		// 自選
 		"z":  [3,4,4,6,5,3,4,1,0,1,0,1],
