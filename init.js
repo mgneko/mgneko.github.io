@@ -207,7 +207,7 @@
 	}
 
 	//設定職階圖
-	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,666,98,99];
+	classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,666,99];
 	for(var i = 0 ; i < classes.length ; i++){
 		categoryImages[i] = new Image();
 		categoryImages[i].src = "images/class/class_" + classes[i] + ".png";
@@ -315,19 +315,19 @@
 		}
 	}
 
-	function addLoadEvent(fun) {
-		// 把已經載入完成的函式賦值給oldnload變數
-		var oldonload = window.onload;
-		if (typeof window.onload != 'function') {
-			window.onload = fun;
-		}
-		else {
-			window.onload = function() {
-					oldonload();
-					fun();
-				}
-		}
-	}
+	// function addLoadEvent(fun) {
+	// 	// 把已經載入完成的函式賦值給oldnload變數
+	// 	var oldonload = window.onload;
+	// 	if (typeof window.onload != 'function') {
+	// 		window.onload = fun;
+	// 	}
+	// 	else {
+	// 		window.onload = function() {
+	// 				oldonload();
+	// 				fun();
+	// 			}
+	// 	}
+	// }
 
 	function init(state = 0){
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
