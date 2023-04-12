@@ -233,56 +233,59 @@
 			if(country == 'jp' || country == 'tw'){
 				for (j = 0; j < servents[Category[i]].length; j++) {
 					no = getNo(servents,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			// 五星自選(含故事限)
 			else if(country == 'z'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(z,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			// 六周年
 			else if(country == 'sixth'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(sixth,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			// 七周年
 			else if(country == 'seventh_up'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(seventh_up,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			else if(country == 'seventh_down'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(seventh_down,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			// 22'新年
 			else if(country == 'newyear_22'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(newyear_22,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			else if(country == 'newyear_23_up'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(newyear_23_up,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 			else if(country == 'newyear_23_down'){
 				for(j = 0; j< AllCategoryNUM[country][i]; j++){
 					no = getNo(newyear_23_down,i,j);
-					units[i][j] = svt[no];
+					units[i][j] = { ...svt[no] };
 				}
 			}
 		}
+
+		//add NO. for servent units
+		addUnitsNo(units);
         return units;
     }
 
@@ -332,6 +335,8 @@
 	function init(state = 0){
 		CategoryNUM = Array.from(AllCategoryNUM[country]);
 		units = getUnit(country);
+		// stay with current tag when reload
+		window.sessionStorage.setItem("r_country", country);
 
 		canvas = document.getElementById('canvas');
 		canvas.onclick = onCanvasClick;
@@ -462,6 +467,7 @@
 			init(2);
 		};
 		resetButton.onclick = function(){
+			deleteData(FGO_STORAGE);
 			window.sessionStorage.setItem("r_country", country);
 			location.reload();
 		}
@@ -542,6 +548,9 @@
 		}
 
 		arr = getImg(country);
+
+		updateUnitsNPLevel(units);
+		fillTotalText();
 
 		for (i = 0; i < CategoryLen; i++) {
 			// needs to maintain the click event if empty class occurs
@@ -893,6 +902,9 @@
 				break;
 			}
 		}
+
+		//store units where np > 0
+		updateData(units.flat(2).filter((x) => x.npLv && x.npLv > 0));
 	}
 
 	function openImage(){
