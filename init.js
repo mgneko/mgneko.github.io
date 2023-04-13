@@ -847,6 +847,8 @@
 				break;
 			}
 		}
+
+		updateData(units);
 	}
 
 	function onCanvasClick(event){
@@ -903,8 +905,7 @@
 			}
 		}
 
-		//store units where np > 0
-		updateData(units.flat(2).filter((x) => x.npLv && x.npLv > 0));
+		updateData(units);
 	}
 
 	function openImage(){
