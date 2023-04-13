@@ -283,6 +283,8 @@ function getUnit(country){
 			}
 		}
 	}
+
+	addUnitsNo(units);
 	return units;
 }
 
@@ -462,6 +464,7 @@ function init(state = 0){
 		init(2);
 	};
 	resetButton.onclick = function(){
+		deleteData(FGO_STORAGE);
 		window.sessionStorage.setItem("r_country", country);
 		location.reload();
 	}
@@ -543,6 +546,8 @@ function init(state = 0){
 
 	arr = getImg(country);
 
+	updateUnitsNPLevel(units);
+	fillTotalText();
 	for (i = 0; i < CategoryLen; i++) {
 		// needs to maintain the click event if empty class occurs
 		if(CategoryNUM[i]>0){
