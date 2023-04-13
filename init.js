@@ -837,6 +837,8 @@ function rightClick(event){
 			}
 			break;
 		}
+
+		updateData(units);
 	}
 }
 
@@ -892,6 +894,8 @@ function onCanvasClick(event){
 			}
 			break;
 		}
+
+		updateData(units);
 	}
 }
 

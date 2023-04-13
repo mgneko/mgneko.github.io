@@ -6,47 +6,58 @@ function getData(configName) {
 }
 
 function setData(configName, configContent) {
-  if (configContent) localStorage.setItem(configName, JSON.stringify(configContent));
+  if (configContent)
+    localStorage.setItem(configName, JSON.stringify(configContent));
 }
 
 function deleteData(configName) {
   localStorage.removeItem(configName);
 }
 
-function updateData(newData) {
-  if (newData && newData.length > 0) {
-    const currentData = getData(FGO_STORAGE);
+function updateData(units) {
+  if (!units) return;
 
-    if (currentData.length == 0) {
-      setData(FGO_STORAGE, newData);
-      return;
-    }
+  //store units where np >= 0
+  let newData = units.flat(2).filter((x) => x.npLv >= 0);
 
-    let storage = [];
+  if (!newData || newData.length == 0) return;
 
-    //Step1. update storage if exist
-    cLoop: for (let i = 0; i < currentData.length; i++) {
-      for (let j = 0; j < newData.length; j++) {
-        if (newData[j].no && newData[j].no == currentData[i].no) {
-          storage.push(newData[j]);
-          continue cLoop;
-        }
-      }
-      storage.push(currentData[i]);
-    }
-    //Step2. add new
-    nLoop: for (let i = 0; i < newData.length; i++) {
-      for (let j = 0; j < storage.length; j++) {
-        if (storage[j].no && newData[i].no == storage[j].no) {
-          //already added in Step1.
-          continue nLoop;
-        }
-      }
-      storage.push(newData[i]);
-    }
+  const currentData = getData(FGO_STORAGE);
 
-    setData(FGO_STORAGE, storage);
+  if (currentData.length == 0) {
+    setData(FGO_STORAGE, newData);
+    return;
   }
+
+  let storage = [];
+
+  //Step1. update storage if exist
+  cLoop: for (let i = 0; i < currentData.length; i++) {
+    for (let j = 0; j < newData.length; j++) {
+      if (newData[j].no && newData[j].no == currentData[i].no) {
+        if (newData[j].npLv > 0) {
+          storage.push(newData[j]);
+        }
+        continue cLoop;
+      }
+    }
+
+    storage.push(currentData[i]);
+  }
+
+  //Step2. add new
+  nLoop: for (let i = 0; i < newData.length; i++) {
+    for (let j = 0; j < storage.length; j++) {
+      if (storage[j].no && newData[i].no == storage[j].no) {
+        //already added in Step1.
+        continue nLoop;
+      }
+    }
+
+    storage.push(newData[i]);
+  }
+
+  setData(FGO_STORAGE, storage);
 }
 
 function updateUnitsNPLevel(units) {
