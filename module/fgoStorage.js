@@ -25,7 +25,7 @@ function updateData(units) {
   const currentData = getData(FGO_STORAGE);
 
   if (currentData.length == 0) {
-    setData(FGO_STORAGE, newData);
+    setData(FGO_STORAGE, newData.filter((x) => x.npLv > 0));
     return;
   }
 
@@ -42,7 +42,9 @@ function updateData(units) {
       }
     }
 
-    storage.push(currentData[i]);
+    if (currentData[i].no && currentData[i].npLv > 0) {
+      storage.push(currentData[i]);
+    }
   }
 
   //Step2. add new
@@ -54,7 +56,9 @@ function updateData(units) {
       }
     }
 
-    storage.push(newData[i]);
+    if (newData[i].npLv > 0) {
+      storage.push(newData[i]);
+    }
   }
 
   setData(FGO_STORAGE, storage);
