@@ -31,7 +31,7 @@ var servents = {
 	'foreigner': [195, 198, 275, 281, 289, 295, 324, 334, 373],
 	'mooncancer': [220, 244, 285, 351],
 	'pretender': [316, 353],
-	'ex': []
+	'beast': [377]
 }
 
 var Category = [
@@ -48,19 +48,19 @@ var Category = [
 	'foreigner',		// 外
 	'mooncancer',		// 月
 	'pretender',		// 偽
-	'ex'				// 多出來的 #14
+	'beast'				// 獸
 ];
 // 設定數量
 var AllCategoryNUM = {
 	'jp': [servents['saber'].length, servents['archer'].length, servents['lancer'].length-1, //-1妖蘭
 	servents['rider'].length, servents['caster'].length, servents['assassin'].length, servents['berserker'].length,
-	servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length],
+	servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length,servents['beast'].length],
 	// 台服
 	"tw": [14, 11, 11,
 		13, 13, 9, 12,
-		7, 5, 6, 6, 3],
+		7, 5, 6, 6, 3, 0],
 	// 自選
-	"z":  [3,4,4,6,5,3,4,1,0,1,0,1],
+	"z":  [3,4,4,6,5,3,4,1,0,1,0,1,0],
 	// 六周年
 	"sixth":[6,8,6,9,6,5,6,4,4,6,8,5],
 	// 七周年
@@ -486,7 +486,6 @@ function init(state = 0){
 	canvas.height += CELL_SIZE * 0.5;
 	switch(country){
 		case 'jp':
-			canvas.height -= CELL_SIZE * 1.5;
 			break;
 		// 10個職階
 		case 'seventh_up':
