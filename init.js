@@ -151,7 +151,7 @@ alterego:[154, 51, 205, 175, 199, 309],
 foreigner:[316, 265, 289, 106, 209],
 mooncancer:[250, 238, 220, 195, 93],
 pretender:[295, 284, 241, 307, 229],
-ex:[272, 173, 150, 215, 292]};
+beast:[272, 173, 150, 215, 292]};
 
 // 23'新年
 var newyear_23_up =
@@ -297,6 +297,8 @@ function getCheckedBtn(country){
 		return zButton;
 	if(country == 'sixth')
 		return sixButton;
+	if(country == 'newyear_22')
+		return newyearBtn_1;
 	if(country == 'newyear_23_up')
 		return newyearBtn_1;
 	if(country == 'newyear_23_down')
@@ -347,6 +349,9 @@ function init(state = 0){
 	// 六週年
 	sixButton = document.getElementById('six-button');
 	btns.push(sixButton);
+	// 22'新年
+	newyearBtn_1 = document.getElementById('newyear_22_up');
+	btns.push(newyearBtn_1);
 	// 七週年
 	// sevenButton_1 = document.getElementById('seventh-button-1');
 	// btns.push(sevenButton_1);
@@ -418,6 +423,13 @@ function init(state = 0){
 	sixButton.onclick =  function(){
 		if(country != "sixth"){
 			country = 'sixth';
+			init(1);
+		}
+	};
+	// 22'新年
+	newyearBtn_1.onclick = function(){
+		if(country != "newyear_22"){
+			country = 'newyear_22';
 			init(1);
 		}
 	};
@@ -531,6 +543,8 @@ function init(state = 0){
 	function getImg(country){
 		arr = [];
 		switch(country){
+			case "newyear_22":
+				return 99;
 			case "newyear_23_up":
 				arr = [1,1,2,2,3,3,4,4,5,5];
 				return arr;
@@ -544,7 +558,7 @@ function init(state = 0){
 	}
 
 	arr = getImg(country);
-
+	// console.log(arr);
 	updateUnitsNPLevel(units);
 	fillTotalText();
 	for (i = 0; i < CategoryLen; i++) {
@@ -552,6 +566,10 @@ function init(state = 0){
 		if(CategoryNUM[i]>0){
 			if(country == 'jp' || country == 'tw' || country == 'z'){
 				drawImage(0, i-pass, categoryImages[i]);
+			}
+			else if(country == 'newyear_22'){
+				img = getImgNo(classes, arr);
+				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else if(country == 'newyear_23_up' || country == 'newyear_23_down'){
 				img = getImgNo(classes, arr[i]);
