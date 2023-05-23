@@ -58,7 +58,7 @@ var AllCategoryNUM = {
 	// 台服
 	"tw": [14, 11, 11,
 		13, 13, 10, 12,
-		7, 5, 6, 6, 3, 0],
+		7, 5, 6, 6, 3, 1, 0],
 	// 自選
 	"z":  [3,4,4,6,5,3,4,1,0,1,0,1,0],
 	// 六周年
@@ -498,6 +498,9 @@ function init(state = 0){
 	canvas.height += CELL_SIZE * 0.5;
 	switch(country){
 		case 'jp':
+			break;
+		case 'tw':	//少BEAST
+			canvas.height -= CELL_SIZE * 1.5;
 			break;
 		// 10個職階
 		case 'seventh_up':
