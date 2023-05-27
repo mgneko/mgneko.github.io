@@ -61,8 +61,6 @@ var AllCategoryNUM = {
 		7, 5, 6, 6, 3, 1, 0],
 	// 自選
 	"z":  [3,4,4,6,5,3,4,1,0,1,0,1,0],
-	// 六周年
-	"sixth":[6,8,6,9,6,5,6,4,4,6,8,5],
 	// 七周年
 	"seventh_up":[6,7,4,3,4,3,3,4,5,4],
 	"seventh_down":[4,3,4,3,4,5,6,5,5,6],
@@ -346,9 +344,6 @@ function init(state = 0){
 	// 自選
 	zButton = document.getElementById('z-button');
 	btns.push(zButton);
-	// 六週年
-	sixButton = document.getElementById('six-button');
-	btns.push(sixButton);
 	// 22'新年
 	newyearBtn_1 = document.getElementById('newyear_22_up');
 	btns.push(newyearBtn_1);
@@ -419,13 +414,6 @@ function init(state = 0){
 	// 		init(1);
 	// 	}
 	// }
-	// 六周年
-	sixButton.onclick =  function(){
-		if(country != "sixth"){
-			country = 'sixth';
-			init(1);
-		}
-	};
 	// 22'新年
 	newyearBtn_1.onclick = function(){
 		if(country != "newyear_22"){
