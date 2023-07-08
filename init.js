@@ -5,7 +5,7 @@ var row_padding = 30;
 var col_padding = 20;
 var marginTop = 10;
 var marginLeft = 10;
-var country = window.sessionStorage.getItem("r_country") == null ? "tw" : window.sessionStorage.getItem("r_country");
+var country = window.sessionStorage.getItem("r_country") == null ? "jp" : window.sessionStorage.getItem("r_country");
 var mode = 0;
 var luckyBag = 0;
 var CategoryNum;
