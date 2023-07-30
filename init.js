@@ -22,7 +22,7 @@ var servents = {
 	'archer': [12, 60, 77, 84, 129, 142, 156, 212, 216, 272, 276, 350, 375, 383],
 	'lancer': [70, 85, 88, 119, 128, 143, 196, 232, 280, 300, 312, 329, 368, 381, 999], //999 妖蘭(23'新年)
 	'rider': [65, 99, 108, 118, 144, 179, 205, 206, 241, 253, 274, 277, 296, 331, 342, 349],
-	'caster': [37, 62, 113, 127, 136, 150, 169, 175, 201, 215, 237, 284, 307, 327],
+	'caster': [37, 62, 113, 127, 136, 150, 169, 175, 201, 215, 237, 284, 307, 327, 385],
 	'assassin': [75, 86, 112, 139, 154, 189, 199, 235, 239, 314, 365, 371, 380],
 	'berserker': [51, 52, 97, 98, 114, 155, 161, 226, 247, 261, 306, 309, 355, 362],
 	'ruler': [59, 93, 173, 229, 265, 292, 305, 346, 357, 374],
@@ -69,6 +69,8 @@ var AllCategoryNUM = {
 	// 23'新年
 	"newyear_23_up": [7,6,3,4,4,5,3,4,6,3],
 	"newyear_23_down": [3,5,3,6,6,6,6,6,5,5],
+	// 八週年
+	"eighth":[4,4,4,3,3,4,4,4,4,3,5,3],
 }
 /* 版型
 var foo =
@@ -133,6 +135,22 @@ var seventh_down =
 	ruler:[198, 195, 163, 167, 209],
 	avenger:[275, 295, 281, 289, 238],
 	alterego:[324, 336, 334, 316, 339, 297]};
+
+//八週年
+var eighth = {
+	saber:[285, 292, 284, 289],
+	archer:[299, 303, 297, 295],
+	lancer:[309, 312, 307, 305],
+	rider:[321, 314, 317],
+	caster:[327, 334, 324],
+	assassin:[337, 339, 349, 336],
+	berserker:[353, 351, 355, 357],
+	ruler:[362, 373, 365, 368],
+	avenger:[374, 376, 384, 383],
+	alterego:[297, 302, 303],
+	foreigner:[342, 329, 316, 343, 346],
+	mooncancer:[369, 375, 371],
+};
 
 // 22'新年
 var newyear_22 =
@@ -261,6 +279,12 @@ function getUnit(country){
 				units[i][j] = svt[no];
 			}
 		}
+		else if(country == 'eighth'){
+			for(j = 0; j< AllCategoryNUM[country][i]; j++){
+				no = getNo(eighth,i,j);
+				units[i][j] = svt[no];
+			}
+		}
 		// 22'新年
 		else if(country == 'newyear_22'){
 			for(j = 0; j< AllCategoryNUM[country][i]; j++){
@@ -301,6 +325,8 @@ function getCheckedBtn(country){
 		return newyearBtn_1;
 	if(country == 'newyear_23_down')
 		return newyearBtn_2;
+	if(country == 'eighth')
+		return eighthBtn;
 	return twButton;
 }
 
@@ -352,6 +378,9 @@ function init(state = 0){
 	// btns.push(sevenButton_1);
 	// sevenButton_2 = document.getElementById('seventh-button-2');
 	// btns.push(sevenButton_2);
+	// 八週年
+	eighthBtn = document.getElementById('eighth_button');
+	btns.push(eighthBtn);
 	// 23'新年
 	// newyearBtn_1 = document.getElementById('newyear_23_up');
 	// newyearBtn_2 = document.getElementById('newyear_23_down');
@@ -414,6 +443,13 @@ function init(state = 0){
 	// 		init(1);
 	// 	}
 	// }
+	// 八週年
+	eighthBtn.onclick = function(){
+		if(country != 'eighth'){
+			country = 'eighth';
+			init(1);
+		}
+	}
 	// 22'新年
 	newyearBtn_1.onclick = function(){
 		if(country != "newyear_22"){
@@ -556,6 +592,9 @@ function init(state = 0){
 		// needs to maintain the click event if empty class occurs
 		if(CategoryNUM[i]>0){
 			if(country == 'jp' || country == 'tw' || country == 'z'){
+				drawImage(0, i-pass, categoryImages[i]);
+			}
+			else if(country == 'eighth'){
 				drawImage(0, i-pass, categoryImages[i]);
 			}
 			else if(country == 'newyear_22'){
