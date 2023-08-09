@@ -379,8 +379,8 @@ function init(state = 0){
 	// sevenButton_2 = document.getElementById('seventh-button-2');
 	// btns.push(sevenButton_2);
 	// 八週年
-	eighthBtn = document.getElementById('eighth_button');
-	btns.push(eighthBtn);
+	// eighthBtn = document.getElementById('eighth_button');
+	// btns.push(eighthBtn);
 	// 23'新年
 	// newyearBtn_1 = document.getElementById('newyear_23_up');
 	// newyearBtn_2 = document.getElementById('newyear_23_down');
@@ -444,12 +444,12 @@ function init(state = 0){
 	// 	}
 	// }
 	// 八週年
-	eighthBtn.onclick = function(){
-		if(country != 'eighth'){
-			country = 'eighth';
-			init(1);
-		}
-	}
+	// eighthBtn.onclick = function(){
+	// 	if(country != 'eighth'){
+	// 		country = 'eighth';
+	// 		init(1);
+	// 	}
+	// }
 	// 22'新年
 	newyearBtn_1.onclick = function(){
 		if(country != "newyear_22"){
