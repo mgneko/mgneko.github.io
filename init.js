@@ -319,6 +319,10 @@ function getCheckedBtn(country){
 		return zButton;
 	if(country == 'sixth')
 		return sixButton;
+	if(country == 'seventh_up')
+		return sevenButton_1;
+	if(country == 'seventh_down')
+		return sevenButton_2;
 	if(country == 'newyear_22')
 		return newyearBtn_1;
 	if(country == 'newyear_23_up')
@@ -374,10 +378,10 @@ function init(state = 0){
 	newyearBtn_1 = document.getElementById('newyear_22_up');
 	btns.push(newyearBtn_1);
 	// 七週年
-	// sevenButton_1 = document.getElementById('seventh-button-1');
-	// btns.push(sevenButton_1);
-	// sevenButton_2 = document.getElementById('seventh-button-2');
-	// btns.push(sevenButton_2);
+	sevenButton_1 = document.getElementById('seventh-button-1');
+	btns.push(sevenButton_1);
+	sevenButton_2 = document.getElementById('seventh-button-2');
+	btns.push(sevenButton_2);
 	// 八週年
 	// eighthBtn = document.getElementById('eighth_button');
 	// btns.push(eighthBtn);
@@ -429,20 +433,20 @@ function init(state = 0){
 	};
 	// 新年
 	// 七週年
-	// sevenButton_1.onclick = function(){
-	// 	if(country != "seventh_up"){
-	// 		country = 'seventh_up';
-	// 		Checked(btns,sevenButton_1);
-	// 		init(1);
-	// 	}
-	// }
-	// sevenButton_2.onclick = function(){
-	// 	if(country != "seventh_down"){
-	// 		country = 'seventh_down';
-	// 		Checked(btns,sevenButton_2);
-	// 		init(1);
-	// 	}
-	// }
+	sevenButton_1.onclick = function(){
+		if(country != "seventh_up"){
+			country = 'seventh_up';
+			Checked(btns,sevenButton_1);
+			init(1);
+		}
+	}
+	sevenButton_2.onclick = function(){
+		if(country != "seventh_down"){
+			country = 'seventh_down';
+			Checked(btns,sevenButton_2);
+			init(1);
+		}
+	}
 	// 八週年
 	// eighthBtn.onclick = function(){
 	// 	if(country != 'eighth'){
