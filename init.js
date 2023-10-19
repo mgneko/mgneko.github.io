@@ -612,7 +612,7 @@ function init(state = 0){
 				drawImage(0, i-pass, categoryImages[i]);
 			}
 			else if(country == 'newyear_22'){
-				img = getImgNo(classes, arr[i]);
+				img = getImgNo(classes, arr);
 				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else if(country == 'newyear_23_up' || country == 'newyear_23_down'){
