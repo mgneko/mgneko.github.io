@@ -223,7 +223,7 @@ for(var i = 0 ; i < Marks.length ; ++ i){
 }
 
 //設定職階圖
-classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,666,99];
+classes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,666,1001,99];
 for(var i = 0 ; i < classes.length ; i++){
 	categoryImages[i] = new Image();
 	categoryImages[i].src = "images/class/class_" + classes[i] + ".png";
@@ -583,12 +583,11 @@ function init(state = 0){
 				arr = [6,6,7,7,99,99,99,99,99,99];
 				return arr;
 			case "seventh_up":
-				// arr = [1,1,2,2,3,3,4,4,5,5];
-				// return arr;
+				arr = [1,1,2,2,3,3,4,4,5,5];
+				return arr;
 			case "seventh_down":
-				// arr = [6,6,7,7,1001,1001,1001,1001,1001];
-				// return arr;
-				return 99;
+				arr = [6,6,7,7,1001,1001,1001,1001,1001,1001];
+				return arr;
 			case "sixth":
 				return 666;
 		}
@@ -606,14 +605,14 @@ function init(state = 0){
 				drawImage(0, i-pass, categoryImages[i]);
 			}
 			else if(country == 'seventh_up' || country == 'seventh_down'){
-				img = getImgNo(classes, arr);
+				img = getImgNo(classes, arr[i]);
 				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else if(country == 'eighth'){
 				drawImage(0, i-pass, categoryImages[i]);
 			}
 			else if(country == 'newyear_22'){
-				img = getImgNo(classes, arr);
+				img = getImgNo(classes, arr[i]);
 				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else if(country == 'newyear_23_up' || country == 'newyear_23_down'){
@@ -621,7 +620,7 @@ function init(state = 0){
 				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else{
-				img = getImgNo(classes, arr);
+				img = getImgNo(classes, arr[i]);
 				drawImage(0, i-pass, categoryImages[img]);
 			}
 		}
