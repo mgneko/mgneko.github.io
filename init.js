@@ -582,6 +582,13 @@ function init(state = 0){
 			case "newyear_23_down":
 				arr = [6,6,7,7,99,99,99,99,99,99];
 				return arr;
+			case "seventh_up":
+				// arr = [1,1,2,2,3,3,4,4,5,5];
+				// return arr;
+			case "seventh_down":
+				// arr = [6,6,7,7,1001,1001,1001,1001,1001];
+				// return arr;
+				return 99;
 			case "sixth":
 				return 666;
 		}
@@ -597,6 +604,10 @@ function init(state = 0){
 		if(CategoryNUM[i]>0){
 			if(country == 'jp' || country == 'tw' || country == 'z'){
 				drawImage(0, i-pass, categoryImages[i]);
+			}
+			else if(country == 'seventh_up' || country == 'seventh_down'){
+				img = getImgNo(classes, arr);
+				drawImage(0, i-pass, categoryImages[img]);
 			}
 			else if(country == 'eighth'){
 				drawImage(0, i-pass, categoryImages[i]);
