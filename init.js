@@ -396,6 +396,7 @@ function init(state = 0){
 	maskButton = document.getElementById('mask-button');
 	luckyBagButton = document.getElementById('luckyBag-button');
 	resetButton = document.getElementById('reset');
+	resetMarkButton = document.getElementById('reset-mark');
 	// 寶具等級上限
 	var breakthrough = false;
 	document.getElementById('breakthrough').onclick = function(){
@@ -506,6 +507,13 @@ function init(state = 0){
 	resetButton.onclick = function(){
 		deleteData(FGO_STORAGE);
 		window.sessionStorage.setItem("r_country", country);
+		location.reload();
+	}
+
+	resetMarkButton.onclick = function(){
+		for (i=0; i<CategoryLen ; i++)
+			for (j = 0; j < servents[Category[i]].length; j++)
+					units[i][j].mark = 0;
 		location.reload();
 	}
 
