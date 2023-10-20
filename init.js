@@ -511,9 +511,17 @@ function init(state = 0){
 	}
 
 	resetMarkButton.onclick = function(){
-		for (i=0; i<CategoryLen ; i++)
-			for (j = 0; j < servents[Category[i]].length; j++)
+		for (i=0; i<CategoryLen ; i++){
+			if(country == 'jp' || country == 'tw'){
+				for (j = 0; j < servents[Category[i]].length; j++)
 					units[i][j].mark = 0;
+			}
+			else{
+				for(j = 0; j< AllCategoryNUM[country][i]; j++){
+					units[i][j].mark = 0;
+				}
+			}
+		}
 		location.reload();
 	}
 
