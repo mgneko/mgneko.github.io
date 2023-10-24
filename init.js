@@ -58,7 +58,7 @@ var AllCategoryNUM = {
 	// 台服
 	"tw": [15, 11, 12,
 		14, 14, 10, 12,
-		7, 6, 6, 7, 3, 1, 0],
+		7, 6, 6, 8, 3, 1, 0],
 	// 自選
 	"z":  [3,4,4,6,5,3,4,1,0,1,0,1,0],
 	// 七周年
@@ -391,6 +391,7 @@ function init(state = 0){
 	// btns.push(newyearBtn_1);
 	// btns.push(newyearBtn_2);
 	Checked(btns, getCheckedBtn(country));
+	window.sessionStorage.setItem("r_country", country);
 	// 中間欄
 	setButton = document.getElementById('set-button');
 	maskButton = document.getElementById('mask-button');
