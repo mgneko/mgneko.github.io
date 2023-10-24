@@ -553,6 +553,7 @@ function init(state = 0){
 		case 'seventh_down':
 		case 'newyear_23_up':
 		case 'newyear_23_down':
+			canvas.width += CELL_SIZE;
 			canvas.height -= CELL_SIZE * 6.5;
 			break;
 		// 14個職階
