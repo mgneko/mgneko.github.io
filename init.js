@@ -374,9 +374,6 @@ function init(state = 0){
 	// 自選
 	zButton = document.getElementById('z-button');
 	btns.push(zButton);
-	// 22'新年
-	newyearBtn_1 = document.getElementById('newyear_22_up');
-	btns.push(newyearBtn_1);
 	// 七週年
 	sevenButton_1 = document.getElementById('seventh-button-1');
 	btns.push(sevenButton_1);
@@ -456,13 +453,6 @@ function init(state = 0){
 	// 		init(1);
 	// 	}
 	// }
-	// 22'新年
-	newyearBtn_1.onclick = function(){
-		if(country != "newyear_22"){
-			country = 'newyear_22';
-			init(1);
-		}
-	};
 	// 23'新年
 	// newyearBtn_1.onclick = function(){
 	// 	if(country != "newyear_23_up"){
