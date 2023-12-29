@@ -31,7 +31,8 @@ var servents = {
 	'foreigner': [195, 198, 275, 281, 289, 295, 324, 334, 373, 393],
 	'mooncancer': [220, 244, 285, 351],
 	'pretender': [316, 353],
-	'beast': [377]
+	'beast': [377],
+	'shielder': []
 }
 
 var Category = [
@@ -48,13 +49,14 @@ var Category = [
 	'foreigner',		// 外
 	'mooncancer',		// 月
 	'pretender',		// 偽
-	'beast'				// 獸
+	'beast',			// 獸
+	'shielder'			// 盾
 ];
 // 設定數量
 var AllCategoryNUM = {
 	'jp': [servents['saber'].length, servents['archer'].length, servents['lancer'].length-1, //-1妖蘭
 	servents['rider'].length, servents['caster'].length, servents['assassin'].length, servents['berserker'].length,
-	servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length,servents['beast'].length],
+	servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length,servents['beast'].length,servents['shielder'].length],
 	// 台服
 	"tw": [15, 11, 12,
 		14, 14, 10, 12,
@@ -69,6 +71,9 @@ var AllCategoryNUM = {
 	// 23'新年
 	"newyear_23_up": [7,6,3,4,4,5,3,4,6,3],
 	"newyear_23_down": [3,5,3,6,6,6,6,6,5,5],
+	// 24'新年
+	"newyear_24_up": [5,4,4,5,4,4,4,4,3,5,4,4,4,4,4],
+	"newyear_24_down": [5,5,4,4,4,3,5,4,3,3,4,3,5,4],
 	// 八週年
 	"eighth":[4,4,4,3,3,4,4,4,4,3,5,3],
 }
@@ -86,7 +91,8 @@ avenger:[],
 alterego:[],
 foreigner:[],
 mooncancer:[],
-pretender:[]};
+pretender:[],
+beast:[]};
 */
 var z = {saber:[8, 2, 76],
 		archer:[84, 60, 212, 77],
@@ -193,6 +199,40 @@ berserker:[357, 96, 324, 297, 305, 281],
 ruler:[285, 268, 346, 321, 198, 167],
 avenger:[220, 316, 334, 289, 209],
 alterego:[250, 238, 351, 265, 93]};
+
+// 24'新年
+var newyear_24_up =
+{saber:[86, 70, 163, 155, 68],
+archer:[303, 179, 239, 270],
+lancer:[384, 393, 336, 327],
+rider:[276, 297, 324, 317, 305],
+caster:[362, 368, 365, 357],
+assassin:[234, 129, 90, 275],
+berserker:[386, 400, 312, 337],
+ruler:[284, 241, 215, 229],
+avenger:[307, 353, 295],
+alterego:[127, 91, 198, 167, 112],
+foreigner:[253, 261, 216, 237],
+mooncancer:[285, 268, 321, 349],
+pretender:[355, 383, 390, 374],
+beast:[88, 136, 106, 128],
+shielder:[292, 195, 339, 153]};
+
+var newyear_24_down =
+{saber:[142, 139, 175, 114, 196],
+archer:[220, 238, 209, 199, 250],
+lancer:[265, 299, 280, 289],
+rider:[314, 309, 334, 312],
+caster:[373, 351, 385, 376],
+assassin:[303, 393, 270],
+berserker:[297, 375, 96, 343, 281],
+ruler:[272, 173, 229, 150],
+avenger:[346, 329, 302],
+alterego:[369, 394, 371],
+foreigner:[51, 154, 161, 156],
+mooncancer:[213, 394, 342],
+pretender:[205, 12, 93, 160, 108],
+beast:[247, 397, 280, 316]};
 
 var Marks = [
 	'hiclipart',
@@ -304,6 +344,18 @@ function getUnit(country){
 				units[i][j] = svt[no];
 			}
 		}
+		else if(country == 'newyear_24_up'){
+			for(j = 0; j< AllCategoryNUM[country][i]; j++){
+				no = getNo(newyear_24_up,i,j);
+				units[i][j] = svt[no];
+			}
+		}
+		else if(country == 'newyear_24_down'){
+			for(j = 0; j< AllCategoryNUM[country][i]; j++){
+				no = getNo(newyear_24_down,i,j);
+				units[i][j] = svt[no];
+			}
+		}
 	}
 
 	addUnitsNo(units);
@@ -325,9 +377,9 @@ function getCheckedBtn(country){
 		return sevenButton_2;
 	if(country == 'newyear_22')
 		return newyearBtn_1;
-	if(country == 'newyear_23_up')
+	if(country == 'newyear_23_up' || country == 'newyear_24_up')
 		return newyearBtn_1;
-	if(country == 'newyear_23_down')
+	if(country == 'newyear_23_down' || country == 'newyear_24_down')
 		return newyearBtn_2;
 	if(country == 'eighth')
 		return eighthBtn;
@@ -385,8 +437,11 @@ function init(state = 0){
 	// 23'新年
 	// newyearBtn_1 = document.getElementById('newyear_23_up');
 	// newyearBtn_2 = document.getElementById('newyear_23_down');
-	// btns.push(newyearBtn_1);
-	// btns.push(newyearBtn_2);
+	// 24'新年
+	newyearBtn_1 = document.getElementById('newyear_24_up');
+	newyearBtn_2 = document.getElementById('newyear_24_down');
+	btns.push(newyearBtn_1);
+	btns.push(newyearBtn_2);
 	Checked(btns, getCheckedBtn(country));
 	window.sessionStorage.setItem("r_country", country);
 	// 中間欄
@@ -453,19 +508,19 @@ function init(state = 0){
 	// 		init(1);
 	// 	}
 	// }
-	// 23'新年
-	// newyearBtn_1.onclick = function(){
-	// 	if(country != "newyear_23_up"){
-	// 		country = 'newyear_23_up';
-	// 		init(1);
-	// 	}
-	// };
-	// newyearBtn_2.onclick = function(){
-	// 	if(country != "newyear_23_down"){
-	// 		country = 'newyear_23_down';
-	// 		init(1);
-	// 	}
-	// };
+	// 24'新年
+	newyearBtn_1.onclick = function(){
+		if(country != "newyear_24_up"){
+			country = 'newyear_24_up';
+			init(1);
+		}
+	};
+	newyearBtn_2.onclick = function(){
+		if(country != "newyear_24_down"){
+			country = 'newyear_24_down';
+			init(1);
+		}
+	};
 
 	//
 	setButton.onclick = function(){
@@ -532,11 +587,13 @@ function init(state = 0){
 	canvas.height = CategoryLen * (CELL_SIZE + row_padding) + marginTop;
 	// 補正值
 	canvas.height += CELL_SIZE * 0.5;
+	var class_size = 1.5;
 	switch(country){
 		case 'jp':
+			canvas.height -= CELL_SIZE * class_size * 1;
 			break;
 		case 'tw':	//少BEAST
-			canvas.height -= CELL_SIZE * 1.5;
+			canvas.height -= CELL_SIZE * class_size * 2;
 			break;
 		// 10個職階
 		case 'seventh_up':
@@ -544,18 +601,22 @@ function init(state = 0){
 		case 'newyear_23_up':
 		case 'newyear_23_down':
 			canvas.width += CELL_SIZE;
-			canvas.height -= CELL_SIZE * 6.5;
+			canvas.height -= CELL_SIZE * 6.5 * class_size * 0.8;
 			break;
 		// 14個職階
 		case 'newyear_22':
-			canvas.height += CELL_SIZE * 0.2;
+			canvas.height += CELL_SIZE * 0.2 * class_size;
 			break;
 		// 少偽職 & EX
+		case 'newyear_24_up':
+			break;
+		case 'newyear_24_down':
+			canvas.height -= CELL_SIZE * class_size;
+			break;
 		default:
-			canvas.height -= CELL_SIZE * 3;
+			canvas.height -= CELL_SIZE * 3 * class_size;
 			break;
 	}
-
 	context = canvas.getContext('2d');
 	context.font = "20px Microsoft JhengHei";
 	context.textBaseline = 'top';
@@ -584,6 +645,8 @@ function init(state = 0){
 		arr = [];
 		switch(country){
 			case "newyear_22":
+			case "newyear_24_up":
+			case "newyear_24_down":
 				return 99;
 			case "newyear_23_up":
 				arr = [1,1,2,2,3,3,4,4,5,5];
@@ -620,7 +683,7 @@ function init(state = 0){
 			else if(country == 'eighth'){
 				drawImage(0, i-pass, categoryImages[i]);
 			}
-			else if(country == 'newyear_22'){
+			else if(country == 'newyear_22' || country == 'newyear_24_up' || country == 'newyear_24_down'){
 				img = getImgNo(classes, arr);
 				drawImage(0, i-pass, categoryImages[img]);
 			}
