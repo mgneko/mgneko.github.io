@@ -26,7 +26,7 @@ var servents = {
 	'assassin': [75, 86, 112, 139, 154, 189, 199, 235, 239, 314, 365, 371, 380],
 	'berserker': [51, 52, 97, 98, 114, 155, 161, 226, 247, 261, 306, 309, 355, 362, 386],
 	'ruler': [59, 93, 173, 229, 265, 292, 305, 346, 357, 374, 390, 400],
-	'avenger': [96, 106, 250, 268, 303, 321, 370],
+	'avenger': [96, 106, 250, 268, 303, 321, 370, 403],
 	'alterego': [163, 167, 209, 224, 238, 297, 336, 339, 369, 376],
 	'foreigner': [195, 198, 275, 281, 289, 295, 324, 334, 373, 393],
 	'mooncancer': [220, 244, 285, 351],
@@ -58,7 +58,7 @@ var AllCategoryNUM = {
 	servents['rider'].length, servents['caster'].length, servents['assassin'].length, servents['berserker'].length,
 	servents['ruler'].length, servents['avenger'].length, servents['alterego'].length, servents['foreigner'].length, servents['mooncancer'].length, servents['pretender'].length,servents['beast'].length,servents['shielder'].length],
 	// 台服
-	"tw": [15, 11, 12,
+	"tw": [16, 11, 12,
 		14, 14, 10, 12,
 		7, 6, 7, 8, 3, 1, 0],
 	// 自選
@@ -437,11 +437,11 @@ function init(state = 0){
 	// 23'新年
 	// newyearBtn_1 = document.getElementById('newyear_23_up');
 	// newyearBtn_2 = document.getElementById('newyear_23_down');
-	// 24'新年
-	newyearBtn_1 = document.getElementById('newyear_24_up');
-	newyearBtn_2 = document.getElementById('newyear_24_down');
-	btns.push(newyearBtn_1);
-	btns.push(newyearBtn_2);
+	// // 24'新年
+	// newyearBtn_1 = document.getElementById('newyear_24_up');
+	// newyearBtn_2 = document.getElementById('newyear_24_down');
+	// btns.push(newyearBtn_1);
+	// btns.push(newyearBtn_2);
 	Checked(btns, getCheckedBtn(country));
 	window.sessionStorage.setItem("r_country", country);
 	// 中間欄
@@ -509,18 +509,18 @@ function init(state = 0){
 	// 	}
 	// }
 	// 24'新年
-	newyearBtn_1.onclick = function(){
-		if(country != "newyear_24_up"){
-			country = 'newyear_24_up';
-			init(1);
-		}
-	};
-	newyearBtn_2.onclick = function(){
-		if(country != "newyear_24_down"){
-			country = 'newyear_24_down';
-			init(1);
-		}
-	};
+	// newyearBtn_1.onclick = function(){
+	// 	if(country != "newyear_24_up"){
+	// 		country = 'newyear_24_up';
+	// 		init(1);
+	// 	}
+	// };
+	// newyearBtn_2.onclick = function(){
+	// 	if(country != "newyear_24_down"){
+	// 		country = 'newyear_24_down';
+	// 		init(1);
+	// 	}
+	// };
 
 	//
 	setButton.onclick = function(){
