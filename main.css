@@ -56,7 +56,23 @@ body{
 	letter-spacing: 1px;
 	display: inline-block;
 }
+/* 福袋 */
+.btn--latest--up{
+	background: #000000 ;
+	transition: all .3s;
+}
+.btn--latest--up:hover{
+	background: #C93E2F;
+}
 
+.btn--latest--down{
+	background: #000000 ;
+	transition: all .3s;
+}
+.btn--latest--down:hover{
+	background: #C93E2F;
+}
+/* */
 .btn--primary {
 	background: #000000 ;
 	transition: all .3s;
@@ -78,7 +94,14 @@ body{
 .btn--checked:hover {
   background: #C93E2F;
 }
-
+/* US */
+.btn--us{
+	background: #000000 ;
+	transition: all .3s;
+}
+.btn--us:hover {
+	background: #2b3033;
+}
 
 canvas {
     padding-left: 0;
