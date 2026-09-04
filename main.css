@@ -1,69 +1,117 @@
-body{
+/* 【修改點】移除所有 @font-face 規則，不再載入任何網頁字型 */
+/*
+@font-face {
+  font-family: 'Noto Sans TC';
+  src: url('./fonts/NotoSansTC-Regular.woff2') format('woff2'); 
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('./fonts/NotoSansJP-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+body {
 	background-color: #999;
-	font-family: Arial,"微軟正黑體";
+	/* 【修改點】更新 font-family 規則，使用一個更全面的系統字型組合。
+	  這個順序會為不同作業系統（Apple, Windows）和不同語言（英文、繁中、日文）
+	  提供最優先且美觀的預設字型。
+	*/
+	font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "微軟正黑體", "Segoe UI", Roboto, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "游ゴシック Medium", "Yu Gothic Medium", "メイリオ", Meiryo, sans-serif;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
+	margin: 0;
+	padding: 0;
+  }
 
 #header {
 	margin: 0 auto;
-	width:700px;
+	max-width: 90%;
+	text-align: center;
 }
 
 #header h1 {
 	display: block;
-	width: 700px;
-	height: 20px;
-	text-align: center;
+	width: 100%;
+	height: auto;
+	font-size: 2em;
 }
 
 #nav {
-	width: :700px;
+	max-width: 90%;
 	margin: 0 auto;
 	overflow: hidden;
 	text-align: center;
 }
 
 #nav ul {
-	display: inline-block;
-	margin: 10 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 10px 0;
 	padding: 0;
 	list-style: none;
 }
 
 #nav li {
-	float: left;
-	list-style-type: none;
-	margin-right: 20px
+	margin: 5px;
 }
 
 #footer {
 	margin: 0 auto;
-}
-
-#footer h2 {
-	font-size: 15px;
+	max-width: 90%;
 	text-align: center;
 }
 
+#footer h2 {
+	font-size: 1em;
+	text-align: center;
+}
+
+/* 新增: 語言切換器樣式 */
+#language-switcher {
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+#language-switcher a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#language-switcher a:hover {
+    background-color: #bbb;
+}
+
+
 .btn {
 	text-transform: uppercase;
-	padding: 10px 40px;
+	padding: 10px 20px;
 	text-decoration: none;
 	color: #fff;
 	letter-spacing: 1px;
 	display: inline-block;
+	font-size: 1em;
 }
 
 .btn--primary {
-	background: #000000 ;
-	transition: all .3s;
+	background: #000;
+	transition: all 0.3s;
 }
 
 .btn--primary:hover {
-  background: #2b3033;
+	background: #2b3033;
 }
 
 .btn--round {
@@ -71,14 +119,13 @@ body{
 }
 
 .btn--checked {
-	background: #b03a2e ;
-	transition: all .3s;
+	background: #b03a2e;
+	transition: all 0.3s;
 }
 
 .btn--checked:hover {
-  background: #C93E2F;
+	background: #c93e2f;
 }
-
 
 canvas {
     padding-left: 0;
@@ -86,5 +133,38 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 700;
+    width: auto; /* 讓寬度自動調整 */
+    max-width: 100%; /* 確保不會超出螢幕寬度 */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    #header h1 {
+        font-size: 1.5em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    #nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #nav li {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #header h1 {
+        font-size: 1.2em;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
 }

@@ -1,0 +1,252 @@
+{
+  "newyear_24_up": {
+    "isReleased": false,
+    "classIconImg": 99,
+    "label": { "zh-TW": "24'新年福袋(紅上)", "ja": "24'正月福袋(赤上)", "en": "NY 24 GSSR (Red 1)" },
+    "servants": {
+      "saber": [86, 70, 163, 155, 68],
+      "archer": [303, 179, 239, 270],
+      "lancer": [384, 393, 336, 327],
+      "rider": [276, 297, 324, 317, 305],
+      "caster": [362, 368, 365, 357],
+      "assassin": [234, 129, 90, 275],
+      "berserker": [386, 400, 312, 337],
+      "ruler": [284, 241, 215, 229],
+      "avenger": [307, 353, 295],
+      "alterego": [127, 91, 198, 167, 112],
+      "foreigner": [253, 261, 216, 237],
+      "mooncancer": [285, 268, 321, 349],
+      "pretender": [355, 383, 390, 374],
+      "beast": [88, 136, 106, 128],
+      "shielder": [292, 195, 339, 153]
+    }
+  },
+  "newyear_24_down": {
+    "isReleased": false,
+    "classIconImg": 99,
+    "label": { "zh-TW": "24'新年福袋(紅下)", "ja": "24'正月福袋(赤下)", "en": "NY 24 GSSR (Red 2)" },
+    "servants": {
+      "saber": [142, 139, 175, 114, 196],
+      "archer": [220, 238, 209, 199, 250],
+      "lancer": [265, 299, 280, 289],
+      "rider": [314, 309, 334, 312],
+      "caster": [373, 351, 385, 376],
+      "assassin": [303, 393, 270],
+      "berserker": [297, 375, 96, 343, 281],
+      "ruler": [272, 173, 229, 150],
+      "avenger": [346, 329, 302],
+      "alterego": [369, 394, 371],
+      "foreigner": [51, 154, 161, 156],
+      "mooncancer": [213, 394, 342],
+      "pretender": [205, 12, 93, 160, 108],
+      "beast": [247, 397, 280, 316]
+    }
+  },
+  "newyear_25_up": {
+    "isReleased": true,
+    "classIconImg": 99,
+    "label": { "zh-TW": "[台]25'新年福袋(紅上)", "ja": "25'正月福袋(赤上)", "en": "NY 25 GSSR (Red 1)" },
+    "servants": {
+      "saber": [68, 70, 270, 276],
+      "archer": [317, 368, 384],
+      "lancer": [90, 129, 91, 216, 234],
+      "rider": [337, 312, 402, 383],
+      "caster": [142, 88, 153, 128],
+      "assassin": [196, 280, 312, 299],
+      "berserker": [327, 239, 179, 86, 155],
+      "ruler": [415, 362, 365, 406],
+      "avenger": [112, 127, 237, 253],
+      "alterego": [386, 355, 349, 261],
+      "foreigner": [136, 175, 139, 114],
+      "mooncancer": [314, 385, 199, 309],
+      "pretender": [284, 307, 241, 215],
+      "beast": [324, 297, 163, 303, 305]
+    }
+  },
+  "newyear_25_down": {
+    "isReleased": true,
+    "classIconImg": 99,
+    "label": { "zh-TW": "[台]25'新年福袋(紅下)", "ja": "25'正月福袋(赤下)", "en": "NY 25 GSSR (Red 2)" },
+    "servants": {
+      "saber": [426, 416, 357, 393, 403],
+      "archer": [167, 268, 275, 198],
+      "lancer": [285, 374, 390, 321],
+      "rider": [413, 421, 400],
+      "caster": [220, 209, 195, 106],
+      "assassin": [250, 238, 265, 289],
+      "berserker": [334, 351, 339, 373],
+      "ruler": [431, 418, 376],
+      "avenger": [292, 295, 336, 229],
+      "alterego": [353, 421, 413]
+    }
+  },
+  "newyear_25_white": {
+    "isReleased": true,
+    "classIconImg": 99,
+    "label": { "zh-TW": "[台]25'新年福袋(白)", "ja": "25'正月福袋(白)", "en": "NY 25 GSSR (White)" },
+    "servants": {
+      "saber": [270, 343, 375],
+      "archer": [402, 427, 394, 302, 329],
+      "lancer": [156, 12, 160],
+      "rider": [213, 394, 280],
+      "caster": [96, 281, 297],
+      "assassin": [409, 393, 303],
+      "berserker": [346, 371, 369],
+      "ruler": [51, 108, 93],
+      "avenger": [161, 205, 154],
+      "alterego": [316, 397, 247],
+      "foreigner": [229, 173, 272, 342, 150]
+    }
+  },
+  "tenth_up": {
+    "isReleased": false,
+    "classIconImg": [1, 1, 1, 1, 2, 2, 2, 3, 3, 3],
+    "label": { "zh-TW": "[台]十週年福袋(上三)", "ja": "10周年福袋(上三)", "en": "10th Anniv. GSSR (1)" },
+    "servants": {
+      "saber": [68, 213, 90, 153],
+      "archer": [270, 337, 234, 384],
+      "lancer": [160, 299, 302, 91],
+      "rider": [317, 343, 402, 432],
+      "caster": [129, 156, 272, 427, 394],
+      "assassin": [142, 12, 216],
+      "berserker": [276, 375, 383, 394],
+      "ruler": [312, 70, 128, 433, 88],
+      "avenger": [196, 280, 312],
+      "alterego": [442, 329, 368]
+    }
+  },
+  "tenth_down": {
+    "isReleased": false,
+    "classIconImg": [4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7],
+    "label": { "zh-TW": "[台]十週年福袋(下四)", "ja": "10周年福袋(下四)", "en": "10th Anniv. GSSR (2)" },
+    "servants": {
+      "saber": [179, 342, 241],
+      "archer": [205, 108, 253],
+      "lancer": [406, 349, 397],
+      "rider": [136, 215, 150],
+      "caster": [284, 327, 307],
+      "assassin": [175, 237, 127],
+      "berserker": [435, 385, 415],
+      "ruler": [239, 86, 154],
+      "avenger": [139, 112, 199],
+      "alterego": [365, 371, 314],
+      "foreigner": [51, 155, 386, 161, 440],
+      "mooncancer": [247, 114, 261],
+      "pretender": [355, 362, 309]
+    }
+  },
+  "tenth_ex": {
+    "isReleased": false,
+    "classIconImg": 99,
+    "label": { "zh-TW": "[台]十週年福袋(EXTRA)", "ja": "10周年福袋(EXTRA)", "en": "10th Anniv. GSSR (Extra)" },
+    "servants": {
+      "saber": [400, 409, 106, 303, 418],
+      "archer": [229, 173, 292, 421],
+      "lancer": [93, 96, 220],
+      "rider": [265, 268, 250],
+      "caster": [305, 321, 285],
+      "assassin": [374, 357, 346, 351],
+      "berserker": [438, 390, 403, 421],
+      "ruler": [163, 195, 275],
+      "avenger": [339, 393, 431],
+      "alterego": [336, 413, 295, 353],
+      "foreigner": [209, 167, 198],
+      "mooncancer": [238, 289, 281],
+      "pretender": [297, 324, 316],
+      "beast": [369, 376, 373, 334],
+      "unbeast": [416, 426, 413, 441]
+    }
+  },
+  "newyear_26_up": {
+    "isReleased": false,
+    "classIconImg": [1, 1, 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 6, 6, 7, 7],
+    "label": { "zh-TW": "26'新年福袋(紅上)", "ja": "26'正月福袋(赤上)", "en": "NY 26 GSSR (Red 1)" },
+    "servants": {
+      "saber": [68, 90, 91],
+      "archer": [270, 234, 153],
+      "lancer": [299, 317, 337],
+      "rider": [445, 384, 402],
+      "caster": [129, 142, 216],
+      "assassin": [276, 383, 450],
+      "berserker": [70, 128, 88],
+      "ruler": [196, 312, 280],
+      "avenger": [442, 457, 433, 368],
+      "alterego": [179, 406, 349, 241, 253],
+      "mooncancer": [136, 175, 127],
+      "foreigner": [284, 215, 307, 237],
+      "pretender": [327, 435, 385, 415],
+      "beast": [139, 112, 199, 86],
+      "unbeast": [239, 453, 365, 314],
+      "shielder": [155, 114, 261, 309],
+      "luckybag1": [386, 355, 362, 440]
+    }
+  },
+  "newyear_26_down": {
+    "isReleased": false,
+    "classIconImg": [1004, 1004, 1004, 1004, 1004, 1004, 1004, 1005, 1005, 1005, 1005, 1005, 1005, 1005],
+    "label": { "zh-TW": "26'新年福袋(紅下)", "ja": "26'正月福袋(赤下)", "en": "NY 26 GSSR (Red 2)" },
+    "servants": {
+      "saber": [229, 106, 220],
+      "archer": [265, 268, 250],
+      "lancer": [292, 303, 285],
+      "rider": [305, 321, 351],
+      "caster": [374, 357, 390],
+      "assassin": [400, 403, 418],
+      "berserker": [438, 448, 421],
+      "ruler": [167, 163, 195],
+      "avenger": [209, 238, 198],
+      "alterego": [289, 295, 275],
+      "mooncancer": [297, 324, 334],
+      "foreigner": [339, 336, 353],
+      "pretender": [376, 413, 373, 393],
+      "beast": [416, 426, 441, 431]
+    }
+  },
+  "newyear_26_white": {
+    "isReleased": false,
+    "classIconImg": [1, 1, 2, 2, 3, 4, 99, 7, 1004, 1004, 1004, 1005],
+    "label": { "zh-TW": "26'新年福袋(白)", "ja": "26'正月福袋(白)", "en": "NY 26 GSSR (White)" },
+    "servants": {
+      "saber": [160, 270, 213, 302],
+      "archer": [456, 343, 402, 432],
+      "lancer": [12, 156, 272],
+      "rider": [375, 427, 394],
+      "caster": [442, 329, 280],
+      "assassin": [205, 108, 342, 397, 452],
+      "berserker": [150, 371, 154],
+      "ruler": [247, 51, 161],
+      "avenger": [93, 173, 96],
+      "alterego": [346, 229, 409, 303],
+      "mooncancer": [297, 369, 281, 393, 316]
+    }
+  },
+  "eleventh": {
+    "isReleased": false,
+    "classIconImg": 99,
+    "label": { "zh-TW": "十一週年福袋", "ja": "十一週年福袋", "en": "11th Anniv. GSSR" },
+    "servants": {
+      "saber": [153, 309, 346, 409],
+      "archer": [160, 383, 418],
+      "lancer": [456, 453, 448],
+      "rider": [470, 440, 305],
+      "caster": [312, 150, 353],
+      "assassin": [368, 355, 220],
+      "berserker": [307, 198, 316],
+      "ruler": [253, 462, 173],
+      "avenger": [466, 427, 136, 471],
+      "alterego": [375, 314, 51],
+      "mooncancer": [467, 357, 324],
+      "foreigner": [276, 438, 321],
+      "pretender": [442, 465, 441]
+    }
+  },
+  "_README_CLASS_ICONS": {
+    "劍弓槍騎術殺狂": [1, 2, 3, 4, 5, 6, 7],
+    "裁仇丑外月偽獸": [8, 9, 10, 11, 12, 13, 14],
+    "盾": 19,
+    "週年":[666,888],
+    "EXTRA": 1002,
+    "EXTRAI,II": [1004, 1005],
+    "QUESTION": 99
+  }
+}

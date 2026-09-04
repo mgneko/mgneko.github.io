@@ -1,34 +1,68 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <html>
 	<head>
-		<title>持有英靈一覽表</title>
-		<meta name="descriptions" content="FGO台服三周年服袋持有英靈清單製作">
+		<link rel="shortcut icon" href="fgo.ico" />
+		<title data-i18n-key="pageTitle">FGO持有五星英靈一覽表</title>
+		<meta name="descriptions" content="FGO持有五星英靈清單製作">
 		<meta name="keywords" content="FGO,Fate,Fate Grand Order">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="main.css" />
-		<script type="text/javascript" charset="UTF-8" src="units.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="i18n.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="init.js"></script>
 	</head>
 	<body onload="javascript:init();" style="margin:0px;">
 		<div id="header">
-			<H1>持有英靈一覽表</H1>
+			<h1 data-i18n-key="mainTitle">FGO持有五星英靈一覽表</h1>
 		</div>
 		<div id="nav">
+			<!-- 帳號相關 -->
 			<ul>
-				<li><a id="tw-button" class="btn btn--checked btn--round" href="javascript:void(0);">台GO</a></li>
-				<li><a id="jp-button" class="btn btn--primary btn--round" href="javascript:void(0);">日GO</a></li>
+				<li><a id="switch-account-btn" class="btn btn--primary btn--round" href="javascript:void(0);" style="color: #D80000;" data-i18n-key="switchAccount"></a></li>
+				<li><a id="import-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="importData"></a></li>
+				<li><a id="export-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="exportData"></a></li>
+				<input type="file" id="import-file" accept=".json" style="display: none;">
 			</ul>
-			<br>
+			<!-- 福袋與伺服器選擇 -->
+			<ul id="gssr-container">
+				<!-- 動態福袋按鈕會透過 JS 插入在這裡 -->
+				<!-- 初始常駐按鈕 -->
+				<li id="base-tw-btn"><a id="tw-button" class="btn btn--primary btn--round" href="javascript:void(0);"></a></li>
+				<li><a id="jp-button" class="btn btn--primary btn--round" href="javascript:void(0);"></a></li>
+				<li><a id="z-button" class="btn btn--primary btn--round" href="javascript:void(0);"></a></li>
+			</ul>
+			<!-- 功能 -->
 			<ul>
-				<li><a id="set-button" class="btn btn--checked btn--round" href="javascript:void(0);">設定數量</a></li>
-				<li><a id="mask-button" class="btn btn--primary btn--round" href="javascript:void(0);">設定標記</a></li>
-				<li><a id="luckyBag-button" class="btn btn--primary btn--round" href="javascript:void(0);">福袋期望值</a></li>
-				<li><a class="btn btn--primary btn--round" href="javascript:openImage();">產出圖片</a></li>
+				<li><a id="set-button" class="btn btn--checked btn--round" href="javascript:void(0);" data-i18n-key="setAmount"></a></li>
+                <li><a id="lv120-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="setLv120"></a></li>
+                <li><a id="crowned-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="setCrowned"></a></li>
+				<li><a id="breakthrough" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="breakthroughBtn"></a></li>
+				<li><a id="mask-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="setMark"></a></li>
+				<li><a id="reset-mark" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="resetMark"></a></li>
+				<li><a id="luckyBag-button" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="luckyBagValue"></a></li>
+				<li><a id="reset" class="btn btn--primary btn--round" href="javascript:void(0);" data-i18n-key="clearAll"></a></li>
+				<li><a id="open-image-btn" class="btn btn--primary btn--round" href="javascript:void(0);" style="color: #39C5BB;" data-i18n-key="generateImage"></a></li>
 			</ul>
 		</div>
-		<canvas id="canvas" width="0" height="0" align="center"></canvas>
+		<canvas id="canvas" width="100%" height="auto" align="center"></canvas>
 		<div id="footer">
-			<h2>Copyright © 2020 by mgneko.</h2>
+			<div class="usage-guide">
+				<p data-i18n-key="howToUseNp"></p>
+			</div>
+
+			<h2>Copyright © 2020 by mgneko, maintained by LeafLu © 2026 ver 4.7</h2>
+			<h2>
+				<a href="https://leaflu0315.github.io/fgo4s/" data-i18n-key="fourStarLink"></a>
+				<span data-i18n-key="reportProblem"></span>: <a href="https://forms.gle/78p1Luysj2qoMEts5" target="_blank">表單</a>
+			</h2>
+			<h2><p style="color:blue;" data-i18n-key="latestUpdate"></p></h2>
+			<!-- 語言切換器 -->
+			<div id="language-switcher">
+				<a href="javascript:void(0);" onclick="setLanguage('zh-TW')">繁體中文</a> |
+				<a href="javascript:void(0);" onclick="setLanguage('ja')">日本語</a> |
+				<a href="javascript:void(0);" onclick="setLanguage('en')">English</a>
+			</div>
 		</div>
 	</body>
 </html>

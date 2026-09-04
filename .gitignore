@@ -1,0 +1,6 @@
+webcrawler/__pycache__/*
+backup/
+build/
+fgo_editor.*
+temp*
+*_web.json
