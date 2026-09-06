@@ -9,10 +9,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="main.css" />
-		<script type="text/javascript" charset="UTF-8" src="i18n.js"></script>
-		<script type="text/javascript" charset="UTF-8" src="init.js"></script>
+		<script type="module" src="js/main.js"></script>
 	</head>
-	<body onload="javascript:init();" style="margin:0px;">
+	<body style="margin:0px;">
 		<div id="header">
 			<h1 data-i18n-key="mainTitle">FGO持有五星英靈一覽表</h1>
 		</div>
@@ -51,7 +50,7 @@
 				<p data-i18n-key="howToUseNp"></p>
 			</div>
 
-			<h2>Copyright © 2020 by mgneko, maintained by LeafLu © 2026 ver 4.7</h2>
+			<h2>Copyright © 2020 by mgneko, maintained by LeafLu © 2026 ver 4.8</h2>
 			<h2>
 				<a href="https://leaflu0315.github.io/fgo4s/" data-i18n-key="fourStarLink"></a>
 				<span data-i18n-key="reportProblem"></span>: <a href="https://forms.gle/78p1Luysj2qoMEts5" target="_blank">表單</a>
@@ -59,9 +58,9 @@
 			<h2><p style="color:blue;" data-i18n-key="latestUpdate"></p></h2>
 			<!-- 語言切換器 -->
 			<div id="language-switcher">
-				<a href="javascript:void(0);" onclick="setLanguage('zh-TW')">繁體中文</a> |
-				<a href="javascript:void(0);" onclick="setLanguage('ja')">日本語</a> |
-				<a href="javascript:void(0);" onclick="setLanguage('en')">English</a>
+				<a href="javascript:void(0);" data-lang="zh-TW">繁體中文</a> |
+				<a href="javascript:void(0);" data-lang="ja">日本語</a> |
+				<a href="javascript:void(0);" data-lang="en">English</a>
 			</div>
 		</div>
 	</body>

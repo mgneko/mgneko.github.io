@@ -197,8 +197,9 @@ const i18n = {
         "en": "Set NP Level: Left-click to increase, right-click to decrease. (If NP0, right-click sets to max level). Click class icon to show red background.\nYellow border indicates Lv 120, blue border indicates Grand, indigo border indicates both Lv 120 and Grand."
     },
     latestUpdate: {
-        "zh-TW": "最近更新: 改寫維護邏輯，新增產生圖片後可複製到剪貼簿功能&上傳到 urusai.cc 圖床功能",
-        "ja": "最近の更新: メンテナンスロジックを改修し、画像生成後にクリップボードにコピーする機能と urusai.cc へのアップロード機能を追加しました。",
-        "en": "Recent Updates: Rewritten maintenance logic, added feature to copy generated image to clipboard & upload to urusai.cc image hosting."
+        "zh-TW": "最近更新: 改寫維護邏輯，js模組化，新增產生圖片後可複製到剪貼簿功能&上傳到 urusai.cc 圖床功能",
+        "ja": "最近の更新: メンテナンスロジックの書き換え、jsのモジュール化、生成された画像をクリップボードにコピーする機能と urusai.cc へのアップロード機能を追加",
+        "en": "Recent Updates: Rewritten maintenance logic, modularized JS, added feature to copy generated images to clipboard & upload to urusai.cc image hosting"
     },
 }
+export default i18n;
