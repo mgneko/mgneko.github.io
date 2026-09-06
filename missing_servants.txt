@@ -1,1 +1,1 @@
-[MISS] カレン･Ｃ･オルテンシア(アムール〔カレン〕) (Class: Ruler) -> Key: Rulerカレン・C・オルテンシア(アムール〔カレン〕)
+[MISS] スペース･エレシュキガル (Class: Beast) -> Key: Beastエレシュキガル

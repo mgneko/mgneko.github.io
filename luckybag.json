@@ -2,7 +2,11 @@
   "newyear_24_up": {
     "isReleased": false,
     "classIconImg": 99,
-    "label": { "zh-TW": "24'新年福袋(紅上)", "ja": "24'正月福袋(赤上)", "en": "NY 24 GSSR (Red 1)" },
+    "label": {
+      "zh-TW": "24'新年福袋(紅上)",
+      "ja": "24'正月福袋(赤上)",
+      "en": "NY 24 GSSR (Red 1)"
+    },
     "servants": {
       "saber": [86, 70, 163, 155, 68],
       "archer": [303, 179, 239, 270],
@@ -24,7 +28,11 @@
   "newyear_24_down": {
     "isReleased": false,
     "classIconImg": 99,
-    "label": { "zh-TW": "24'新年福袋(紅下)", "ja": "24'正月福袋(赤下)", "en": "NY 24 GSSR (Red 2)" },
+    "label": {
+      "zh-TW": "24'新年福袋(紅下)",
+      "ja": "24'正月福袋(赤下)",
+      "en": "NY 24 GSSR (Red 2)"
+    },
     "servants": {
       "saber": [142, 139, 175, 114, 196],
       "archer": [220, 238, 209, 199, 250],
@@ -45,7 +53,11 @@
   "newyear_25_up": {
     "isReleased": true,
     "classIconImg": 99,
-    "label": { "zh-TW": "[台]25'新年福袋(紅上)", "ja": "25'正月福袋(赤上)", "en": "NY 25 GSSR (Red 1)" },
+    "label": {
+      "zh-TW": "[台]25'新年福袋(紅上)",
+      "ja": "25'正月福袋(赤上)",
+      "en": "NY 25 GSSR (Red 1)"
+    },
     "servants": {
       "saber": [68, 70, 270, 276],
       "archer": [317, 368, 384],
@@ -66,7 +78,11 @@
   "newyear_25_down": {
     "isReleased": true,
     "classIconImg": 99,
-    "label": { "zh-TW": "[台]25'新年福袋(紅下)", "ja": "25'正月福袋(赤下)", "en": "NY 25 GSSR (Red 2)" },
+    "label": {
+      "zh-TW": "[台]25'新年福袋(紅下)",
+      "ja": "25'正月福袋(赤下)",
+      "en": "NY 25 GSSR (Red 2)"
+    },
     "servants": {
       "saber": [426, 416, 357, 393, 403],
       "archer": [167, 268, 275, 198],
@@ -83,7 +99,11 @@
   "newyear_25_white": {
     "isReleased": true,
     "classIconImg": 99,
-    "label": { "zh-TW": "[台]25'新年福袋(白)", "ja": "25'正月福袋(白)", "en": "NY 25 GSSR (White)" },
+    "label": {
+      "zh-TW": "[台]25'新年福袋(白)",
+      "ja": "25'正月福袋(白)",
+      "en": "NY 25 GSSR (White)"
+    },
     "servants": {
       "saber": [270, 343, 375],
       "archer": [402, 427, 394, 302, 329],
@@ -101,7 +121,11 @@
   "tenth_up": {
     "isReleased": false,
     "classIconImg": [1, 1, 1, 1, 2, 2, 2, 3, 3, 3],
-    "label": { "zh-TW": "[台]十週年福袋(上三)", "ja": "10周年福袋(上三)", "en": "10th Anniv. GSSR (1)" },
+    "label": {
+      "zh-TW": "[台]十週年福袋(上三)",
+      "ja": "10周年福袋(上三)",
+      "en": "10th Anniv. GSSR (1)"
+    },
     "servants": {
       "saber": [68, 213, 90, 153],
       "archer": [270, 337, 234, 384],
@@ -118,7 +142,11 @@
   "tenth_down": {
     "isReleased": false,
     "classIconImg": [4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7],
-    "label": { "zh-TW": "[台]十週年福袋(下四)", "ja": "10周年福袋(下四)", "en": "10th Anniv. GSSR (2)" },
+    "label": {
+      "zh-TW": "[台]十週年福袋(下四)",
+      "ja": "10周年福袋(下四)",
+      "en": "10th Anniv. GSSR (2)"
+    },
     "servants": {
       "saber": [179, 342, 241],
       "archer": [205, 108, 253],
@@ -138,7 +166,11 @@
   "tenth_ex": {
     "isReleased": false,
     "classIconImg": 99,
-    "label": { "zh-TW": "[台]十週年福袋(EXTRA)", "ja": "10周年福袋(EXTRA)", "en": "10th Anniv. GSSR (Extra)" },
+    "label": {
+      "zh-TW": "[台]十週年福袋(EXTRA)",
+      "ja": "10周年福袋(EXTRA)",
+      "en": "10th Anniv. GSSR (Extra)"
+    },
     "servants": {
       "saber": [400, 409, 106, 303, 418],
       "archer": [229, 173, 292, 421],
@@ -160,7 +192,11 @@
   "newyear_26_up": {
     "isReleased": false,
     "classIconImg": [1, 1, 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 6, 6, 7, 7],
-    "label": { "zh-TW": "26'新年福袋(紅上)", "ja": "26'正月福袋(赤上)", "en": "NY 26 GSSR (Red 1)" },
+    "label": {
+      "zh-TW": "26'新年福袋(紅上)",
+      "ja": "26'正月福袋(赤上)",
+      "en": "NY 26 GSSR (Red 1)"
+    },
     "servants": {
       "saber": [68, 90, 91],
       "archer": [270, 234, 153],
@@ -184,7 +220,11 @@
   "newyear_26_down": {
     "isReleased": false,
     "classIconImg": [1004, 1004, 1004, 1004, 1004, 1004, 1004, 1005, 1005, 1005, 1005, 1005, 1005, 1005],
-    "label": { "zh-TW": "26'新年福袋(紅下)", "ja": "26'正月福袋(赤下)", "en": "NY 26 GSSR (Red 2)" },
+    "label": {
+      "zh-TW": "26'新年福袋(紅下)",
+      "ja": "26'正月福袋(赤下)",
+      "en": "NY 26 GSSR (Red 2)"
+    },
     "servants": {
       "saber": [229, 106, 220],
       "archer": [265, 268, 250],
@@ -205,7 +245,11 @@
   "newyear_26_white": {
     "isReleased": false,
     "classIconImg": [1, 1, 2, 2, 3, 4, 99, 7, 1004, 1004, 1004, 1005],
-    "label": { "zh-TW": "26'新年福袋(白)", "ja": "26'正月福袋(白)", "en": "NY 26 GSSR (White)" },
+    "label": {
+      "zh-TW": "26'新年福袋(白)",
+      "ja": "26'正月福袋(白)",
+      "en": "NY 26 GSSR (White)"
+    },
     "servants": {
       "saber": [160, 270, 213, 302],
       "archer": [456, 343, 402, 432],
@@ -223,7 +267,11 @@
   "eleventh": {
     "isReleased": false,
     "classIconImg": 99,
-    "label": { "zh-TW": "十一週年福袋", "ja": "十一週年福袋", "en": "11th Anniv. GSSR" },
+    "label": {
+      "zh-TW": "十一週年福袋",
+      "ja": "十一週年福袋",
+      "en": "11th Anniv. GSSR"
+    },
     "servants": {
       "saber": [153, 309, 346, 409],
       "archer": [160, 383, 418],
@@ -240,13 +288,68 @@
       "pretender": [442, 465, 441]
     }
   },
+  "destiny_normal": {
+    "isReleased": false,
+    "classIconImg": [1, 2, 3, 4, 5, 6, 7],
+    "label": {
+      "zh-TW": "[台] Destiny Order(七騎士)",
+      "ja": "Destiny Order(七騎士)",
+      "en": "Destiny Order(Normal)"
+    },
+    "servants": {
+      "saber": [8, 2, 278, 76, 160, 270, 299, 68, 317, 213, 343, 302, 337, 90, 234, 153, 384, 402, 432, 91],
+      "archer": [84, 60, 212, 350, 77, 129, 142, 12, 156, 216, 276, 375, 272, 427, 383, 394],
+      "lancer": [300, 143, 85, 232, 119, 381, 442, 196, 329, 70, 128, 433, 368, 88, 312, 280],
+      "rider": [206, 274, 118, 277, 331, 296, 65, 144, 99, 179, 406, 205, 108, 349, 342, 241, 397, 253],
+      "caster": [201, 113, 169, 37, 62, 284, 327, 136, 435, 385, 415, 215, 175, 150, 307, 237, 127],
+      "assassin": [189, 380, 75, 235, 239, 139, 365, 112, 199, 371, 86, 314, 154],
+      "berserker": [52, 306, 226, 97, 429, 98, 247, 386, 355, 51, 362, 155, 161, 114, 261, 309, 440]
+    }
+  },
+  "destiny_EX": {
+    "isReleased": false,
+    "classIconImg": [8, 9, 10, 12, 11, 13, 14],
+    "label": {
+      "zh-TW": "[台] Destiny Order(EXTRA)",
+      "ja": "Destiny Order(EXTRA)",
+      "en": "Destiny Order(Normal)"
+    },
+    "servants": {
+      "ruler": [59, 93, 265, 400, 374, 305, 346, 229, 173, 357, 292, 438, 390],
+      "avenger": [370, 407, 321, 96, 409, 106, 268, 303, 250, 403],
+      "alterego": [224, 297, 416, 209, 426, 238, 369, 339, 167, 336, 163, 376],
+      "mooncancer": [244, 351, 285, 418, 220, 421],
+      "foreigner": [413, 195, 289, 295, 198, 373, 324, 281, 334, 275, 393],
+      "pretender": [437, 316, 441, 431, 353],
+      "beast": [377, 417]
+    }
+  },
   "_README_CLASS_ICONS": {
     "劍弓槍騎術殺狂": [1, 2, 3, 4, 5, 6, 7],
     "裁仇丑外月偽獸": [8, 9, 10, 11, 12, 13, 14],
     "盾": 19,
-    "週年":[666,888],
+    "週年": [666, 888],
     "EXTRA": 1002,
     "EXTRAI,II": [1004, 1005],
     "QUESTION": 99
+  },
+  "_README_CLASS":{
+      "servants": {
+      "saber": [],
+      "archer": [],
+      "lancer": [],
+      "rider": [],
+      "caster": [],
+      "assassin": [],
+      "berserker": [],
+      "ruler": [],
+      "avenger": [],
+      "alterego": [],
+      "mooncancer": [],
+      "foreigner": [],
+      "pretender": [],
+      "beast": [],
+      "unbeast": []
+    }
   }
 }
