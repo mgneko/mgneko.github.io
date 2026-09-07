@@ -4,4 +4,4 @@ build/
 fgo_editor.*
 temp*
 *_web.json
-missing*
+missing_servants.txt
