@@ -1,11 +1,9 @@
 // ===================================================================================
 // interaction.js - 使用者點擊 canvas 的互動邏輯
 // ===================================================================================
-import { appState, CELL_SIZE, row_padding, col_padding, marginTop, bgcolor, mask, getUnitState, saveUserState } from './state.js';
-import i18n from '../i18n.js';
+import { appState, CELL_SIZE, row_padding, col_padding, marginTop, getUnitState, saveUserState } from './state.js';
 import { CategoryLen, Marks } from './gameData.js';
-import { markImages } from './imagePreloader.js';
-import { drawImage, drawUnitBorder, fillRect, fillTextMask, fillNPText, fillTotalText, fillCaculate, drawCanvas } from './render.js';
+import { drawCanvas } from './render.js';
 
 export function getCoordinates(e) {
     const rect = e.target.getBoundingClientRect();
@@ -21,7 +19,7 @@ export function handleUnitInteraction(event, isRightClick = false) {
     const point = getCoordinates(event);
     let categoryIndex = getCategory(point.y);
     let attributeIndex = getAttribute(point.x);
-    const { CategoryNum, units, selectedClasses, currentLang } = appState;
+    const { CategoryNum, units, selectedClasses } = appState;
 
     let visibleCategoryIndex = 0;
     let actualCategoryIndex = -1;
@@ -55,7 +53,6 @@ export function handleUnitInteraction(event, isRightClick = false) {
     if (xInCell < CELL_SIZE && xInCell > 0 && yInCell < CELL_SIZE && yInCell > 0 && attributeIndex > 0 && attributeIndex <= CategoryNum[categoryIndex]) {
         const unit = units[categoryIndex][attributeIndex - 1];
         const state = getUnitState(unit.no);
-        const yPos = getCategory(point.y);
 
         switch (appState.mode) {
             case 0:
@@ -78,31 +75,13 @@ export function handleUnitInteraction(event, isRightClick = false) {
                 break;
         }
 
-        drawImage(attributeIndex, yPos, unit.image);
-
-        if (!state.npLv) {
-            fillTextMask(attributeIndex, yPos, bgcolor);
-            fillRect(attributeIndex - 1, yPos, mask);
-        } else {
-            fillTextMask(attributeIndex, yPos, bgcolor);
-            fillNPText(attributeIndex - 1, yPos, `${i18n.npLevelPrefix[currentLang]}${state.npLv}`);
-        }
-
-        const is120 = state.lv120;
-        const isCrowned = state.crowned;
-        if (is120 && isCrowned) {
-            drawUnitBorder(attributeIndex, yPos, "#39C5BB");
-        } else if (is120) {
-            drawUnitBorder(attributeIndex, yPos, "#FFE211");
-        } else if (isCrowned) {
-            drawUnitBorder(attributeIndex, yPos, "#0000FF");
-        }
-
-        if (state.mark) drawImage(attributeIndex, yPos, markImages[state.mark - 1]);
-
-        fillTotalText();
-        if (appState.luckyBag) fillCaculate();
         saveUserState();
+        /* 用整張重繪取代局部重繪：同一個 no（同一位從者）在畫面上可能因為
+           資料本身的關係出現在不只一個位置（例如同一個福袋把同一位從者
+           同時列在兩個職階底下），局部重繪只會更新被點到的那一格，
+           導致另一格顯示過期畫面。整張重繪雖然多做一點工，但能保證
+           只要是同一個 no，畫面上所有出現的地方都會同步更新。*/
+        drawCanvas();
     }
 }
 
