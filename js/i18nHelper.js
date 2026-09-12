@@ -3,7 +3,7 @@
 // ===================================================================================
 import i18n from '../i18n.js';
 import { appState } from './state.js';
-import { FGO_DATA } from './gameData.js';
+import { FGO_DATA, getModeButtonId } from './gameData.js';
 import { drawCanvas } from './render.js';
 
 export function setLanguage(lang) {
@@ -22,7 +22,7 @@ export function applyLanguage(lang) {
     });
     Object.keys(FGO_DATA).forEach(modeKey => {
         const modeData = FGO_DATA[modeKey];
-        const buttonId = ['jp', 'tw', 'z'].includes(modeKey) ? `${modeKey}-button` : modeKey;
+        const buttonId = getModeButtonId(modeKey);
         const button = document.getElementById(buttonId);
         if (button) {
             // 支援舊版 i18n (labelKey) 與新版 JSON 動態載入 (label)

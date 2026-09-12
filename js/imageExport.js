@@ -23,17 +23,19 @@ export function openImage() {
 
 export function buildImagePreviewHtml(dataUrl) {
     const currentLang = appState.currentLang;
+    // 統一處理「有翻譯就用翻譯，沒有就用預設字串」，避免每一行都重複同樣的判斷式。
+    const translate = (key, fallback) => (i18n[key] && i18n[key][currentLang]) || fallback;
     const t = {
-        title: (i18n.pageTitle && i18n.pageTitle[currentLang]) || "FGO 五星英靈一覽表",
-        upload: (i18n.uploadImage && i18n.uploadImage[currentLang]) || "上傳到 urusai.cc",
-        uploading: (i18n.uploading && i18n.uploading[currentLang]) || "上傳中…",
-        copy: (i18n.copyImage && i18n.copyImage[currentLang]) || "複製圖片到剪貼簿",
-        copying: (i18n.copying && i18n.copying[currentLang]) || "複製中…",
-        uploadSuccess: (i18n.uploadSuccess && i18n.uploadSuccess[currentLang]) || "上傳成功，已在新分頁開啟：",
-        uploadFail: (i18n.errorUploadImage && i18n.errorUploadImage[currentLang]) || "上傳失敗：",
-        copySuccess: (i18n.copySuccess && i18n.copySuccess[currentLang]) || "已複製圖片到剪貼簿",
-        copyFail: (i18n.errorCopyImage && i18n.errorCopyImage[currentLang]) || "複製失敗：",
-        copyUnsupported: (i18n.errorCopyUnsupported && i18n.errorCopyUnsupported[currentLang]) || "此瀏覽器不支援直接複製圖片，請改用右鍵另存圖片"
+        title: translate('pageTitle', "FGO 五星英靈一覽表"),
+        upload: translate('uploadImage', "上傳到 urusai.cc"),
+        uploading: translate('uploading', "上傳中…"),
+        copy: translate('copyImage', "複製圖片到剪貼簿"),
+        copying: translate('copying', "複製中…"),
+        uploadSuccess: translate('uploadSuccess', "上傳成功，已在新分頁開啟："),
+        uploadFail: translate('errorUploadImage', "上傳失敗："),
+        copySuccess: translate('copySuccess', "已複製圖片到剪貼簿"),
+        copyFail: translate('errorCopyImage', "複製失敗："),
+        copyUnsupported: translate('errorCopyUnsupported', "此瀏覽器不支援直接複製圖片，請改用右鍵另存圖片")
     };
 
     const escAttr = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");

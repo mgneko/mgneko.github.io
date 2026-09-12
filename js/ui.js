@@ -7,15 +7,13 @@ import { toggleAccount, deleteData, FGO_STORAGE } from './storage.js';
 import { exportData, importData } from './dataTransfer.js';
 import { openImage } from './imageExport.js';
 
-export function updateModeButtons(activeIndex) {
-    const modeButtons = [
-        document.getElementById('set-button'),
-        document.getElementById('mask-button'),
-        document.getElementById('lv120-button'),
-        document.getElementById('crowned-button')
-    ];
+// 四種持有資料設定模式共用同一份 id 清單，button 的索引就是 appState.mode 的值，
+// updateModeButtons 跟 bindActionButtons 都從這裡讀，避免同一份 id 各寫一次。
+const MODE_BUTTON_IDS = ['set-button', 'mask-button', 'lv120-button', 'crowned-button'];
 
-    modeButtons.forEach((btn, index) => {
+export function updateModeButtons(activeIndex) {
+    MODE_BUTTON_IDS.forEach((id, index) => {
+        const btn = document.getElementById(id);
         if (!btn) return;
         if (index === activeIndex) {
             btn.classList.replace("btn--primary", "btn--checked");
@@ -41,10 +39,9 @@ function switchAccount(mainLogic) {
 export function bindActionButtons(mainLogic) {
     document.getElementById('switch-account-btn').onclick = () => switchAccount(mainLogic);
 
-    document.getElementById('set-button').onclick = () => { appState.mode = 0; updateModeButtons(0); };
-    document.getElementById('mask-button').onclick = () => { appState.mode = 1; updateModeButtons(1); };
-    document.getElementById('lv120-button').onclick = () => { appState.mode = 2; updateModeButtons(2); };
-    document.getElementById('crowned-button').onclick = () => { appState.mode = 3; updateModeButtons(3); };
+    MODE_BUTTON_IDS.forEach((id, index) => {
+        document.getElementById(id).onclick = () => { appState.mode = index; updateModeButtons(index); };
+    });
 
     document.getElementById('luckyBag-button').onclick = () => {
         appState.luckyBag = !appState.luckyBag;

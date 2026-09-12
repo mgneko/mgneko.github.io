@@ -11,6 +11,14 @@ export const Category = [
 export const CategoryLen = Category.length;
 export const Marks = ['hiclipart', 'heart'];
 
+// 常駐伺服器模式的按鈕 id 是 `${key}-button`（例如 jp-button），
+// 動態福袋按鈕的 id 則直接等於 key 本身。main.js / i18nHelper.js
+// 都需要把 FGO_DATA 的 key 轉成對應的按鈕 id，統一收在這裡避免重複。
+const BASE_MODE_KEYS = ['jp', 'tw', 'z'];
+export function getModeButtonId(modeKey) {
+    return BASE_MODE_KEYS.includes(modeKey) ? `${modeKey}-button` : modeKey;
+}
+
 // 統一管理職階圖片的魔法數字 (Magic Numbers)
 export const CLASS_ICON_MAP = {
     SABER: 1, ARCHER: 2, LANCER: 3, RIDER: 4, CASTER: 5, ASSASSIN: 6, BERSERKER: 7,

@@ -71,18 +71,20 @@ export function preloadStaticImages(callback) {
         loadedCount++;
         if (loadedCount === total) callback();
     };
-    classIds.forEach((id, i) => {
-        categoryImages[i] = new Image();
-        categoryImages[i].src = `images/class/class_${id}.png`;
-        categoryImages[i].onload = onImageLoad;
-        categoryImages[i].onerror = onImageLoad;
-    });
+
+    // 建立一批 Image、掛上 src 跟 onload/onerror，職階圖跟標記圖的載入方式完全相同，
+    // 差別只在圖片路徑跟要塞進哪個陣列，抽成同一個函式共用兩次。
+    function loadImagesInto(targetArray, srcList) {
+        srcList.forEach((src, i) => {
+            targetArray[i] = new Image();
+            targetArray[i].src = src;
+            targetArray[i].onload = onImageLoad;
+            targetArray[i].onerror = onImageLoad;
+        });
+    }
+
+    loadImagesInto(categoryImages, classIds.map(id => `images/class/class_${id}.png`));
     classes.length = 0;
     classes.push(...classIds);
-    Marks.forEach((mark, i) => {
-        markImages[i] = new Image();
-        markImages[i].src = `images/mark/${mark}.png`;
-        markImages[i].onload = onImageLoad;
-        markImages[i].onerror = onImageLoad;
-    });
+    loadImagesInto(markImages, Marks.map(mark => `images/mark/${mark}.png`));
 }

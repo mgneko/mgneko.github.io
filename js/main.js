@@ -3,7 +3,7 @@
 // ===================================================================================
 import { appState, CELL_SIZE, row_padding, col_padding, caculateField, marginTop, FOOTER_HEIGHT, MIN_CANVAS_WIDTH, loadUserState } from './state.js';
 import { migrateOldData } from './storage.js';
-import { Category, CategoryLen, FGO_DATA, loadLuckyBagData } from './gameData.js';
+import { Category, CategoryLen, FGO_DATA, loadLuckyBagData, getModeButtonId } from './gameData.js';
 import { ImagePreloader, preloadStaticImages } from './imagePreloader.js';
 import { drawCanvas } from './render.js';
 import { onCanvasClick, rightClick } from './interaction.js';
@@ -63,7 +63,7 @@ function mainLogic(state = 0) {
         migrateOldData();
         Object.keys(FGO_DATA).forEach(modeKey => {
             const modeData = FGO_DATA[modeKey];
-            const buttonId = ['jp', 'tw', 'z'].includes(modeKey) ? `${modeKey}-button` : modeKey;
+            const buttonId = getModeButtonId(modeKey);
             const button = document.getElementById(buttonId);
             if (button) {
                 const listItem = button.parentElement;
@@ -85,7 +85,7 @@ function mainLogic(state = 0) {
         bindLanguageSwitcher();
     }
 
-    const currentButtonId = ['jp', 'tw', 'z'].includes(appState.country) ? `${appState.country}-button` : appState.country;
+    const currentButtonId = getModeButtonId(appState.country);
     const currentActiveButton = document.getElementById(currentButtonId);
     if (currentActiveButton) Checked(appState.allModeButtons, currentActiveButton);
 

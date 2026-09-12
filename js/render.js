@@ -92,17 +92,31 @@ export function drawPlaceholder(xPos, yPos) {
     context.textAlign = "start"; context.textBaseline = "alphabetic";
 }
 
+// 畫「新/盤/婆」三行期望值文字。逐職階跟全體加總都是同一套算法跟排版，
+// 差別只在傳進來的 have/haveFull/like/total 是哪個範圍的統計。
+function drawExpectLines(have, haveFull, like, total, x, centerY) {
+    const { context, currentLang } = appState;
+    context.textBaseline = 'middle';
+    const newPercent = total > 0 ? (1 - have / total) * 100 : 0;
+    const regretPercent = total > 0 ? (haveFull / total) * 100 : 0;
+    const lovePercent = total > 0 ? (like / total) * 100 : 0;
+    context.fillText(`${i18n.expectNew[currentLang]}:${newPercent.toFixed(2)}%`, x, centerY - 15);
+    context.fillText(`${i18n.expectRegret[currentLang]}:${regretPercent.toFixed(2)}%`, x, centerY);
+    context.fillText(`${i18n.expectLove[currentLang]}:${lovePercent.toFixed(2)}%`, x, centerY + 15);
+    context.textBaseline = 'alphabetic';
+}
+
 export function fillCaculate() {
-    const { context, canvas, country, CategoryNum, units, marginLeft, currentLang } = appState;
+    const { context, canvas, country, CategoryNum, units, marginLeft } = appState;
     context.font = getFontString(12);
-    var have = 0, haveFull = 0, like = 0, percent = 0, ex = 0, attribute = 0;
-    var lucky_bag = (country != 'jp' && country != 'tw' && country != 'z');
-    var default_cat1 = lucky_bag ? (CategoryLen - 1) : 7, default_cat2 = lucky_bag ? (CategoryLen - 1) : 6;
+    let have = 0, haveFull = 0, like = 0, ex = 0, attribute = 0;
+    const lucky_bag = (country != 'jp' && country != 'tw' && country != 'z');
+    const default_cat1 = lucky_bag ? (CategoryLen - 1) : 7, default_cat2 = lucky_bag ? (CategoryLen - 1) : 6;
     context.fillStyle = bgcolor; context.fillRect(0, 0, caculateField + 10, canvas.height); context.fillStyle = font_color;
     let pass = 0;
-    for (var category = 0; category < CategoryLen; category++) {
+    for (let category = 0; category < CategoryLen; category++) {
         if (CategoryNum[category] === 0) { pass++; continue; }
-        if (category <= default_cat1) have = 0, haveFull = 0, like = 0;
+        if (category <= default_cat1) { have = 0; haveFull = 0; like = 0; }
         for (attribute = 0; attribute < CategoryNum[category]; attribute++) {
             const state = getUnitState(units[category][attribute].no);
             if (state.npLv) { have++; if (state.npLv >= 5) haveFull++; }
@@ -111,27 +125,15 @@ export function fillCaculate() {
         if (category <= default_cat2) {
             if (attribute > 0) {
                 const yPos = marginTop + (category - pass) * (CELL_SIZE + row_padding), centerY = yPos + (CELL_SIZE / 2);
-                context.textBaseline = 'middle';
-                percent = ((1 - (have / attribute)) * 100);
-                context.fillText(`${i18n.expectNew[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY - 15);
-                percent = (haveFull / units[category].length * 100);
-                context.fillText(`${i18n.expectRegret[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY);
-                percent = (like / units[category].length * 100);
-                context.fillText(`${i18n.expectLove[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY + 15);
-                context.textBaseline = 'alphabetic';
+                drawExpectLines(have, haveFull, like, units[category].length, marginLeft - caculateField, centerY);
             }
-        } else { ex += units[category].length; }
+        } else {
+            ex += units[category].length;
+        }
     }
     if (!lucky_bag) {
         const yPos = marginTop + 7 * (CELL_SIZE + row_padding), centerY = yPos + (CELL_SIZE / 2);
-        context.textBaseline = 'middle';
-        percent = ((1 - (have / ex)) * 100);
-        context.fillText(`${i18n.expectNew[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY - 15);
-        percent = (haveFull / ex * 100);
-        context.fillText(`${i18n.expectRegret[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY);
-        percent = (like / ex * 100);
-        context.fillText(`${i18n.expectLove[currentLang]}:${percent.toFixed(2)}%`, marginLeft - caculateField, centerY + 15);
-        context.textBaseline = 'alphabetic';
+        drawExpectLines(have, haveFull, like, ex, marginLeft - caculateField, centerY);
     }
 }
 
@@ -158,6 +160,28 @@ export function fillNPText(x, y, msg) {
     const yPos = y * (CELL_SIZE + row_padding) + marginTop + CELL_SIZE + 5;
     context.fillText(msg, xPos, yPos);
     context.textBaseline = 'alphabetic';
+}
+
+// 依百分比決定顯示顏色的門檻，寶五持有率跟英靈持有率共用同一套規則。
+function getRateColor(percent) {
+    if (percent >= 100) return "gold";
+    if (percent >= 90) return "red";
+    if (percent >= 75) return "purple";
+    if (percent >= 50) return "blue";
+    if (percent >= 25) return "green";
+    return font_color;
+}
+
+// 畫一行「標籤: 數值%」，數值部分依百分比上色，標籤維持預設文字色。
+function drawRateLine(label, percent, x, y) {
+    const { context } = appState;
+    const labelText = `${label}: `;
+    const valueText = `${percent.toFixed(2)}%`;
+    context.fillStyle = font_color;
+    context.fillText(labelText, x, y);
+    const labelWidth = context.measureText(labelText).width;
+    context.fillStyle = getRateColor(percent);
+    context.fillText(valueText, x + labelWidth, y);
 }
 
 export function fillTotalText() {
@@ -200,50 +224,21 @@ export function fillTotalText() {
 
     let currentY = boxY + 15;
 
-    const line_np5_owned = `${i18n.totalNP5Owned[currentLang]}: ${totalNP5}/${total}`;
-    context.fillText(line_np5_owned, xPos, currentY);
+    context.fillText(`${i18n.totalNP5Owned[currentLang]}: ${totalNP5}/${total}`, xPos, currentY);
     currentY += lineSpacing;
 
-    const line_np5_rate_label = `${i18n.ownedNP5Rate[currentLang]}: `;
-    const line_np5_rate_value = `${percentNP5.toFixed(2)}%`;
-    let valueColorNP5 = font_color;
-    if (percentNP5 >= 100) valueColorNP5 = "gold";
-    else if (percentNP5 >= 90) valueColorNP5 = "red";
-    else if (percentNP5 >= 75) valueColorNP5 = "purple";
-    else if (percentNP5 >= 50) valueColorNP5 = "blue";
-    else if (percentNP5 >= 25) valueColorNP5 = "green";
-
-    context.fillStyle = font_color;
-    context.fillText(line_np5_rate_label, xPos, currentY);
-    const labelWidthNP5 = context.measureText(line_np5_rate_label).width;
-    context.fillStyle = valueColorNP5;
-    context.fillText(line_np5_rate_value, xPos + labelWidthNP5, currentY);
+    drawRateLine(i18n.ownedNP5Rate[currentLang], percentNP5, xPos, currentY);
     currentY += lineSpacing;
 
     context.fillStyle = font_color;
-    const line_total_owned = `${i18n.totalOwned[currentLang]}: ${totalHave}/${total}`;
-    context.fillText(line_total_owned, xPos, currentY);
+    context.fillText(`${i18n.totalOwned[currentLang]}: ${totalHave}/${total}`, xPos, currentY);
     currentY += lineSpacing;
 
-    const line_owned_rate_label = `${i18n.ownedRate[currentLang]}: `;
-    const line_owned_rate_value = `${percent.toFixed(2)}%`;
-    let valueColor = font_color;
-    if (percent >= 100) valueColor = "gold";
-    else if (percent >= 90) valueColor = "red";
-    else if (percent >= 75) valueColor = "purple";
-    else if (percent >= 50) valueColor = "blue";
-    else if (percent >= 25) valueColor = "green";
-
-    context.fillStyle = font_color;
-    context.fillText(line_owned_rate_label, xPos, currentY);
-    const labelWidthOwned = context.measureText(line_owned_rate_label).width;
-    context.fillStyle = valueColor;
-    context.fillText(line_owned_rate_value, xPos + labelWidthOwned, currentY);
+    drawRateLine(i18n.ownedRate[currentLang], percent, xPos, currentY);
     currentY += lineSpacing;
 
     context.fillStyle = font_color;
-    const line_total_np = `${i18n.totalNPLevel[currentLang]}: ${totalNP}`;
-    context.fillText(line_total_np, xPos, currentY);
+    context.fillText(`${i18n.totalNPLevel[currentLang]}: ${totalNP}`, xPos, currentY);
     context.textAlign = 'start';
 }
 
